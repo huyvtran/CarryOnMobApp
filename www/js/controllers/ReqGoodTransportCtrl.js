@@ -1,9 +1,9 @@
 ﻿(function () {
 
     app.controller('ReqGoodTransportCtrl', ReqGoodTransportCtrl);
-    ReqGoodTransportCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', '$controller', 'Books', '$state', 'ErrorMng', '$sce', '$ionicPopup', 'Events', 'ionicDatePicker'];
+    ReqGoodTransportCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', '$controller', 'Books', '$state', 'ErrorMng', '$sce', '$ionicPopup', 'Events', 'ionicDatePicker', 'Rqgt'];
 
-    function ReqGoodTransportCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, $controller, Books, $state, ErrorMng, $sce, $ionicPopup, Events, ionicDatePicker) {
+    function ReqGoodTransportCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, $controller, Books, $state, ErrorMng, $sce, $ionicPopup, Events, ionicDatePicker, Rqgt) {
         
         var vm = this;
 
@@ -197,31 +197,45 @@
                 { types: ['geocode'] });
         }
 
+        /* go to next page where rqgt details are inserted */
+        vm.goToAddRqgtInsertDetails = function () {
+            Rqgt.currentRqgt = {
+                from: vm.autocompleteFrom,
+                fromShown: vm.newRqgtFrom,
+                to: vm.autocompleteTo,
+                toShown: vm.newRqgtTo,
+                date : vm.newRqgtDate,
+                dateShown : vm.newRqgtDateShown
+            };
+            $state.go('app.rqgt-details-publish');
+        }
 
 
-
+        /* Init datepicker */
         vm.datepickerDate = {
             callback: function (val) {  //Mandatory
+                vm.newRqgtDate = new Date(val);
+                vm.newRqgtDateShown = new Date(val);
                 console.log('Return value from the datepicker popup is : ' + val, new Date(val));
             },
-            disabledDates: [            //Optional
-              new Date(2016, 2, 16),
-              new Date(2015, 3, 16),
-              new Date(2015, 4, 16),
-              new Date(2015, 5, 16),
-              new Date('Wednesday, August 12, 2015'),
-              new Date("08-16-2016"),
-              new Date(1439676000000)
-            ],
-            from: new Date(2012, 1, 1), //Optional
-            to: new Date(2016, 10, 30), //Optional
-            inputDate: new Date(),      //Optional
-            mondayFirst: true,          //Optional
-            disableWeekdays: [0],       //Optional
-            closeOnSelect: false,       //Optional
-            templateType: 'popup'       //Optional
+            inputDate: new Date(),
+            titleLabel: 'Seleziona la data',
+            setLabel: 'Vai',
+            //todayLabel: 'Today',
+            showTodayButton: false,
+            closeLabel: 'Prima Possibile',
+            mondayFirst: false,
+            weeksList: ["S", "M", "T", "W", "T", "F", "S"],
+            monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
+            templateType: 'popup',
+            from: new Date(2012, 8, 1),
+            to: new Date(2018, 8, 1),
+            dateFormat: 'dd MMMM yyyy',
+            closeOnSelect: true,
+            disableWeekdays: []
         };
 
+        /* Init datepicker */
         vm.openDatePicker = function () {
             ionicDatePicker.openDatePicker(vm.datepickerDate);
         };

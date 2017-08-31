@@ -156,8 +156,8 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
         weeksList: ["S", "M", "T", "W", "T", "F", "S"],
         monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
         templateType: 'popup',
-        from: new Date(2012, 8, 1),
-        to: new Date(2018, 8, 1),
+        from: new Date(2016, 8, 1),
+        to: new Date(2024, 8, 1),
         showTodayButton: true,
         dateFormat: 'dd MMMM yyyy',
         closeOnSelect: false,
@@ -312,26 +312,23 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
         views: {
             'menuContent': {
                 templateUrl: 'templates/req-good-transport-list.html'
-                //,controller: 'ReqGoodTransportCtrl'
             },
             'fabContent': {
                 template: ''
             }
-            //'fabContent': {
-            //    template: '<button id="fab-profile" class="button button-positive button-fab button-fab-bottom-right" ng-click="goTest()"><i class="icon ion-social-twitter"></i></button>',
-            //    controller: function ($timeout, $window, $scope, $state, $location) {
-            //        $timeout(function () {
-            //            document.getElementById('fab-profile').classList.toggle('on');
-            //        }, 800);
-            //        $scope.goTest = function () {
-            //            //$state.go('externalGoTwitter');
-            //            $window.open('https://twitter.com/librairiepax');
-            //            //$location.url('https://twitter.com/librairiepax');
-            //        };
-            //    }
-            //}
         }
     })
+.state('app.rqgt-details-publish', {
+    url: '/rqgtDetailsPublish',
+    views: {
+        'menuContent': {
+            templateUrl: 'templates/rqgt-details-publish.html'
+        },
+        'fabContent': {
+            template: ''
+        }
+    }
+})
 
     .state('app.about-pax', {
         url: '/about-pax',
