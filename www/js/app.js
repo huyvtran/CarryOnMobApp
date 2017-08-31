@@ -374,5 +374,6 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
 
     // if none of the above states are matched, use this as the fallback
     //$urlRouterProvider.otherwise('/app/login');
-    $urlRouterProvider.otherwise('/app/first-choice');
+    //$urlRouterProvider.otherwise('/app/first-choice'); 
+    $urlRouterProvider.otherwise('/app/reqGoodTransport');
 });

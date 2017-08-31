@@ -1,4 +1,4 @@
-<ion-view view-title="Pubblica la richiesta" ng-controller="RqgtDetailsCtrl as vm">
+<ion-view view-title="Aggiungi dettagli e pubblica" ng-controller="RqgtDetailsCtrl as vm">
 
     <ion-content ng-class="{expanded:$scope.isExpanded}" class="about-pax-content">
 
@@ -40,10 +40,18 @@
                 </label>
                 Fragile
             </div>
+            <div class="item item-description">
+                <label class="label-details-item">Descrizione merce:</label>
+                <textarea placeholder="Inserisci qui una breve descrizione...">                   
+                </textarea>
+            </div>
             <br />
-            <button class="button button-block button-assertive ink" data-ink-color="#9DEAFF" data-ink-opacity="1">
-                Pubblica
-            </button>
+            <div class="pub-btn">
+                <button class="button button-block button-assertive ink" data-ink-color="#9DEAFF" 
+                        ng-click="vm.publishItem()" data-ink-opacity="1">
+                    Pubblica
+                </button>
+            </div>
         </div>
 
     </ion-content>

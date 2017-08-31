@@ -1,10 +1,10 @@
 ﻿(function () {
 
     app.controller('ReqGoodTransportCtrl', ReqGoodTransportCtrl);
-    ReqGoodTransportCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', '$controller', 'Books', '$state', 'ErrorMng', '$sce', '$ionicPopup', 'Events', 'ionicDatePicker', 'Rqgt'];
+    ReqGoodTransportCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', '$controller', 'Books', '$state', 'ErrorMng', '$sce', '$ionicPopup', 'Events', 'ionicDatePicker', 'Rqgt', '$ionicPopup', '$interval', '$ionicActionSheet'];
 
-    function ReqGoodTransportCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, $controller, Books, $state, ErrorMng, $sce, $ionicPopup, Events, ionicDatePicker, Rqgt) {
-        
+    function ReqGoodTransportCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, $controller, Books, $state, ErrorMng, $sce, $ionicPopup, Events, ionicDatePicker, Rqgt, $ionicPopup, $interval, $ionicActionSheet) {
+
         var vm = this;
 
         vm.booksLoaded = false;
@@ -12,7 +12,7 @@
         vm.booksDetailsLoaded = false;
 
         /* all document table data */
-        vm.heartBooks = []; 
+        vm.heartBooks = [];
         vm.bestSellersBooks = [];
         vm.pocheDuMois = {};
 
@@ -27,26 +27,26 @@
             //        selector: '.slide-up'
             //    });
             //}, 100);
-            
+
             $timeout(function () {
                 ionicMaterialMotion.blinds({
                     startVelocity: 3000
                 });
             }, 100);
-        }; 
+        };
 
-        /* Load all heart books */ 
+        /* Load all heart books */
         vm.loadHeartBooks = function () {
             // If data has not been loaded yet, then load it from server
             if (Books.booksLoaded === false) {
-                vm.loadBooks(); 
-            } else { 
+                vm.loadBooks();
+            } else {
                 vm.heartBooks = Books.heartBooks;
                 vm.pocheDuMois = Books.pocheDuMois;
                 vm.setMotion();
 
             };
-        }; 
+        };
 
         /* Load all books data from server */
         vm.loadBooks = function () {
@@ -68,7 +68,7 @@
                         ErrorMng.showSystemError(result.msg);
                     };
                 },
-                function (error) { 
+                function (error) {
                     // handle error here
                     ErrorMng.showSystemError(error.msg ? error.msg : error);
                 });
@@ -121,7 +121,7 @@
             };
         };
 
-        /* Load all books data from server */ 
+        /* Load all books data from server */
         vm.loadBestSellersBooks = function () {
             Books.GetBooks(coGlobal.BookListTypeEnum.BEST_SELLERS).then(
                 function (result) {
@@ -146,7 +146,7 @@
         };
 
         /* Go to details book */
-        vm.goToBookDetails = function (book) {            
+        vm.goToBookDetails = function (book) {
             /* First set current book */
             Books.currentBook = book;
             $state.go('app.book-details');
@@ -160,7 +160,7 @@
         };
 
         /* Go to 'Poche du mois' page */
-        vm.goToPocheDuMois = function () { 
+        vm.goToPocheDuMois = function () {
             /* First set current book */
             Books.currentBook = vm.pocheDuMois;
             Books.currentBook.isPocheDuMois = true;
@@ -186,29 +186,75 @@
 
         /* Address Autocomplete callback initialization */
         vm.initAutocomplete = function () {
-            // Search filter FROM - Create the autocomplete object
-            vm.autocompleteFrom = new google.maps.places.Autocomplete(
-                /** @type {!HTMLInputElement} */(document.getElementById('req-filter-from')),
-                { types: ['geocode'] });
+            stopTime = $interval(
+                function () {
+                    if (google != undefined) {
+                        // Search filter FROM - Create the autocomplete object
+                        vm.autocompleteFrom = new google.maps.places.Autocomplete(
+                            /** @type {!HTMLInputElement} */(document.getElementById('req-filter-from')),
+                            { types: ['geocode'] });
 
-            // Search filter TO - Create the autocomplete object
-            vm.autocompleteTo = new google.maps.places.Autocomplete(
-                /** @type {!HTMLInputElement} */(document.getElementById('req-filter-to')),
-                { types: ['geocode'] });
+                        // Search filter TO - Create the autocomplete object
+                        vm.autocompleteTo = new google.maps.places.Autocomplete(
+                            /** @type {!HTMLInputElement} */(document.getElementById('req-filter-to')),
+                            { types: ['geocode'] });
+                        $interval.cancel(stopTime);
+                    }
+                }, 1000);
         }
+
+        /* Show Action sheet for camion or good selection */
+        vm.showActionSheet_CG = function () {
+            vm.hideSheet = $ionicActionSheet.show({
+                buttons: [{
+                    text: 'Hai un camion'
+                }, {
+                    text: 'Hai della merce'
+                }],
+                //destructiveText: 'Delete',
+                //titleText: 'Seleziona la tua necessita\'',
+                cancelText: 'Cancel',
+                cancel: function () {
+                    // add cancel code..
+                },
+                buttonClicked: function (index) {
+                    vm.hideSheet();
+                    vm.goToRequestNextStep(true);
+                }
+            });
+        };
+
 
         /* go to next page where rqgt details are inserted */
         vm.goToAddRqgtInsertDetails = function () {
-            Rqgt.currentRqgt = {
-                from: vm.autocompleteFrom,
-                fromShown: vm.newRqgtFrom,
-                to: vm.autocompleteTo,
-                toShown: vm.newRqgtTo,
-                date : vm.newRqgtDate,
-                dateShown : vm.newRqgtDateShown
-            };
-            $state.go('app.rqgt-details-publish');
+            /* Check if all fields have been correctly filled */
+            /* TO BE TOGGLED */
+            if (!true) {
+            //if (!vm.newRqgtFrom || !vm.newRqgtTo) {
+                var alertPopup = $ionicPopup.alert({
+                    title: 'Dati non completi',
+                    template: 'Inserisci l\'indirizzo di partenza e di destinazione'
+                });
+                return;
+            }
+
+            /* Select camion or Good */
+            vm.showActionSheet_CG();
         }
+
+        vm.goToRequestNextStep = function (hasGood) {
+            if (hasGood) {
+                Rqgt.currentRqgt = {
+                    from: vm.autocompleteFrom,
+                    fromShown: vm.newRqgtFrom,
+                    to: vm.autocompleteTo,
+                    toShown: vm.newRqgtTo,
+                    date: vm.newRqgtDate,
+                    dateShown: vm.newRqgtDateShown
+                };
+                $state.go('app.rqgt-details-publish');
+            };
+        };
 
 
         /* Init datepicker */
@@ -276,18 +322,18 @@
         $scope.$parent.setExpanded(false);
         $scope.$parent.setHeaderFab(false);
 
-//        // Set Motion
-//        $timeout(function () {
-//            ionicMaterialMotion.slideUp({
-//                selector: '.slide-up'
-//            });
-//        }, 10000);
-//
-//        $timeout(function () {
-//            ionicMaterialMotion.fadeSlideInRight({
-//                startVelocity: 3000
-//            });
-//        }, 10000);
+        //        // Set Motion
+        //        $timeout(function () {
+        //            ionicMaterialMotion.slideUp({
+        //                selector: '.slide-up'
+        //            });
+        //        }, 10000);
+        //
+        //        $timeout(function () {
+        //            ionicMaterialMotion.fadeSlideInRight({
+        //                startVelocity: 3000
+        //            });
+        //        }, 10000);
 
         // Set Ink
         ionicMaterialInk.displayEffect();
