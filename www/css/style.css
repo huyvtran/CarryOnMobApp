@@ -1,0 +1,323 @@
+/* FIRST CHOICE
+======================================================================================================*/
+
+
+ion-view.no-header {
+    z-index: 50000 !important;
+}
+
+ion-view ion-content {
+    top: 0 !important;
+}
+
+.first-choice h1 {
+    text-align: center;
+    text-shadow: none;
+    color: #1A237E;
+    font-size: 36px;
+}
+
+div.first-choice-separator {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+div.first-choice-separator hr{
+    color: #1A237E;
+    border: 2px solid;
+    border-style: dashed;
+}
+
+/* PAX
+======================================================================================================*/
+
+.hero > .content > .avatar {
+    border: solid 3px rgba(255,255,255,.8);
+}
+
+.hero.pax-bkg-img-content {
+    height: 170px;
+}
+
+.hero .content.pax-bkg-img {
+    top: 15px;
+}
+
+.assertive-900-bg, .assertive-900-bg.activated, .assertive-900-bg:active, .assertive-900-bg:hover, .assertive-900-border, .assertive-900-border.activated, .assertive-900-border:active, .assertive-900-border:hover, .bar .button-assertive-900, .bar .button-assertive-900.activated, .bar .button-assertive-900:active, .bar .button-assertive-900:hover, .bar-assertive-900, .bar-assertive-900.activated, .bar-assertive-900:active, .bar-assertive-900:hover, .button-assertive-900, .button-assertive-900.activated, .button-assertive-900:active, .button-assertive-900:hover, .button-bar-assertive-900, .button-bar-assertive-900.activated, .button-bar-assertive-900:active, .button-bar-assertive-900:hover, .header-assertive-900, .header-assertive-900.activated, .header-assertive-900:active, .header-assertive-900:hover {
+    background-color: #104A93;
+    /*color: #232578;*/
+}
+
+.hero.h222 {
+    height: 222px;
+}
+
+.content.book-det-img-content {
+    top: 26px;
+    background-color: #ffffff;
+    display: flex; /* or inline-flex */
+    justify-content: space-around;
+}
+
+.book-det-img-content .img-item {
+    padding-left: 20px;
+}
+
+.book-det-img-content p {
+    margin-bottom: 4px;
+    text-align: left;
+    color: #000;
+    font-size: 13px;
+}
+
+.book-det-img-content img.book-det-img {
+    max-height: 170px;
+}
+
+p.content-author {
+    font-style: italic;
+    text-align: right;
+}
+
+div.book-details-description {
+    margin-top: 8px;
+}
+
+div.add-to-shop {
+    text-align: center;
+}
+
+    div.add-to-shop p {
+        font-size: 13px;
+    }
+
+p.mb-10 {
+    margin-bottom: 10px;
+}
+
+p.mb-20 {
+    margin-bottom: 20px;
+}
+
+/* General
+==================================*/
+h1 {
+    color: #fff;
+    text-shadow: 0 1px 0px #000;
+    font-size: 42px;
+}
+
+
+/* Utilities
+==================================*/
+.title-bordered {
+    border-top: solid 2px #bbb;
+    padding-top: 30px;
+}
+
+p {
+    color: #555;
+    margin: 0 0 25px;
+}
+
+.scroll {
+    height: 100%;
+}
+
+
+/* Profile
+==================================*/
+
+.tabs-dark > .tabs, .tabs.tabs-dark {
+    background-color: #DFE2F1;
+    color: #104A93;
+    border-top: #104A93 solid 1px;
+    border-bottom: #104A93 solid 1px;
+}
+
+.tab-item {
+    opacity: 1;
+}
+
+.item.search-bar > button.search-btn {
+    height: 22px;
+    padding: 0px 14px 3px 14px;
+    margin-top: 2px;
+    min-height: 31px;
+    right: 10px;
+    border-radius: 3px;
+}
+
+.button.button-positive.button.search-btn {
+    background-color: #104A93;
+    border-color: #104A93;
+}
+
+.item.search-bar .item-input-wrapper {
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-right: 53px;
+    border-radius: 3px;
+}
+
+    .item.search-bar .item-input-wrapper input {
+        width: 100%;
+    }
+
+.search-bar-content .item-input-inset {
+    padding-bottom: 20px;
+}
+
+/* Search book result page
+==================================*/
+.search-bar-content.search-result-page {
+    padding-top: 12px;
+}
+
+    .search-bar-content.search-result-page .item-input-inset {
+        padding-bottom: 8px;
+        border: none;
+    }
+
+.list.search-result-list {
+    padding-bottom: 20px;
+}
+
+/* Login
+==================================*/
+.app-icon {
+    background-color: #fff;
+    background: url('../img/crown.jpg') center;
+    background-size: cover;
+    border-radius: 50%;
+    height: 125px;
+    margin: 0 auto;
+    width: 125px;
+}
+
+.social-login {
+    position: fixed;
+    bottom: 0;
+}
+
+
+
+/* Menu */
+
+.menu .bar.bar-header.expanded {
+    /*background-image: url('../img/material-graphite.jpg');*/
+    background-size: 120%;
+    background-position: 0%;
+    transition: all .5s ease-in-out;
+}
+
+.menu.menu-left * {
+    font-weight: bold;
+}
+
+.item-radio input:checked ~ .item-content {
+    background: transparent;
+}
+
+.menu-open .ion-navicon {
+    transform: rotate(-360deg);
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+    .menu-open .ion-navicon:before {
+        content: "\f2ca";
+    }
+
+/*.side-menu .list .item,
+.side-menu ion-header-bar {
+    text-align: right;
+}*/
+
+/*  ----------------------------------   PROFILE    -----------------------------------  */
+
+h4.content.padding {
+    margin-top: 4px;
+    margin-bottom: 1px;
+    padding-top: 14px !important;
+    padding-bottom: 0px !important;
+}
+
+.card > .item-avatar, .item-avatar, .item-avatar .item-content, .item-avatar-left, .item-avatar-left .item-content {
+    padding-left: 76px;
+}
+
+.item-icon-right {
+    padding-right: 15px;
+}
+
+div.list a {
+    padding-top: 11px;
+    padding-bottom: 8px;
+}
+
+    div.list a:first-child {
+        margin-top: 10px;
+    }
+
+div.list ion-item a {
+    margin-top: 5px;
+}
+
+.item-avatar .item-content .item-image, .item-avatar .item-content > img:first-child, .item-avatar .item-image, .item-avatar-left .item-content .item-image, .item-avatar-left .item-content > img:first-child, .item-avatar-left .item-image, .item-avatar-left > img:first-child, .item-avatar > img:first-child, div.list a img {
+    position: absolute;
+    top: 7px;
+}
+
+    div.list a img.new-book-added {
+        height: 30px;
+        right: 12px;
+        top: 10px;
+        /*transform: rotate(-20deg);*/
+    }
+/*  ----------------------------------   AGENDA    -----------------------------------  */
+
+.agenda-container .card .image {
+    text-align: center;
+}
+
+.agenda-container .card img {
+    /*max-width: 80%;*/
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.agenda-container .card .event-date-info {
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+
+/*  ----------------------------------   ABOUT PAX    -----------------------------------  */
+
+
+/*.about-pax-content .hero {
+    height: 220px;
+}*/
+
+.info-openings-content {
+    text-align: center;
+}
+
+.info-openings h5 {
+    color: #555;
+}
+
+.about-pax-content .info-openings-content h4 {
+    margin-top: 0;
+}
+
+/*  ----------------------------------   EVENT DETAILS    -----------------------------------  */
+
+.event-descr-container {
+    padding: 20px 15px;
+}
+
+    .event-descr-container p {
+        font-size: 16px;
+    }
