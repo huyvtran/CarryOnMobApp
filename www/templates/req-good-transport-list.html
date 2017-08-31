@@ -17,7 +17,8 @@
                 </div>
                 <div class="item search-bar item-input-inset item-button-right">
                     <label class="item-input-wrapper">
-                        <input type="text" id="req-filter-date" placeholder="Data..." ng-model="vm.newRqgtDate">
+                        <input type="text" id="req-filter-date" placeholder="Data..." ng-model="vm.newRqgtDate"
+                               ng-mousedown="vm.openDatePicker()">
                     </label>
                 </div>
                 <!--<div class="item search-bar item-input-inset item-button-right">
@@ -53,7 +54,7 @@
             <h4 class="content title-announcements">
                 Recenti annunci di camion disponibili:<span ng-if="!vm.heartBooks || (vm.heartBooks && vm.heartBooks.length==0)">&nbsp;(Loading...)</span>
             </h4>
-            <a ng-click="vm.searchRqgtFiltered()" class="tab-item">
+            <a ng-click="vm.openDatePicker()" class="tab-item">
                 <i class="icon ion-funnel"></i> Filtra
             </a>
         </div>

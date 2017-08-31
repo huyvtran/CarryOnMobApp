@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-var app = angular.module('starter', ['ionic', 'ionic-material', 'ionMdInput', 'ion-floating-menu']);
+var app = angular.module('starter', ['ionic', 'ionic-material', 'ionMdInput', 'ion-floating-menu', 'ionic-datepicker']);
 
 app.run(function ($ionicPlatform, $state, $ionicPopup, ionicMaterialInk, $timeout) {
 
@@ -143,7 +143,27 @@ app.run(function ($ionicPlatform, $state, $ionicPopup, ionicMaterialInk, $timeou
     });
 })
 
-app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, ionicDatePickerProvider) {
+
+    /* Configure date picker */
+    var datePickerObj = {
+        inputDate: new Date(),
+        titleLabel: 'Seleziona la data',
+        setLabel: 'Set',
+        todayLabel: 'Today',
+        closeLabel: 'Close',
+        mondayFirst: false,
+        weeksList: ["S", "M", "T", "W", "T", "F", "S"],
+        monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
+        templateType: 'popup',
+        from: new Date(2012, 8, 1),
+        to: new Date(2018, 8, 1),
+        showTodayButton: true,
+        dateFormat: 'dd MMMM yyyy',
+        closeOnSelect: false,
+        disableWeekdays: []
+    };
+    ionicDatePickerProvider.configDatePicker(datePickerObj);
 
     // Turn off caching for demo simplicity's sake
     $ionicConfigProvider.views.maxCache(0);
