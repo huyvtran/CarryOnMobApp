@@ -284,12 +284,12 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
             external: true
         })
 
-    .state('app.profile', {
-        url: '/profile',
+    .state('app.reqGoodTransport', {
+        url: '/reqGoodTransport',
         views: {
             'menuContent': {
-                templateUrl: 'templates/profile.html'
-                //,controller: 'ProfileCtrl'
+                templateUrl: 'templates/req-good-transport-list.html'
+                //,controller: 'ReqGoodTransportCtrl'
             },
             'fabContent': {
                 template: ''
@@ -315,7 +315,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         views: {
             'menuContent': {
                 templateUrl: 'templates/about-pax.html'
-                //,controller: 'ProfileCtrl'
+                //,controller: 'ReqGoodTransportCtrl'
             }
             //, 'fabContent': {
             //    template: '<button id="fab-profile" class="button button-positive button-fab button-fab-bottom-right" ng-click="goTest()"><i class="icon ion-social-twitter"></i></button>',
@@ -335,7 +335,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
         views: {
             'menuContent': {
                 templateUrl: 'templates/first-choice.html'
-                //,controller: 'ProfileCtrl'
+                //,controller: 'ReqGoodTransportCtrl'
             }
             //, 'fabContent': {
             //    template: '<button id="fab-profile" class="button button-positive button-fab button-fab-bottom-right" ng-click="goTest()"><i class="icon ion-social-twitter"></i></button>',
