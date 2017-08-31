@@ -11,7 +11,7 @@
         vm.searchResultsList = {};
         
         /* Link to pax global object to allow binding to the view */
-        vm.paxGlobal = paxGlobal;
+        vm.coGlobal = coGlobal;
         
         /* Set motion when search results arrives */
         vm.setMotion = function () {

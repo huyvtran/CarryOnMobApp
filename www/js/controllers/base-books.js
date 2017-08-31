@@ -12,7 +12,7 @@
         vm.heartBooks = [];
 
         /* Link to pax global object to allow binding to the view */
-        vm.paxGlobal = paxGlobal;
+        vm.coGlobal = coGlobal;
 
         /* Load all heart books */
         vm.loadHeartBooks = function () {

@@ -12,7 +12,7 @@
         vm.currentBookDetail = {};
         
         /* Link to pax global object to allow binding to the view */
-        vm.paxGlobal = paxGlobal;
+        vm.coGlobal = coGlobal;
          
         vm.getPageTitle = function () {
             return Books.currentBook && Books.currentBook.isPocheDuMois === true ? 'Poche du mois' : vm.currentBookDetail.title;

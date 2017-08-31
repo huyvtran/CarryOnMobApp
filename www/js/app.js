@@ -16,6 +16,9 @@ app.run(function ($ionicPlatform, $state, $ionicPopup, ionicMaterialInk, $timeou
             navigator.splashscreen.hide();
         };
 
+        /* Load google maps for autocomplete */
+        coGlobal.LoadMapsApi();
+
         /*  --------------------- PUSH NOTIFICATION --------------------- */
 
       //  //FCMPlugin.onTokenRefresh( onTokenRefreshCallback(token) );
@@ -76,12 +79,12 @@ app.run(function ($ionicPlatform, $state, $ionicPopup, ionicMaterialInk, $timeou
      //           //Notification was received in foreground. Maybe the user needs to be notified.
      //           showNotificationPopup();
      //           ///* A notification occurred, thus force the app to reload all it's data */
-     //           //paxGlobal.NotificationOccurred = true;
+     //           //coGlobal.NotificationOccurred = true;
      //           ///* Then redirect the app to Main page */
      //           //$state.go('app.profile', {}, { reload: true });
      //       };
      //       /* A notification occurred, thus force the app to reload all it's data */
-     //       paxGlobal.NotificationOccurred = true;
+     //       coGlobal.NotificationOccurred = true;
      //       /* Then redirect the app to Main page */
      //       refreshPaxProfile(forceGoToProfile);
      //
@@ -112,12 +115,12 @@ app.run(function ($ionicPlatform, $state, $ionicPopup, ionicMaterialInk, $timeou
                 //Notification was received in foreground. Maybe the user needs to be notified.
                 showNotificationPopup();
                 ///* A notification occurred, thus force the app to reload all it's data */
-                //paxGlobal.NotificationOccurred = true;
+                //coGlobal.NotificationOccurred = true;
                 ///* Then redirect the app to Main page */
                 //$state.go('app.profile', {}, { reload: true });
             };
             /* A notification occurred, thus force the app to reload all it's data */
-            paxGlobal.NotificationOccurred = true;
+            coGlobal.NotificationOccurred = true;
             /* Then redirect the app to Main page */
             refreshPaxProfile(forceGoToProfile);
         }, function (error) {

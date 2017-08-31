@@ -17,7 +17,7 @@
         vm.pocheDuMois = {};
 
         /* Link to pax global object to allow binding to the view */
-        vm.paxGlobal = paxGlobal;
+        vm.coGlobal = coGlobal;
 
         vm.setMotion = function () {
 
@@ -50,7 +50,7 @@
 
         /* Load all books data from server */
         vm.loadBooks = function () {
-            Books.GetBooks(paxGlobal.BookListTypeEnum.HEART).then(
+            Books.GetBooks(coGlobal.BookListTypeEnum.HEART).then(
                 function (result) {
                     if (result.operationResult === true) {
                         /* service state */
@@ -123,7 +123,7 @@
 
         /* Load all books data from server */ 
         vm.loadBestSellersBooks = function () {
-            Books.GetBooks(paxGlobal.BookListTypeEnum.BEST_SELLERS).then(
+            Books.GetBooks(coGlobal.BookListTypeEnum.BEST_SELLERS).then(
                 function (result) {
                     if (result.operationResult === true) {
                         /* service state */
@@ -184,14 +184,29 @@
             Events.eventsLoaded = false;
         };
 
+        /* Address Autocomplete callback initialization */
+        vm.initAutocomplete = function () {
+            // Search filter FROM - Create the autocomplete object
+            vm.autocompleteFrom = new google.maps.places.Autocomplete(
+                /** @type {!HTMLInputElement} */(document.getElementById('req-filter-from')),
+                { types: ['geocode'] });
+
+            // Search filter TO - Create the autocomplete object
+            vm.autocompleteTo = new google.maps.places.Autocomplete(
+                /** @type {!HTMLInputElement} */(document.getElementById('req-filter-to')),
+                { types: ['geocode'] });
+        }
+
+
         /* Init controller function */
         vm.initController = function () {
             /* If a notification comes occurred, then reset all 'isLoaded' flags 
              * in order to force the app to reload data from the server */
-            if (paxGlobal.NotificationOccurred === true) {
+            if (coGlobal.NotificationOccurred === true) {
                 vm.initAllIsLoadedFlags();
-                paxGlobal.NotificationOccurred = false;
+                coGlobal.NotificationOccurred = false;
             };
+            vm.initAutocomplete();
             vm.loadHeartBooks();
             vm.loadDetailsForHeartBooks();
             vm.loadBestSellers();

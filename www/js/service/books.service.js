@@ -32,7 +32,7 @@
         self.registerObserverCallback = function (callback) {
             /* If callback is already existent, then remove it and add the new one, 
              * otherwise add the new one */
-            paxGlobal.addOrReplaceFinctionInFunctionArray(self.observerCallbacks, callback);
+            coGlobal.addOrReplaceFinctionInFunctionArray(self.observerCallbacks, callback);
         };
         // clean all observer callbacks
         self.cleanObserverCallback = function () {
@@ -125,7 +125,7 @@
             self.currentBook = bookItem;
             var req = {
                 method: 'POST',
-                url: paxGlobal.getAppUrl() + 'api/BookDetails',
+                url: coGlobal.getAppUrl() + 'api/BookDetails',
                 data: bookItem
             };
             return $http(req).then(function (response) {
@@ -157,14 +157,14 @@
             var deferredLoadItems = $q.defer(); 
 
             var urlToCall = 'api/HeartBooks';
-            if (bookTypeEnumValue === paxGlobal.BookListTypeEnum.HEART) {
+            if (bookTypeEnumValue === coGlobal.BookListTypeEnum.HEART) {
                 urlToCall = 'api/HeartBooks';
-            } else if (bookTypeEnumValue === paxGlobal.BookListTypeEnum.BEST_SELLERS) {
+            } else if (bookTypeEnumValue === coGlobal.BookListTypeEnum.BEST_SELLERS) {
                 urlToCall = 'api/BestSellers';
             };
             var req = {
                 method: 'GET',
-                url: paxGlobal.getAppUrl() + urlToCall
+                url: coGlobal.getAppUrl() + urlToCall
 
             };
             return $http(req).then(function (response) {
@@ -188,7 +188,7 @@
             var urlToCall = 'api/DetailsHeartBooksList';
             var req = {
                 method: 'GET',
-                url: paxGlobal.getAppUrl() + urlToCall
+                url: coGlobal.getAppUrl() + urlToCall
 
             };
             return $http(req).then(function (response) {

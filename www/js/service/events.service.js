@@ -20,7 +20,7 @@
         self.registerObserverCallback = function (callback) {
             /* If callback is already existent, then remove it and add the new one, 
              * otherwise add the new one */
-            paxGlobal.addOrReplaceFinctionInFunctionArray(self.observerCallbacks, callback);
+            coGlobal.addOrReplaceFinctionInFunctionArray(self.observerCallbacks, callback);
         };
         // clean all observer callbacks
         self.cleanObserverCallback = function () {
@@ -46,7 +46,7 @@
 
             var req = {
                 method: 'GET',
-                url: paxGlobal.getAppUrl() + 'api/Events'
+                url: coGlobal.getAppUrl() + 'api/Events'
 
             };
             return $http(req).then(function (response) {

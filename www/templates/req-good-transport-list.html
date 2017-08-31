@@ -7,20 +7,17 @@
 
                 <div class="item search-bar item-input-inset item-button-right">
                     <label class="item-input-wrapper">
-                        <input type="text" placeholder="Partenza..." ng-model="vm.searchBookKey">
-                    </label>
-                    <!--<button class="button button-positive search-btn ink" ng-click="vm.goToSearchBookResults()">
-                        <i class="icon ion-ios-search-strong"></i>
-                    </button>-->
-                </div>
-                <div class="item search-bar item-input-inset item-button-right">
-                    <label class="item-input-wrapper">
-                        <input type="text" placeholder="Destinazione..." ng-model="vm.searchBookKey">
+                        <input type="text" id="req-filter-from" placeholder="Partenza..." ng-model="vm.newRqgtFrom">
                     </label>
                 </div>
                 <div class="item search-bar item-input-inset item-button-right">
                     <label class="item-input-wrapper">
-                        <input type="text" placeholder="Data..." ng-model="vm.searchBookKey">
+                        <input type="text" id="req-filter-to" placeholder="Destinazione..." ng-model="vm.newRqgtTo">
+                    </label>
+                </div>
+                <div class="item search-bar item-input-inset item-button-right">
+                    <label class="item-input-wrapper">
+                        <input type="text" id="req-filter-date" placeholder="Data..." ng-model="vm.newRqgtDate">
                     </label>
                 </div>
                 <!--<div class="item search-bar item-input-inset item-button-right">
@@ -30,7 +27,7 @@
                 </div>-->
                 <div class="proceed-container">
                     <div class="proceed">
-                        <button ng-click="vm.goToSearchBookResults()"
+                        <button ng-click="vm.goToAddRqgtInsertDetails()"
                                 class="button button-full button-block button-positive-900 search-btn ink">
                             Procedi
                         </button>
@@ -40,18 +37,26 @@
 
             </div>
         </div>
-        <div class="tabs tabs-dark tabs-icon-top static">
+        <!--<div class="tabs tabs-dark tabs-icon-top static title-and-filter">
             <a ui-sref="app.events" class="tab-item">
                 <i class="icon ion-android-calendar"></i> Agenda
             </a>
             <a ui-sref="app.best-sellers" class="tab-item">
                 <i class="icon ion-android-funnel"></i> Meilleures ventes
             </a>
-            <a ng-click="vm.goToPocheDuMois()" class="tab-item">
-                <i class="icon ion-android-bulb"></i> Poche du mois
+            <h4 class="content padding">Annunci di camion disponibili:</h4>
+            <a ng-click="vm.searchRqgtFiltered()" class="tab-item">
+                <i class="icon ion-funnel"></i> Filtri di ricerca
+            </a>
+        </div>-->
+        <div class="title-and-filter double-padding-x ">
+            <h4 class="content title-announcements">
+                Recenti annunci di camion disponibili:<span ng-if="!vm.heartBooks || (vm.heartBooks && vm.heartBooks.length==0)">&nbsp;(Loading...)</span>
+            </h4>
+            <a ng-click="vm.searchRqgtFiltered()" class="tab-item">
+                <i class="icon ion-funnel"></i> Filtra
             </a>
         </div>
-        <h4 class="content padding double-padding-x">Nos derniers conseils <span ng-if="!vm.heartBooks || (vm.heartBooks && vm.heartBooks.length==0)">&nbsp;(Loading...)</span></h4>
         <div class="list animate-blinds">
             <!--<div class="list">-->
             <a ng-repeat="hBook in vm.heartBooks"

@@ -48,7 +48,7 @@
 
 
         /* Link to pax global object to allow binding to the view */
-        vm.paxGlobal = paxGlobal;
+        vm.coGlobal = coGlobal;
 
         vm.setMotion = function () {
 
