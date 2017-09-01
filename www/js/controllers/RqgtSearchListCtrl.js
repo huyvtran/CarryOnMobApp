@@ -152,7 +152,7 @@
             Books.bestSellersBooksLoaded = false;
             Events.eventsLoaded = false;
         };
-        
+
         vm.goToTransportSearchList = function (hasGood) {
             /* TO BE DEVELOPED */
             return;
@@ -170,18 +170,8 @@
             };
         };
 
-        vm.goToRqgtSearchList = function (hasGood) {
-            if (hasGood) {
-                Rqgt.currentRqgt = {
-                    from: vm.autocompleteFrom,
-                    fromShown: vm.newRqgtFrom,
-                    to: vm.autocompleteTo,
-                    toShown: vm.newRqgtTo,
-                    date: vm.newRqgtDate,
-                    dateShown: vm.newRqgtDateShown
-                };
-                $state.go('app.app.rqgt-search-list');
-            };
+        vm.goRqgtDetailsPublish = function () {
+            $state.go('app.rqgt-details-publish');
         };
 
 
@@ -248,19 +238,6 @@
         $scope.isExpanded = false;
         $scope.$parent.setExpanded(false);
         $scope.$parent.setHeaderFab(false);
-
-        //        // Set Motion
-        //        $timeout(function () {
-        //            ionicMaterialMotion.slideUp({
-        //                selector: '.slide-up'
-        //            });
-        //        }, 10000);
-        //
-        //        $timeout(function () {
-        //            ionicMaterialMotion.fadeSlideInRight({
-        //                startVelocity: 3000
-        //            });
-        //        }, 10000);
 
         // Set Ink
         ionicMaterialInk.displayEffect();
