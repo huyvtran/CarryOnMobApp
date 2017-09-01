@@ -133,6 +133,23 @@ div.first-choice-separator {
     color: #104A93;
 }
 
+/* RGQT CARD
+======================================================================================================*/
+
+.av-and-desc-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.item.card-item.card-rqgt {
+    padding: 5px !important;
+}
+
+.desc-container-v-flex {
+    display: flex;
+    flex-direction: column;
+}
+
 
 /* PAX
 ======================================================================================================*/
