@@ -174,6 +174,10 @@
             $state.go('app.rqgt-details-publish');
         };
 
+        $("#btn-publish-rqgt").on("click", function () {
+            $state.go('app.rqgt-details-publish');
+        });
+
 
         /* Init datepicker */
         vm.datepickerDate = {

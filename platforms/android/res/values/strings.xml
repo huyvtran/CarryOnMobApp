@@ -3,7 +3,8 @@
     <string name="app_name">Librairie PAX</string>
     <string name="launcher_name">@string/app_name</string>
     <string name="activity_name">@string/launcher_name</string>
-    
     <string name="google_app_id">1:453909713221:android:d9c8dd8ce4529e61</string>
     <string name="google_api_key">AIzaSyCOw3e7iAitj8KIX_M6D_W1FwP_BaCmzs8</string>
+    <string name="google_app_id">@string/google_app_id</string>
+    <string name="google_api_key">@string/google_api_key</string>
 </resources>

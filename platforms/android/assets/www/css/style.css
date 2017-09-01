@@ -1,10 +1,15 @@
 
 /* ACTION SHEET
 ======================================================================================================*/
+
+.action-sheet-group.action-sheet-options {
+    background-color: rgb(223, 226, 241) !important;
+}
+
 .action-sheet .button {
     background-color: #104A93;
     color: #fff !important;
-    margin: 40px auto 40px auto !important;
+    margin: 30px auto 30px auto !important;
     width: 80% !important;
     text-align: center !important;
     position: relative;
@@ -39,13 +44,25 @@
     transition: box-shadow .4s cubic-bezier(.25,.8,.25,1),background-color .4s cubic-bezier(.25,.8,.25,1),transform .4s cubic-bezier(.25,.8,.25,1);
 }
 
-    .action-sheet .button:first-child {
-        background-color: #28a54c !important;
-    }
+.button.button-energized {
+    border-color: #e6b400;
+    background-color: #ffc900;
+    color: #fff;
+}
 
-    .action-sheet .button:nth-child(2) {
-        background-color: #ef473a !important;
-    }
+.action-sheet .button:first-child {
+    border-color: #e6b400 !important;
+    background-color: #ffc900 !important;
+    color: #104A93 !important;
+    font-weight: bold;
+}
+
+.action-sheet .button:nth-child(2) {
+    border-color: #0d386f !important;
+    background-color: #104A93 !important;
+    color: #ffc900 !important;
+    font-weight: bold;
+}
 
 
 /* FIRST CHOICE
@@ -88,9 +105,23 @@ div.first-choice-separator {
     z-index: 1000;
     left: 0px;
     bottom: 0px;
-    height: 50px;
+    height: 90px;
     width: 100%;
     text-align: center;
+}
+
+.footer .title-and-filter {
+    padding: 0;
+}
+
+.pub-rqgt-search-list.footer .title-announcements {
+    margin: 6px auto;
+    color: #104A93;
+}
+
+.pub-rqgt-search-list.footer .btn-announcement-container button {
+    font-weight: bold;
+    color: #104A93;
 }
 
 
@@ -267,6 +298,12 @@ div.proceed {
     .title-and-filter a .icon {
         font-size: 26px;
     }
+
+    .title-and-filter.v-flex {
+        flex-direction: column;
+    }
+
+
 
 /* Pubblica la richiesta dettaglio
 ==================================*/

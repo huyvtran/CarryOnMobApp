@@ -1,4 +1,4 @@
-<ion-view view-title="Transportatori disponibili" class="pub-rqgt-search-list"
+<ion-view view-title="Trasporti disponibili" class="pub-rqgt-search-list"
           ng-controller="RqgtSearchListCtrl as vm">
     <ion-content ng-class="{expanded:$scope.isExpanded}">
         <div class="title-and-filter double-padding-x ">
@@ -21,16 +21,27 @@
         </div>
     </ion-content>
 </ion-view>
-
 <div class="pub-rqgt-search-list footer">
-    <div class="title-and-filter double-padding-x ">
+    <!--<div class="item item-button-right">
+        <div>
+            Non trovi il trasporto?
+        </div>
+        <button class="button button-balanced ink">
+            Pubblica un annuncio
+        </button>
+    </div>-->
+    <div class="title-and-filter double-padding-x v-flex">
         <div>
             <h4 class="content title-announcements">
                 Non trovi il trasporto?
             </h4>
         </div>
         <div>
-            <a ng-click="vm.goRqgtDetailsPublish()" class="tab-item">Pubblica l'annuncio</a>
+            <div class="btn-announcement-container">
+                <button class="button button-energized ink">
+                    Pubblica l'annuncio
+                </button>
+            </div>
         </div>
     </div>
 </div>
