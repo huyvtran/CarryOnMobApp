@@ -1,0 +1,54 @@
+<ion-view view-title="Librairie Pax" ng-controller="ProfileCtrl as vm">
+    <ion-content ng-class="{expanded:$scope.isExpanded}">
+        <div class="hero pax-bkg-img-content" style="background-image: url('img/photo-liege-pax-7.jpeg');">
+            <!--<div class="content pax-bkg-img">
+                <div class="avatar" style="background-image: url('img/pax-logo.jpg');"></div>
+                <h3><a class="light"> </a></h3>
+                <h4> </h4>
+            </div>-->
+
+            <!--<div class="list">
+                <div class="item item-button-right">
+                    <button class="button button-balanced ink">
+                        <i class="icon ion-ios-telephone"></i>
+                    </button>
+                </div> 
+            </div>-->
+            
+            <div class="content list search-bar-content static">
+
+                <div class="item search-bar item-input-inset item-button-right">
+                    <label class="item-input-wrapper">
+                        <input type="text" placeholder="Rechercher par titre, auteur, &eacute;diteur..." ng-model="vm.searchBookKey">
+                    </label>
+                    <button class="button button-positive search-btn ink" ng-click="vm.goToSearchBookResults()">
+                        <i class="icon ion-ios-search-strong"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        <div class="tabs tabs-dark tabs-icon-top static">
+            <a ui-sref="app.events" class="tab-item">
+                <i class="icon ion-android-calendar"></i> Agenda
+            </a>
+            <a ui-sref="app.best-sellers" class="tab-item">
+                <i class="icon ion-android-funnel"></i> Meilleures ventes
+            </a>
+            <a ng-click="vm.goToPocheDuMois()" class="tab-item">
+                <i class="icon ion-android-bulb"></i> Poche du mois
+            </a>
+        </div>
+        <h4 class="content padding double-padding-x">Nos derniers conseils <span ng-if="!vm.heartBooks || (vm.heartBooks && vm.heartBooks.length==0)">&nbsp;(Loading...)</span></h4>
+        <div class="list animate-blinds">
+            <!--<div class="list">-->
+            <a ng-repeat="hBook in vm.heartBooks"
+               ng-click="vm.goToBookDetails(hBook)" class="item item-avatar item-icon-right">
+                <img ng-src="{{hBook.imgSrc}}">
+                <h2 ng-bind-html="hBook.title"></h2>
+                <p ng-bind-html="hBook.shortDescription"></p>
+                <img ng-if="hBook.isNewAdded == true" class="new-book-added" ng-src="img/new-book.jpeg">
+            </a>
+        </div>
+    </ion-content>
+</ion-view>

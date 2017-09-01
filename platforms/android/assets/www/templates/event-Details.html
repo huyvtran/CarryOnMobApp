@@ -1,0 +1,9 @@
+<ion-view view-title="Agenda" ng-controller="EventCtrl as vm" ng-init="vm.setVmCurrentEvent()">
+    <ion-content ng-class="{expanded:$scope.isExpanded}">
+        <div class="hero" ng-style="{'background-image':'url({{vm.currentEvent.imgSrc}})'}">
+            </div>
+        <div class="event-descr-container">
+            <p ng-bind-html="vm.currentEvent.description"></p>
+        </div>
+    </ion-content>
+</ion-view>
