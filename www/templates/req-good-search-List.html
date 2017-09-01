@@ -1,14 +1,14 @@
 <ion-view view-title="Trasporti disponibili" class="pub-rqgt-search-list"
           ng-controller="RqgtSearchListCtrl as vm">
     <ion-content ng-class="{expanded:$scope.isExpanded}">
-        <div class="title-and-filter double-padding-x ">
+        <!--<div class="title-and-filter double-padding-x ">
             <h4 class="content title-announcements">
                 Recenti annunci di camion disponibili:<span ng-if="!vm.heartBooks || (vm.heartBooks && vm.heartBooks.length==0)">&nbsp;(Loading...)</span>
             </h4>
             <a ng-click="vm.openDatePicker()" class="tab-item">
                 <i class="icon ion-funnel"></i> Filtra
             </a>
-        </div>
+        </div>-->
         <div class="list animate-blinds">
             <!--<div class="list">-->
             <a ng-repeat="hBook in vm.heartBooks"
@@ -38,7 +38,7 @@
         </div>
         <div>
             <div class="btn-announcement-container">
-                <button class="button button-energized ink">
+                <button class="button button-small button-energized ink">
                     Pubblica l'annuncio
                 </button>
             </div>

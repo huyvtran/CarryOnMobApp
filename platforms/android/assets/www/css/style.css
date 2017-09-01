@@ -7,9 +7,11 @@
 }
 
 .action-sheet .button {
+    min-height: 30px;
+    line-height: 26px;
     background-color: #104A93;
     color: #fff !important;
-    margin: 30px auto 30px auto !important;
+    margin: 25px auto 25px auto !important;
     width: 80% !important;
     text-align: center !important;
     position: relative;
@@ -64,6 +66,13 @@
     font-weight: bold;
 }
 
+/* MENU
+======================================================================================================*/
+.filter-container {
+    display: flex;
+    flex-direction: column;
+}
+
 
 /* FIRST CHOICE
 ======================================================================================================*/
@@ -105,7 +114,7 @@ div.first-choice-separator {
     z-index: 1000;
     left: 0px;
     bottom: 0px;
-    height: 90px;
+    height: 83px;
     width: 100%;
     text-align: center;
 }
@@ -115,7 +124,7 @@ div.first-choice-separator {
 }
 
 .pub-rqgt-search-list.footer .title-announcements {
-    margin: 6px auto;
+    margin: 7px auto;
     color: #104A93;
 }
 
