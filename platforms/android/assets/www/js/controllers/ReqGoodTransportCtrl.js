@@ -280,7 +280,9 @@
                     date: vm.newRqgtDate,
                     dateShown: vm.newRqgtDateShown
                 };
-                $state.go('app.rqgt-search-list');
+                //$state.go('app.rqgt-search-list'); 
+                $state.go('app.search-transport');
+                //$state.go('app.about-pax');
         };
 
 

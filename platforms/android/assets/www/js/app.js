@@ -331,13 +331,23 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
 })
 
         .state('app.rqgt-search-list', {
-            url: '/RqgtSearchListCtrl',
+            url: '/SearchTransportCtrl',
             views: {
                 'menuContent': {
                     templateUrl: 'templates/req-good-search-list.html'
                 },
                 'fabContent': {
                     template: ''
+                }
+            }
+        })
+
+        .state('app.search-transport', {
+            url: '/search-transport',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/search-transport.html'
+                    //,controller: 'ReqGoodTransportCtrl'
                 }
             }
         })
@@ -349,19 +359,9 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
                 templateUrl: 'templates/about-pax.html'
                 //,controller: 'ReqGoodTransportCtrl'
             }
-            //, 'fabContent': {
-            //    template: '<button id="fab-profile" class="button button-positive button-fab button-fab-bottom-right" ng-click="goTest()"><i class="icon ion-social-twitter"></i></button>',
-            //    controller: function ($timeout, $window, $scope) {
-            //        $timeout(function () {
-            //            document.getElementById('fab-profile').classList.toggle('on');
-            //        }, 800);
-            //        $scope.goTest = function () {
-            //            $window.open('https://twitter.com/librairiepax');
-            //        };
-            //    }
-            //}
         }
     })
+
     .state('app.first-choice', {
         url: '/first-choice',
         views: {
