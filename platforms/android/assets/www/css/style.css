@@ -56,14 +56,14 @@
     border-color: #e6b400 !important;
     background-color: #ffc900 !important;
     color: #104A93 !important;
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
 
 .action-sheet .button:nth-child(2) {
     border-color: #0d386f !important;
     background-color: #104A93 !important;
     color: #ffc900 !important;
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
 
 /* MENU
@@ -107,6 +107,10 @@ div.first-choice-separator {
 /* RGQT SEARCH CAMION OR PUBLISH REQUEST
 ======================================================================================================*/
 
+.pub-rqgt-search-list ion-content {
+    bottom: 83px;
+}
+
 .pub-rqgt-search-list.footer {
     background-color: rgb(223, 226, 241);
     color: #104A93;
@@ -117,6 +121,7 @@ div.first-choice-separator {
     height: 83px;
     width: 100%;
     text-align: center;
+    border-top: 1px solid #104A93;
 }
 
 .footer .title-and-filter {
@@ -136,20 +141,66 @@ div.first-choice-separator {
 /* RGQT CARD
 ======================================================================================================*/
 
+.item-card-container {
+    padding: 6px 6px 6px 3px;
+    color: #444;
+    font-size: 13px;
+}
+
 .av-and-desc-container {
     display: flex;
     flex-direction: row;
+}
+
+.av-container {
+    width: 60px;
 }
 
 .item.card-item.card-rqgt {
     padding: 5px !important;
 }
 
+.v-sep {
+    border-left: 1px solid #999;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.card-rqgt .desc-img {
+    background-position: center;
+    background-size: cover;
+    height: 40px;
+    width: 40px;
+    margin: 6px auto 4px auto;
+}
+
+    .card-rqgt .desc-img img {
+        border-radius: 50%;
+    }
+
+.desc-vol {
+    text-align: center;
+}
+
+
 .desc-container-v-flex {
     display: flex;
     flex-direction: column;
 }
 
+.pl8 {
+    padding-left: 8px;
+}
+
+.desc-adr {
+    display: flex;
+    flex-direction: row;
+}
+
+.desc-adr-label {
+    width: 24px;
+    font-weight: bold;
+}
 
 /* PAX
 ======================================================================================================*/
