@@ -4,7 +4,7 @@
      over HTTP and HTTPS.
      *NOT RECOMMENDED* -->
   <allow-navigation href="*" />
-  <name>Librairie PAX</name>
+  <name>CarryOn</name>
   <description>
        CarryOn - Application
     </description>

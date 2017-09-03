@@ -194,6 +194,13 @@
                             vm.autocompleteFrom = new google.maps.places.Autocomplete(
                                 /** @type {!HTMLInputElement} */(document.getElementById('req-filter-from')),
                                 { types: ['geocode'] });
+                            /* bind the event place_changed which it's trigger when you needed */
+                            google.maps.event.addListener(vm.autocompleteFrom, 'place_changed', function () {
+                                $("#req-filter-from").val(this.getPlace().formatted_address);
+                                //var data = $("#req-filter-from").serialize();
+                                //console.log('data');
+                                //show_submit_data(data);
+                            });
 
                             // Search filter TO - Create the autocomplete object
                             vm.autocompleteTo = new google.maps.places.Autocomplete(
@@ -207,7 +214,7 @@
                     }
                 }, 1000);
         }
-        
+
         /* go to next page where rqgt details are inserted */
         vm.selectHasCamionOrHasGood = function () {
             /* Check if all fields have been correctly filled */
@@ -251,7 +258,7 @@
                 }
             });
         };
-        
+
         /* Go to transport search good view or publish availability*/
         vm.goToTransportSearchList = function (hasGood) {
             /* TO BE DEVELOPED */
@@ -272,17 +279,17 @@
 
         /* Go to rqgt search camion view or publish request */
         vm.goToRqgtSearchList = function () {
-                Rqgt.currentRqgt = {
-                    from: vm.autocompleteFrom,
-                    fromShown: vm.newRqgtFrom,
-                    to: vm.autocompleteTo,
-                    toShown: vm.newRqgtTo,
-                    date: vm.newRqgtDate,
-                    dateShown: vm.newRqgtDateShown
-                };
-                //$state.go('app.rqgt-search-list'); 
-                $state.go('app.search-transport');
-                //$state.go('app.about-pax');
+            Rqgt.currentRqgt = {
+                from: vm.autocompleteFrom,
+                fromShown: vm.newRqgtFrom,
+                to: vm.autocompleteTo,
+                toShown: vm.newRqgtTo,
+                date: vm.newRqgtDate,
+                dateShown: vm.newRqgtDateShown
+            };
+            //$state.go('app.rqgt-search-list'); 
+            $state.go('app.search-transport');
+            //$state.go('app.best-sellers');
         };
 
 

@@ -7,7 +7,9 @@
 
                 <div class="item search-bar item-input-inset item-button-right">
                     <label class="item-input-wrapper">
-                        <input type="text" id="req-filter-from" placeholder="Partenza..." ng-model="vm.newRqgtFrom">
+                        <!--<input type="text" id="req-filter-from" placeholder="Partenza..." ng-model="vm.newRqgtFrom">-->
+                        <!--<input type="text" id="req-filter-from" placeholder="Partenza..." ng-model="vm.autocompleteFrom">-->
+                        <input type="text" id="req-filter-from" placeholder="Partenza...">
                     </label>
                 </div>
                 <div class="item search-bar item-input-inset item-button-right">
@@ -28,6 +30,7 @@
                 </div>-->
                 <div class="proceed-container">
                     <div class="proceed">
+                        <!--<button ng-click="vm.goToRqgtSearchList()"-->
                         <button ng-click="vm.selectHasCamionOrHasGood()"
                                 class="button button-full button-block button-positive-900 search-btn ink">
                             Procedi
@@ -41,7 +44,7 @@
             <a ui-sref="app.events" class="tab-item">
                 <i class="icon ion-android-calendar"></i> Agenda
             </a>
-            <a ui-sref="app.best-sellers" class="tab-item">
+            <a ui-sref="app.search-transport" class="tab-item">
                 <i class="icon ion-android-funnel"></i> Meilleures ventes
             </a>
             <h4 class="content padding">Annunci di camion disponibili:</h4>

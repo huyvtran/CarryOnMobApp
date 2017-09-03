@@ -207,11 +207,11 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
             }
         })
 
-    .state('app.best-sellers', {
-        url: '/best-sellers',
+    .state('app.search-transport', {
+        url: '/search-transport',
         views: {
             'menuContent': {
-                templateUrl: 'templates/best-sellers-books.html'
+                templateUrl: 'templates/search-transport.html'
             }
         }
     })
@@ -342,15 +342,15 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
             }
         })
 
-        .state('app.search-transport', {
-            url: '/search-transport',
-            views: {
-                'menuContent': {
-                    templateUrl: 'templates/search-transport.html'
-                    //,controller: 'ReqGoodTransportCtrl'
-                }
-            }
-        })
+        //.state('app.search-transport', {
+        //    url: '/search-transport',
+        //    views: {
+        //        'menuContent': {
+        //            templateUrl: 'templates/search-transport.html'
+        //            //,controller: 'ReqGoodTransportCtrl'
+        //        }
+        //    }
+        //})
 
     .state('app.about-pax', {
         url: '/about-pax',
