@@ -66,6 +66,29 @@
     /*font-weight: bold;*/
 }
 
+/* HEADER BUTTON OVERLAY
+======================================================================================================*/
+div.header-overlay-btn-ctn {
+    color: #104A93;
+    position: fixed !important;
+    z-index: 1000;
+    right: 0px;
+    top: 0px;
+    /*height: 83px;
+    width: 100%;*/
+    text-align: center;
+    border-top: 1px solid #104A93;
+    padding-top: 3px;
+    padding-right: 10px;
+}
+
+div.header-overlay-btn-ctn .header-pub-btn {
+    padding-left: 8px;
+    padding-right: 8px;
+    color: #104A93;
+}
+
+
 /* MENU
 ======================================================================================================*/
 .filter-container {

@@ -1,15 +1,17 @@
 ﻿(function () {
 
     app.controller('AppCtrl', AppCtrl);
-    AppCtrl.$inject = ['$scope', '$ionicModal', '$ionicPopover', '$timeout'];
+    AppCtrl.$inject = ['$scope', '$ionicModal', '$ionicPopover', '$timeout', '$state'];
     
-    function AppCtrl($scope, $ionicModal, $ionicPopover, $timeout) {
+    function AppCtrl($scope, $ionicModal, $ionicPopover, $timeout, $state) {
 
         // Form data for the login modal
         $scope.loginData = {};
         $scope.isExpanded = false;
         $scope.hasHeaderFabLeft = false;
         $scope.hasHeaderFabRight = false;
+        /* Expose global object */
+        $scope.coGlobal = coGlobal;
 
         var navIcons = document.getElementsByClassName('ion-navicon');
         for (var i = 0; i < navIcons.length; i++) {
@@ -22,7 +24,24 @@
 
         ////////////////////////////////////////
         // Layout Methods
-        ////////////////////////////////////////
+        //////////////////////////////////////// 
+
+        /* Return true if the current view status is the one passed as parameter */
+        $scope.isCurrentViewState = function (coStatusEnum_toCompare) {
+            srefToCompare = coGlobal.CoStatusEnum.properties[coStatusEnum_toCompare].sref;
+            if ($state.$current.name === srefToCompare) {
+                return true;
+            } else {
+                return false;
+            };
+        };
+
+        /* call the current controlle 'manageHeaderRightClick' method */
+        $scope.manageHeaderRightClick = function () {
+            if (coGlobal.currentVm) {
+                coGlobal.currentVm.manageHeaderRightClick();
+            };
+        };
 
         $scope.hideNavBar = function () {
             document.getElementsByTagName('ion-nav-bar')[0].style.display = 'none';

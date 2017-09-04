@@ -9,6 +9,9 @@
 
         vm.currentRqgt = {};
         
+        /* Inform coGlobal about the current controller instance */
+        coGlobal.currentVm = vm;
+
         /* Link to pax global object to allow binding to the view */
         vm.coGlobal = coGlobal;
          
@@ -23,6 +26,20 @@
                 //// Set Ink
                 ionicMaterialInk.displayEffect();
             }, 300);
+        };
+
+        /* Set width dynamically */
+        //$('.header-pub-btn').css('width', '150px !important'); 
+
+        /* Publish rqgt details finalization */
+        vm.manageHeaderRightClick = function () {
+            vm.showLoading();
+            /* Simulate calling service and backend */
+            /* TO BE DEVELOPED */
+            $timeout(function () {
+                $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REQ_GOOD_TRANSPORT].sref);
+                $ionicLoading.hide();
+            }, 2000)
         };
 
         /* Load current Rqgt details */
