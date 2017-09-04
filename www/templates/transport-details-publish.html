@@ -1,4 +1,4 @@
-<ion-view view-title="Completa i dettagli" ng-controller="RqgtDetailsPublishCtrl as vm"> 
+<ion-view view-title="Completa i dettagli" ng-controller="TransportDetailsPublishCtrl as vm"> 
         
     <ion-content ng-class="{expanded:$scope.isExpanded}" class="about-pax-content">
         
@@ -24,7 +24,7 @@
                 <input type="text" placeholder="Kg stimati" ng-model="vm.currentRqgt.estimatedKg">
             </label>
             <label class="item item-input item-floating-label">
-                <span class="input-label">Volume stimato (Lt)</span>
+                <span class="input-label">Volume Disponibile</span>
                 <input type="text" placeholder="Volume stimato (Lt)" ng-model="vm.currentRqgt.estimatedLt">
             </label>
             <br />
@@ -32,17 +32,17 @@
                 <label class="checkbox">
                     <input type="checkbox" ng-model="vm.currentRqgt.frigoCell">
                 </label>
-                Cella frigo necessaria
+                Cella frigo presente
             </div>
             <div class="item item-checkbox">
                 <label class="checkbox">
                     <input type="checkbox" ng-model="vm.currentRqgt.fragile">
                 </label>
-                Fragile
+                Transporto fragile possibile
             </div>
             <div class="item item-description">
-                <label class="label-details-item">Descrizione merce:</label>
-                <textarea placeholder="Inserisci qui una breve descrizione...">                   
+                <label class="label-details-item">Descrizione mezzo e disponibilita&grave;:</label>
+                <textarea placeholder="Inserisci qui una breve descrizione della tuà disponibilità...">                   
                 </textarea>
             </div>
             <br />

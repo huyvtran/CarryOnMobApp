@@ -280,7 +280,7 @@
                 dateShown: vm.newRqgtDateShown
             };
             //$state.go('app.rqgt-details-publish');
-            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_TRANSPORT].sref); 
+            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_RQGT].sref);
         };
 
         /* Go to rqgt search camion view or publish request */

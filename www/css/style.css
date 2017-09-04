@@ -161,6 +161,14 @@ div.first-choice-separator {
     color: #104A93;
 }
 
+/* TRANSPORT SEARCH RGQT OR PUBLISH AVAILABILITY
+======================================================================================================*/
+
+.button.btn-small-padding {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
 /* RGQT CARD
 ======================================================================================================*/
 

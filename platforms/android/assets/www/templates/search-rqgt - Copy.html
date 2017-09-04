@@ -1,0 +1,80 @@
+<ion-view view-title="Trasporti richiesti" ng-controller="SearchRqgtCtrl as vm">
+    <ion-content ng-class="{expanded:$scope.isExpanded}">
+        <div class="item card-item card-rqgt" ng-repeat="transp in vm.heartBooks">
+            <div ng-click="vm.goToRqgtDetails(transp)" class="card stable-bg ink ink-dark">
+                <div class="item-card-container">
+                    <div class="av-and-desc-container">
+                        <div class="av-container">
+                            <div class="av-img-container">
+                                <div class="desc-container-v-flex">
+                                    <div class="desc-img">
+                                        <img src="img/sansa.jpg" />
+                                    </div>
+                                    <div class="desc-vol">
+                                        Luca R.
+                                    </div>
+                                </div>
+                                <!--<div class="desc-adr">
+                                    Img here
+                                </div>-->
+                            </div>
+                        </div>
+                        <div class="v-sep"></div>
+                        <div class="desc-container">
+                            <div class="desc-container-v-flex pl8">
+                                <div class="desc-adr">
+                                    <div class="desc-adr-label">
+                                        Da:
+                                    </div>
+                                    <div class="desc-adr-content">
+                                        Via Rossi 3, Milano 21000
+                                    </div>
+                                </div>
+                                <div class="desc-adr">
+                                    <div class="desc-adr-label">
+                                        A:
+                                    </div>
+                                    <div class="desc-adr-content">
+                                        Via cardine 12, Ravenna 45170
+                                    </div>
+                                </div>
+                                <div class="desc-adr">
+                                    <div class="desc-adr-label">
+                                        <strong><i class="icon ion-clock"></i></strong>
+                                    </div>
+                                    <div class="desc-adr-content">
+                                        Prima possibile
+                                    </div>
+                                </div>
+                                <div class="desc-adr">
+                                    <div class="desc-adr">
+                                        <strong>Volume stimato:&nbsp;</strong>
+                                    </div>
+                                    <div class="desc-adr-content">
+                                        10 &sup3;
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <div class="pub-rqgt-search-list footer">
+        <div class="title-and-filter double-padding-x v-flex">
+            <div>
+                <h4 class="content title-announcements">
+                    Non trovi la richiesta per te?
+                </h4>
+            </div>
+            <div>
+                <div class="btn-announcement-container">
+                    <button id="btn-publish-rqgt" class="button button-small button-energized ink btn-small-padding">
+                        Pubblica la tua disponibilita&grave;
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-view>

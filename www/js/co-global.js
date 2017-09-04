@@ -36,6 +36,9 @@ coGlobal.CoStatusEnum = {
     SEARCH_TRANSPORT: 1,
     RQGT_DETAILS_PUBLISH: 2,
     TR_AV_DETAILS: 3,
+    SEARCH_RQGT: 4,
+    TRANSPORT_DETAILS_PUBLISH: 5,
+    RQGT_DETAILS_SHOW: 6,
     properties: {
         0: {
             translate_id: 'view.filters.REQ_GOOD_TRANSPORT', value: '', translate_main_title_id: 'menu.pageTitles.REQ_GOOD_TRANSPORT',
@@ -60,6 +63,24 @@ coGlobal.CoStatusEnum = {
             sref: 'app.tr-av-details',
             url: '/trAvDetails',
             templateUrl: 'templates/tr-av-details.html'
+        },
+        4: {
+            translate_id: 'view.filters.SEARCH_RQGT', value: '', translate_main_title_id: 'menu.pageTitles.SEARCH_RQGT',
+            sref: 'app.search-rqgt',
+            url: '/search-rqgt',
+            templateUrl: 'templates/search-rqgt.html'
+        },
+        5: {
+            translate_id: 'view.filters.TRANSPORT_DETAILS_PUBLISH', value: '', translate_main_title_id: 'menu.pageTitles.TRANSPORT_DETAILS_PUBLISH',
+            sref: 'app.transport-details-publish',
+            url: '/transportDetailsPublish',
+            templateUrl: 'templates/transport-details-publish.html'
+        },
+        6: {
+            translate_id: 'view.filters.RQGT_DETAILS_SHOW', value: '', translate_main_title_id: 'menu.pageTitles.RQGT_DETAILS_SHOW',
+            sref: 'app.rqgt-details-show',
+            url: '/rqgtDetailsShow',
+            templateUrl: 'templates/rqgt-details-show.html'
         }
     }
 };

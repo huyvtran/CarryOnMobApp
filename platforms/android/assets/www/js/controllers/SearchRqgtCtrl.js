@@ -1,9 +1,9 @@
 ﻿(function () {
 
-    app.controller('SearchTransportCtrl', SearchTransportCtrl);
-    SearchTransportCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', '$controller', 'Books', '$state', 'ErrorMng', '$sce', '$ionicPopup', 'Events', 'ionicDatePicker', 'Rqgt', '$ionicPopup', '$interval', '$ionicActionSheet'];
+    app.controller('SearchRqgtCtrl', SearchRqgtCtrl);
+    SearchRqgtCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', '$controller', 'Books', '$state', 'ErrorMng', '$sce', '$ionicPopup', 'Events', 'ionicDatePicker', 'Rqgt', '$ionicPopup', '$interval', '$ionicActionSheet'];
 
-    function SearchTransportCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, $controller, Books, $state, ErrorMng, $sce, $ionicPopup, Events, ionicDatePicker, Rqgt, $ionicPopup, $interval, $ionicActionSheet) {
+    function SearchRqgtCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, $controller, Books, $state, ErrorMng, $sce, $ionicPopup, Events, ionicDatePicker, Rqgt, $ionicPopup, $interval, $ionicActionSheet) {
 
         var vm = this;
 
@@ -154,21 +154,21 @@
         };
 
 
-        vm.goToTransportDetails = function (transp) {
+        vm.goToRqgtDetails = function (transp) {
             /* Set current transport */
             Rqgt.currentTransportDetails = transp;
 
             /* go to transport details page */
-            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.TR_AV_DETAILS].sref);
+            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.RQGT_DETAILS_SHOW].sref);
         };
 
-        $("#btn-publish-rqgt").on("click", function () {
-            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.RQGT_DETAILS_PUBLISH].sref);
+        $("#btn-publish-transport-av").on("click", function () {
+            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.TRANSPORT_DETAILS_PUBLISH].sref);
         });
 
         /* Go to publish rqgt page */
-        vm.goTransportDetailsPublished = function () {
-            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.TR_AV_DETAILS].sref);
+        vm.goRqgtDetailsPublish = function () {
+            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.RQGT_DETAILS_SHOW].sref);
         };
                 
 

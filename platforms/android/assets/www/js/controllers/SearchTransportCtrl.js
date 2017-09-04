@@ -163,12 +163,12 @@
         };
 
         $("#btn-publish-rqgt").on("click", function () {
-            $state.go('app.rqgt-details-publish');
+            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.RQGT_DETAILS_PUBLISH].sref);
         });
 
         /* Go to publish rqgt page */
-        vm.goRqgtDetailsPublish = function () {
-            $state.go('app.rqgt-details-publish');
+        vm.goTransportDetailsPublished = function () {
+            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.TR_AV_DETAILS].sref);
         };
                 
 

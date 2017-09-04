@@ -15,7 +15,8 @@
                     </button>
                 </div>
             </ion-nav-buttons>-->
-            <div class="header-overlay-btn-ctn" ng-if="isCurrentViewState(coGlobal.CoStatusEnum.RQGT_DETAILS_PUBLISH)">
+            <div class="header-overlay-btn-ctn" 
+                 ng-if="isCurrentViewState(coGlobal.CoStatusEnum.RQGT_DETAILS_PUBLISH) || isCurrentViewState(coGlobal.CoStatusEnum.TRANSPORT_DETAILS_PUBLISH)">
                 <button ng-click="manageHeaderRightClick()"
                         class="button button-small button-energized ink header-pub-btn">
                     Pubblica

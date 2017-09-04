@@ -189,7 +189,18 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
     var TR_AV_DETAILS_sref = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.TR_AV_DETAILS].sref;
     var TR_AV_DETAILS_url = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.TR_AV_DETAILS].url;
     var TR_AV_DETAILS_templateUrl = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.TR_AV_DETAILS].templateUrl;
-
+    /* SEARCH_RQGT */
+    var SEARCH_RQGT_sref = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_RQGT].sref;
+    var SEARCH_RQGT_url = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_RQGT].url;
+    var SEARCH_RQGT_templateUrl = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_RQGT].templateUrl;
+    /* TRANSPORT_DETAILS_PUBLISH */
+    var TRANSPORT_DETAILS_PUBLISH_sref = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.TRANSPORT_DETAILS_PUBLISH].sref;
+    var TRANSPORT_DETAILS_PUBLISH_url = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.TRANSPORT_DETAILS_PUBLISH].url;
+    var TRANSPORT_DETAILS_PUBLISH_templateUrl = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.TRANSPORT_DETAILS_PUBLISH].templateUrl;
+    /* RQGT_DETAILS_SHOW */
+    var RQGT_DETAILS_SHOW_sref = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.RQGT_DETAILS_SHOW].sref;
+    var RQGT_DETAILS_SHOW_url = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.RQGT_DETAILS_SHOW].url;
+    var RQGT_DETAILS_SHOW_templateUrl = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.RQGT_DETAILS_SHOW].templateUrl;
 
     $stateProvider.state('app', {
         url: '/app',
@@ -322,6 +333,39 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
         }
     }
 })
+.state(SEARCH_RQGT_sref, {
+    url: SEARCH_RQGT_url,
+    views: {
+        'menuContent': {
+            templateUrl: SEARCH_RQGT_templateUrl
+        },
+        'fabContent': {
+            template: ''
+        }
+    }
+})
+.state(TRANSPORT_DETAILS_PUBLISH_sref, {
+    url: TRANSPORT_DETAILS_PUBLISH_url,
+    views: {
+        'menuContent': {
+            templateUrl: TRANSPORT_DETAILS_PUBLISH_templateUrl
+        },
+        'fabContent': {
+            template: ''
+        }
+    }
+})
+        .state(RQGT_DETAILS_SHOW_sref, {
+            url: RQGT_DETAILS_SHOW_url,
+            views: {
+                'menuContent': {
+                    templateUrl: RQGT_DETAILS_SHOW_templateUrl
+                },
+                'fabContent': {
+                    template: ''
+                }
+            }
+        })
         .state('app.rqgt-search-list', {
             url: '/SearchTransportCtrl',
             views: {
