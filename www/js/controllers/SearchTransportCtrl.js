@@ -153,31 +153,24 @@
             Events.eventsLoaded = false;
         };
 
-        vm.goToTransportSearchList = function (hasGood) {
-            /* TO BE DEVELOPED */
-            return;
 
-            if (hasGood) {
-                Rqgt.currentRqgt = {
-                    from: vm.autocompleteFrom,
-                    fromShown: vm.newRqgtFrom,
-                    to: vm.autocompleteTo,
-                    toShown: vm.newRqgtTo,
-                    date: vm.newRqgtDate,
-                    dateShown: vm.newRqgtDateShown
-                };
-                $state.go('app.rqgt-details-publish');
-            };
-        };
+        vm.goToTransportDetails = function (transp) {
+            /* Set current transport */
+            Rqgt.currentTransportDetails = transp;
 
-        vm.goRqgtDetailsPublish = function () {
-            $state.go('app.rqgt-details-publish');
+            /* go to transport details page */
+            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.TR_AV_DETAILS].sref);
         };
 
         $("#btn-publish-rqgt").on("click", function () {
             $state.go('app.rqgt-details-publish');
         });
 
+        /* Go to publish rqgt page */
+        vm.goRqgtDetailsPublish = function () {
+            $state.go('app.rqgt-details-publish');
+        };
+                
 
         /* Init datepicker */
         vm.datepickerDate = {

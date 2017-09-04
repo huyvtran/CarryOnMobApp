@@ -212,7 +212,7 @@
                     catch (err) {
                         console.log('google is not defined yet');
                     }
-                }, 1000); 
+                }, 1000);
         }
 
         vm.focusedFrom = function () {
@@ -224,7 +224,7 @@
                 document.getElementById('type-selector').blur();
             });
         };
-        
+
         /* go to next page where rqgt details are inserted */
         vm.selectHasCamionOrHasGood = function () {
             /* Check if all fields have been correctly filled */
@@ -270,21 +270,17 @@
         };
 
         /* Go to transport search good view or publish availability*/
-        vm.goToTransportSearchList = function (hasGood) {
-            /* TO BE DEVELOPED */
-            return;
-
-            if (hasGood) {
-                Rqgt.currentRqgt = {
-                    from: vm.autocompleteFrom,
-                    fromShown: vm.newRqgtFrom,
-                    to: vm.autocompleteTo,
-                    toShown: vm.newRqgtTo,
-                    date: vm.newRqgtDate,
-                    dateShown: vm.newRqgtDateShown
-                };
-                $state.go('app.rqgt-details-publish');
+        vm.goToTransportSearchList = function () {
+            Rqgt.currentRqgt = {
+                from: vm.autocompleteFrom,
+                fromShown: vm.newRqgtFrom,
+                to: vm.autocompleteTo,
+                toShown: vm.newRqgtTo,
+                date: vm.newRqgtDate,
+                dateShown: vm.newRqgtDateShown
             };
+            //$state.go('app.rqgt-details-publish');
+            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_TRANSPORT].sref); 
         };
 
         /* Go to rqgt search camion view or publish request */
@@ -298,8 +294,9 @@
                 dateShown: vm.newRqgtDateShown
             };
             //$state.go('app.rqgt-search-list'); 
-            $state.go('app.search-transport');
+            //$state.go('app.search-transport');
             //$state.go('app.best-sellers');
+            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_TRANSPORT].sref);
         };
 
 

@@ -1,7 +1,7 @@
 <ion-view view-title="Trasporti disponibili" ng-controller="SearchTransportCtrl as vm">
     <ion-content ng-class="{expanded:$scope.isExpanded}">
-        <div class="item card-item card-rqgt" ng-repeat="hBook in vm.heartBooks">
-            <div ui-sref="app.gallery" class="card stable-bg ink ink-dark">
+        <div class="item card-item card-rqgt" ng-repeat="transp in vm.heartBooks">
+            <div ng-click="vm.goToTransportDetails(transp)" class="card stable-bg ink ink-dark">
                 <div class="item-card-container">
                     <div class="av-and-desc-container">
                         <div class="av-container">

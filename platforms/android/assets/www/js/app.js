@@ -21,21 +21,21 @@ app.run(function ($ionicPlatform, $state, $ionicPopup, ionicMaterialInk, $timeou
 
         /*  --------------------- PUSH NOTIFICATION --------------------- */
 
-      //  //FCMPlugin.onTokenRefresh( onTokenRefreshCallback(token) );
-      //  //Note that this callback will be fired everytime a new token is generated, including the first time.
-      //  FCMPlugin.onTokenRefresh(function (token) {
-      //      //console.log('onTokenRefresh:');
-      //      //console.log(token);
-      //      //alert(token);
-      //  });
-      //
-      //  //FCMPlugin.getToken( successCallback(token), errorCallback(err) );
-      //  //Keep in mind the function will return null if the token has not been established yet.
-      //  FCMPlugin.getToken(function (token) {
-      //      //console.log('getToken:');
-      //      //console.log(token);
-      //      //alert(token);
-      //  });
+        //  //FCMPlugin.onTokenRefresh( onTokenRefreshCallback(token) );
+        //  //Note that this callback will be fired everytime a new token is generated, including the first time.
+        //  FCMPlugin.onTokenRefresh(function (token) {
+        //      //console.log('onTokenRefresh:');
+        //      //console.log(token);
+        //      //alert(token);
+        //  });
+        //
+        //  //FCMPlugin.getToken( successCallback(token), errorCallback(err) );
+        //  //Keep in mind the function will return null if the token has not been established yet.
+        //  FCMPlugin.getToken(function (token) {
+        //      //console.log('getToken:');
+        //      //console.log(token);
+        //      //alert(token);
+        //  });
 
         //FCMPlugin.subscribeToTopic( topic, successCallback(msg), errorCallback(err) );
         //All devices are subscribed automatically to 'all' and 'ios' or 'android' topic respectively.
@@ -66,39 +66,39 @@ app.run(function ($ionicPlatform, $state, $ionicPopup, ionicMaterialInk, $timeou
             };
         }
 
-     //   //FCMPlugin.onNotification( onNotificationCallback(data), successCallback(msg), errorCallback(err) )
-     //   //Here you define your application behaviour based on the notification data.
-     //   FCMPlugin.onNotification(function (data) {
-     //       var forceGoToProfile = false;
-     //       if (data.tap) {
-     //           //Notification was received on device tray and tapped by the user.
-     //           forceGoToProfile = true;
-     //           //console.log("Was tapped:");
-     //           //console.log(JSON.stringify(data));
-     //       } else {
-     //           //Notification was received in foreground. Maybe the user needs to be notified.
-     //           showNotificationPopup();
-     //           ///* A notification occurred, thus force the app to reload all it's data */
-     //           //coGlobal.NotificationOccurred = true;
-     //           ///* Then redirect the app to Main page */
-     //           //$state.go('app.profile', {}, { reload: true });
-     //       };
-     //       /* A notification occurred, thus force the app to reload all it's data */
-     //       coGlobal.NotificationOccurred = true;
-     //       /* Then redirect the app to Main page */
-     //       refreshPaxProfile(forceGoToProfile);
-     //
-     //   }, function (data) {
-     //       if (data.tap) {
-     //           //Notification was received on device tray and tapped by the user.
-     //           //console.log("Was tapped:");
-     //           //console.log(JSON.stringify(data));
-     //       } else {
-     //           //Notification was received in foreground. Maybe the user needs to be notified.
-     //           //console.log("Wasn't tapped:");
-     //           //console.log(JSON.stringify(data));
-     //       }
-     //   });
+        //   //FCMPlugin.onNotification( onNotificationCallback(data), successCallback(msg), errorCallback(err) )
+        //   //Here you define your application behaviour based on the notification data.
+        //   FCMPlugin.onNotification(function (data) {
+        //       var forceGoToProfile = false;
+        //       if (data.tap) {
+        //           //Notification was received on device tray and tapped by the user.
+        //           forceGoToProfile = true;
+        //           //console.log("Was tapped:");
+        //           //console.log(JSON.stringify(data));
+        //       } else {
+        //           //Notification was received in foreground. Maybe the user needs to be notified.
+        //           showNotificationPopup();
+        //           ///* A notification occurred, thus force the app to reload all it's data */
+        //           //coGlobal.NotificationOccurred = true;
+        //           ///* Then redirect the app to Main page */
+        //           //$state.go('app.profile', {}, { reload: true });
+        //       };
+        //       /* A notification occurred, thus force the app to reload all it's data */
+        //       coGlobal.NotificationOccurred = true;
+        //       /* Then redirect the app to Main page */
+        //       refreshPaxProfile(forceGoToProfile);
+        //
+        //   }, function (data) {
+        //       if (data.tap) {
+        //           //Notification was received on device tray and tapped by the user.
+        //           //console.log("Was tapped:");
+        //           //console.log(JSON.stringify(data));
+        //       } else {
+        //           //Notification was received in foreground. Maybe the user needs to be notified.
+        //           //console.log("Wasn't tapped:");
+        //           //console.log(JSON.stringify(data));
+        //       }
+        //   });
 
 
         window.FirebasePlugin.onNotificationOpen(function (notification) {
@@ -185,8 +185,11 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
     var RQGT_DETAILS_PUBLISH_sref = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.RQGT_DETAILS_PUBLISH].sref;
     var RQGT_DETAILS_PUBLISH_url = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.RQGT_DETAILS_PUBLISH].url;
     var RQGT_DETAILS_PUBLISH_templateUrl = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.RQGT_DETAILS_PUBLISH].templateUrl;
+    /* TR_AV_DETAILS */
+    var TR_AV_DETAILS_sref = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.TR_AV_DETAILS].sref;
+    var TR_AV_DETAILS_url = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.TR_AV_DETAILS].url;
+    var TR_AV_DETAILS_templateUrl = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.TR_AV_DETAILS].templateUrl;
 
-     
 
     $stateProvider.state('app', {
         url: '/app',
@@ -285,10 +288,10 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
             external: true
         })
 
-    .state(REQ_GOOD_TRANSPORT_sref, { 
+    .state(REQ_GOOD_TRANSPORT_sref, {
         url: REQ_GOOD_TRANSPORT_url,
         views: {
-            'menuContent': { 
+            'menuContent': {
                 templateUrl: REQ_GOOD_TRANSPORT_templateUrl
             },
             'fabContent': {
@@ -296,31 +299,6 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
             }
         }
     })
-
-        //.state(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REQ_GOOD_TRANSPORT].sref, {
-        //    url: coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REQ_GOOD_TRANSPORT].url,
-        //    views: {
-        //        'menuContent': {
-        //            templateUrl: coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REQ_GOOD_TRANSPORT].templateUrl
-        //        },
-        //        'fabContent': {
-        //            template: ''
-        //        }
-        //    }
-        //})
-
-        //.state('app.rqgt-details-publish', {
-        //    url: '/rqgtDetailsPublish',
-        //    views: {
-        //        'menuContent': {
-        //            templateUrl: 'templates/rqgt-details-publish.html'
-        //        },
-        //        'fabContent': {
-        //            template: ''
-        //        }
-        //    }
-        //})
-
 
 .state(RQGT_DETAILS_PUBLISH_sref, {
     url: RQGT_DETAILS_PUBLISH_url,
@@ -333,7 +311,17 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
         }
     }
 })
-
+.state(TR_AV_DETAILS_sref, {
+    url: TR_AV_DETAILS_url,
+    views: {
+        'menuContent': {
+            templateUrl: TR_AV_DETAILS_templateUrl
+        },
+        'fabContent': {
+            template: ''
+        }
+    }
+})
         .state('app.rqgt-search-list', {
             url: '/SearchTransportCtrl',
             views: {
@@ -380,5 +368,5 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
     // if none of the above states are matched, use this as the fallback
     //$urlRouterProvider.otherwise('/app/login');
     //$urlRouterProvider.otherwise('/app/first-choice'); 
-    $urlRouterProvider.otherwise('/app/reqGoodTransport'); 
+    $urlRouterProvider.otherwise('/app/reqGoodTransport');
 });
