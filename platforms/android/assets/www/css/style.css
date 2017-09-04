@@ -194,10 +194,10 @@ div.first-choice-separator {
 .v-sep {
     border-left: 1px solid #999;
     margin-top: 4px;
-    margin-bottom: 4px;
+    margin-bottom: 4px; 
 }
 
-.card-rqgt .desc-img {
+.card-rqgt .desc-img, .desc-show-container .desc-img, .desc-show-container .desc-img img {
     background-position: center;
     background-size: cover;
     height: 40px;
@@ -205,7 +205,7 @@ div.first-choice-separator {
     margin: 6px auto 4px auto;
 }
 
-    .card-rqgt .desc-img img {
+    .card-rqgt .desc-img img, .desc-show-container .desc-img img{
         border-radius: 50%;
     }
 
@@ -213,6 +213,15 @@ div.first-choice-separator {
     text-align: center;
 }
 
+div.h-flex {
+    display: flex;
+    flex-direction: row;
+}
+
+div.v-flex {
+    display: flex;
+    flex-direction: column;
+}
 
 .desc-container-v-flex {
     display: flex;
