@@ -205,8 +205,18 @@
                     catch (err) {
                         console.log('google is not defined yet');
                     }
-                }, 1000);
+                }, 1000); 
         }
+
+        vm.focusedFrom = function () {
+            container = document.getElementById('req-filter-from');
+            // disable ionic data tab
+            angular.element(container).attr('data-tap-disabled', 'true');
+            // leave input field if google-address-entry is selected
+            angular.element(container).on("click", function () {
+                document.getElementById('type-selector').blur();
+            });
+        };
         
         /* go to next page where rqgt details are inserted */
         vm.selectHasCamionOrHasGood = function () {

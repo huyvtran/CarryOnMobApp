@@ -7,7 +7,8 @@
 
                 <div class="item search-bar item-input-inset item-button-right">
                     <label class="item-input-wrapper">
-                        <input type="text" id="req-filter-from" placeholder="Partenza..." ng-model="vm.newRqgtFrom">
+                        <!--<input type="text" id="req-filter-from" placeholder="Partenza..." ng-model="vm.newRqgtFrom">-->
+                        <input type="text" id="req-filter-from" placeholder="Partenza..." ng-focus="vm.focusedFrom()">
                     </label>
                 </div>
                 <div class="item search-bar item-input-inset item-button-right">
@@ -49,7 +50,7 @@
                 <i class="icon ion-funnel"></i> Filtri di ricerca
             </a>
         </div>-->
-        <div class="title-and-filter double-padding-x ">
+        <!--<div class="title-and-filter double-padding-x ">
             <h4 class="content title-announcements">
                 Recenti annunci di camion disponibili:<span ng-if="!vm.heartBooks || (vm.heartBooks && vm.heartBooks.length==0)">&nbsp;(Loading...)</span>
             </h4>
@@ -58,7 +59,6 @@
             </a>
         </div>
         <div class="list animate-blinds">
-            <!--<div class="list">-->
             <a ng-repeat="hBook in vm.heartBooks"
                ng-click="vm.goToBookDetails(hBook)" class="item item-avatar item-icon-right">
                 <img ng-src="{{hBook.imgSrc}}">
@@ -66,6 +66,6 @@
                 <p ng-bind-html="hBook.shortDescription"></p>
                 <img ng-if="hBook.isNewAdded == true" class="new-book-added" ng-src="img/new-book.jpeg">
             </a>
-        </div>
+        </div>-->
     </ion-content>
 </ion-view>

@@ -101,10 +101,6 @@ div.first-choice-separator {
     border: solid 3px rgba(255,255,255,.8);
 }
 
-.hero.pax-bkg-img-content {
-    height: 220px;
-}
-
 .hero .content.pax-bkg-img {
     top: 15px;
 }
@@ -229,6 +225,14 @@ p {
     .item.search-bar .item-input-wrapper input {
         width: 100%;
     }
+
+.hero.pax-bkg-img-content {
+    height: 100%;
+}
+
+.content.search-bar-content {
+    top: 28%;
+}
 
 .search-bar-content .item-input-inset {
     padding: 4px 20px;

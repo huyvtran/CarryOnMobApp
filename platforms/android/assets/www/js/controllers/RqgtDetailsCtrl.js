@@ -1,9 +1,9 @@
 ﻿(function () {
 
     app.controller('RqgtDetailsCtrl', RqgtDetailsCtrl);
-    RqgtDetailsCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', 'Books', '$ionicLoading', 'ErrorMng', 'Rqgt'];
+    RqgtDetailsCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', 'Books', '$ionicLoading', 'ErrorMng', 'Rqgt', '$state'];
 
-    function RqgtDetailsCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, Books, $ionicLoading, ErrorMng, Rqgt) {
+    function RqgtDetailsCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, Books, $ionicLoading, ErrorMng, Rqgt, $state) {
         
         var vm = this;
 
@@ -35,6 +35,17 @@
             $ionicLoading.show({
                 template: '<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'
             });
+        };
+
+        /* publish rqgt item */
+        vm.publishItem = function () {
+            vm.showLoading();
+            /* Simulate calling service and backend */
+            /* TO BE DEVELOPED */
+            $timeout(function () {
+                $state.go('app.reqGoodTransport');
+                $ionicLoading.hide();
+            }, 2000)
         };
 
         /* Init controller function */
