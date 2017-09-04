@@ -173,6 +173,21 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
     $ionicConfigProvider.backButton.previousTitleText(false);
     */
 
+    /* REQ_GOOD_TRANSPORT */
+    var REQ_GOOD_TRANSPORT_sref = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REQ_GOOD_TRANSPORT].sref;
+    var REQ_GOOD_TRANSPORT_url = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REQ_GOOD_TRANSPORT].url;
+    var REQ_GOOD_TRANSPORT_templateUrl = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REQ_GOOD_TRANSPORT].templateUrl;
+    /* SEARCH_TRANSPORT */
+    var SEARCH_TRANSPORT_sref = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_TRANSPORT].sref;
+    var SEARCH_TRANSPORT_url = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_TRANSPORT].url;
+    var SEARCH_TRANSPORT_templateUrl = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_TRANSPORT].templateUrl;
+    /* RQGT_DETAILS_PUBLISH */
+    var RQGT_DETAILS_PUBLISH_sref = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.RQGT_DETAILS_PUBLISH].sref;
+    var RQGT_DETAILS_PUBLISH_url = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.RQGT_DETAILS_PUBLISH].url;
+    var RQGT_DETAILS_PUBLISH_templateUrl = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.RQGT_DETAILS_PUBLISH].templateUrl;
+
+     
+
     $stateProvider.state('app', {
         url: '/app',
         abstract: true,
@@ -185,16 +200,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
             views: {
                 'menuContent': {
                     templateUrl: 'templates/events.html'
-                    //,controller: 'EventsOldCtrl'
                 }
-                //,'fabContent': {
-                //    template: '<button id="fab-activity" class="button button-fab button-fab-top-right expanded button-energized-900 flap"><i class="icon ion-paper-airplane"></i></button>',
-                //    controller: function ($timeout) {
-                //        $timeout(function () {
-                //            document.getElementById('fab-activity').classList.toggle('on');
-                //        }, 200);
-                //    }
-                //}
             }
         })
 
@@ -207,11 +213,11 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
             }
         })
 
-    .state('app.best-sellers', {
-        url: '/best-sellers',
+    .state(SEARCH_TRANSPORT_sref, {
+        url: SEARCH_TRANSPORT_url,
         views: {
             'menuContent': {
-                templateUrl: 'templates/best-sellers-books.html'
+                templateUrl: SEARCH_TRANSPORT_templateUrl
             }
         }
     })
@@ -221,16 +227,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
         views: {
             'menuContent': {
                 templateUrl: 'templates/books.html'
-                //, controller: 'BooksCtrl'
             }
-            //, 'fabContent': {
-            //    template: '<button id="fab-books" class="button button-fab button-fab-bottom-right expanded button-energized-900 fade"><i class="icon ion-heart"></i></button>',
-            //    controller: function ($timeout) {
-            //        $timeout(function () {
-            //            document.getElementById('fab-books').classList.toggle('on');
-            //        }, 900);
-            //    }
-            //}
         }
     })
 
@@ -247,27 +244,8 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
             url: '/book-details',
             views: {
                 'menuContent': {
-                    //templateUrl: 'templates/books.html',
-                    //controller: 'BooksCtrl'
                     templateUrl: 'templates/book-details.html',
-                    //controller: 'BookDetailsCtrl'
                 }
-                //, 'fabContent': {
-                //    template: '<button id="fab-book-details" data-to-href="test" class="button button-fab button-fab-bottom-right expanded button-energized-900 fade" ng-click="gePaxLink()"><i class="icon ion-forward"></i></button>',
-                //    controller: function ($timeout, $scope, Books, $window) {
-                //        $timeout(function () {
-                //            document.getElementById('fab-book-details').classList.toggle('fade');
-                //        }, 900);
-                //        $scope.gePaxLink = function () {
-                //            dataToHref = Books.currentBook.completeHref;
-                //            $window.open(dataToHref);
-                //            //console.log(Books.currentBook.completeHref);
-                //            //var dataToHref = $('#fab-book-details').attr("title");
-                //            //alert(dataToHref);
-                //            //$window.open(dataToHref);
-                //        };
-                //    }
-                //}
             }
         })
 
@@ -307,22 +285,48 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
             external: true
         })
 
-    .state('app.reqGoodTransport', {
-        url: '/reqGoodTransport',
+    .state(REQ_GOOD_TRANSPORT_sref, { 
+        url: REQ_GOOD_TRANSPORT_url,
         views: {
-            'menuContent': {
-                templateUrl: 'templates/req-good-transport-list.html'
+            'menuContent': { 
+                templateUrl: REQ_GOOD_TRANSPORT_templateUrl
             },
             'fabContent': {
                 template: ''
             }
         }
     })
-.state('app.rqgt-details-publish', {
-    url: '/rqgtDetailsPublish',
+
+        //.state(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REQ_GOOD_TRANSPORT].sref, {
+        //    url: coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REQ_GOOD_TRANSPORT].url,
+        //    views: {
+        //        'menuContent': {
+        //            templateUrl: coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REQ_GOOD_TRANSPORT].templateUrl
+        //        },
+        //        'fabContent': {
+        //            template: ''
+        //        }
+        //    }
+        //})
+
+        //.state('app.rqgt-details-publish', {
+        //    url: '/rqgtDetailsPublish',
+        //    views: {
+        //        'menuContent': {
+        //            templateUrl: 'templates/rqgt-details-publish.html'
+        //        },
+        //        'fabContent': {
+        //            template: ''
+        //        }
+        //    }
+        //})
+
+
+.state(RQGT_DETAILS_PUBLISH_sref, {
+    url: RQGT_DETAILS_PUBLISH_url,
     views: {
         'menuContent': {
-            templateUrl: 'templates/rqgt-details-publish.html'
+            templateUrl: RQGT_DETAILS_PUBLISH_templateUrl
         },
         'fabContent': {
             template: ''
@@ -331,7 +335,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
 })
 
         .state('app.rqgt-search-list', {
-            url: '/RqgtSearchListCtrl',
+            url: '/SearchTransportCtrl',
             views: {
                 'menuContent': {
                     templateUrl: 'templates/req-good-search-list.html'
@@ -342,6 +346,16 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
             }
         })
 
+        //.state('app.search-transport', {
+        //    url: '/search-transport',
+        //    views: {
+        //        'menuContent': {
+        //            templateUrl: 'templates/search-transport.html'
+        //            //,controller: 'ReqGoodTransportCtrl'
+        //        }
+        //    }
+        //})
+
     .state('app.about-pax', {
         url: '/about-pax',
         views: {
@@ -349,19 +363,9 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
                 templateUrl: 'templates/about-pax.html'
                 //,controller: 'ReqGoodTransportCtrl'
             }
-            //, 'fabContent': {
-            //    template: '<button id="fab-profile" class="button button-positive button-fab button-fab-bottom-right" ng-click="goTest()"><i class="icon ion-social-twitter"></i></button>',
-            //    controller: function ($timeout, $window, $scope) {
-            //        $timeout(function () {
-            //            document.getElementById('fab-profile').classList.toggle('on');
-            //        }, 800);
-            //        $scope.goTest = function () {
-            //            $window.open('https://twitter.com/librairiepax');
-            //        };
-            //    }
-            //}
         }
     })
+
     .state('app.first-choice', {
         url: '/first-choice',
         views: {

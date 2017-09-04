@@ -17,7 +17,7 @@
        under the License.
  */
 
-package io.cordova.PaxDeCoeur2785d518e9f4578943055878dd7a400;
+package io.cordova.PaxDeCoeur2785d518e9f4578943055878dd7a401;
 
 import android.os.Bundle;
 import org.apache.cordova.*;

@@ -1,9 +1,9 @@
 ﻿(function () {
 
-    app.controller('RqgtSearchListCtrl', RqgtSearchListCtrl);
-    RqgtSearchListCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', '$controller', 'Books', '$state', 'ErrorMng', '$sce', '$ionicPopup', 'Events', 'ionicDatePicker', 'Rqgt', '$ionicPopup', '$interval', '$ionicActionSheet'];
+    app.controller('SearchTransportCtrl', SearchTransportCtrl);
+    SearchTransportCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', '$controller', 'Books', '$state', 'ErrorMng', '$sce', '$ionicPopup', 'Events', 'ionicDatePicker', 'Rqgt', '$ionicPopup', '$interval', '$ionicActionSheet'];
 
-    function RqgtSearchListCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, $controller, Books, $state, ErrorMng, $sce, $ionicPopup, Events, ionicDatePicker, Rqgt, $ionicPopup, $interval, $ionicActionSheet) {
+    function SearchTransportCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, $controller, Books, $state, ErrorMng, $sce, $ionicPopup, Events, ionicDatePicker, Rqgt, $ionicPopup, $interval, $ionicActionSheet) {
 
         var vm = this;
 
@@ -173,6 +173,10 @@
         vm.goRqgtDetailsPublish = function () {
             $state.go('app.rqgt-details-publish');
         };
+
+        $("#btn-publish-rqgt").on("click", function () {
+            $state.go('app.rqgt-details-publish');
+        });
 
 
         /* Init datepicker */

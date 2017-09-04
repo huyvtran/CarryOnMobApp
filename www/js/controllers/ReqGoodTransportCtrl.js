@@ -194,6 +194,13 @@
                             vm.autocompleteFrom = new google.maps.places.Autocomplete(
                                 /** @type {!HTMLInputElement} */(document.getElementById('req-filter-from')),
                                 { types: ['geocode'] });
+                            /* bind the event place_changed which it's trigger when you needed */
+                            google.maps.event.addListener(vm.autocompleteFrom, 'place_changed', function () {
+                                $("#req-filter-from").val(this.getPlace().formatted_address);
+                                //var data = $("#req-filter-from").serialize();
+                                //console.log('data');
+                                //show_submit_data(data);
+                            });
 
                             // Search filter TO - Create the autocomplete object
                             vm.autocompleteTo = new google.maps.places.Autocomplete(
@@ -261,7 +268,7 @@
                 }
             });
         };
-        
+
         /* Go to transport search good view or publish availability*/
         vm.goToTransportSearchList = function (hasGood) {
             /* TO BE DEVELOPED */
@@ -282,15 +289,17 @@
 
         /* Go to rqgt search camion view or publish request */
         vm.goToRqgtSearchList = function () {
-                Rqgt.currentRqgt = {
-                    from: vm.autocompleteFrom,
-                    fromShown: vm.newRqgtFrom,
-                    to: vm.autocompleteTo,
-                    toShown: vm.newRqgtTo,
-                    date: vm.newRqgtDate,
-                    dateShown: vm.newRqgtDateShown
-                };
-                $state.go('app.rqgt-search-list');
+            Rqgt.currentRqgt = {
+                from: vm.autocompleteFrom,
+                fromShown: vm.newRqgtFrom,
+                to: vm.autocompleteTo,
+                toShown: vm.newRqgtTo,
+                date: vm.newRqgtDate,
+                dateShown: vm.newRqgtDateShown
+            };
+            //$state.go('app.rqgt-search-list'); 
+            $state.go('app.search-transport');
+            //$state.go('app.best-sellers');
         };
 
 
@@ -298,8 +307,7 @@
         vm.datepickerDate = {
             callback: function (val) {  //Mandatory
                 vm.newRqgtDate = new Date(val);
-                vm.newRqgtDateShown = new Date(val);
-                console.log('Return value from the datepicker popup is : ' + val, new Date(val));
+                vm.newRqgtDateShown = vm.newRqgtDate.toLocaleDateString('it-IT');
             },
             inputDate: new Date(),
             titleLabel: 'Seleziona la data',

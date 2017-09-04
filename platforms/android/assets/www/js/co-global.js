@@ -24,6 +24,39 @@ coGlobal.NotificationOccurred = false;
 
 /* ---- Notifications variables ---- */
 
+/* ENUM - CO filter status */
+
+// app.reqGoodTransport
+// app.search-transport
+// app.rqgt-details-publish
+// app.rqgt-search-list  -- DELETED
+
+coGlobal.CoStatusEnum = {
+    REQ_GOOD_TRANSPORT: 0,
+    SEARCH_TRANSPORT: 1,
+    RQGT_DETAILS_PUBLISH: 2,
+    properties: {
+        0: {
+            translate_id: 'view.filters.REQ_GOOD_TRANSPORT', value: '', translate_main_title_id: 'menu.pageTitles.REQ_GOOD_TRANSPORT',
+            sref: 'app.reqGoodTransport',
+            url: '/reqGoodTransport',
+            templateUrl: 'templates/req-good-transport-list.html' 
+        },
+        1: {
+            translate_id: 'view.filters.SEARCH_TRANSPORT', value: '', translate_main_title_id: 'menu.pageTitles.SEARCH_TRANSPORT',
+            sref: 'app.search-transport',
+            url: '/search-transport',
+            templateUrl: 'templates/search-transport.html'
+        },
+        2: {
+            translate_id: 'view.filters.RQGT_DETAILS_PUBLISH', value: '', translate_main_title_id: 'menu.pageTitles.RQGT_DETAILS_PUBLISH',
+            sref: 'app.rqgt-details-publish',
+            url: '/rqgtDetailsPublish',
+            templateUrl: 'templates/rqgt-details-publish.html'
+        }
+    }
+};
+
 /* ---- BookListType Enum ---- */
 coGlobal.BookListTypeEnum = {
     HEART: 0,
