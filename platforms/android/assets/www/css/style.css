@@ -197,7 +197,7 @@ div.first-choice-separator {
     margin-bottom: 4px; 
 }
 
-.card-rqgt .desc-img, .desc-show-container .desc-img, .desc-show-container .desc-img img {
+.card-rqgt .desc-img {
     background-position: center;
     background-size: cover;
     height: 40px;
@@ -205,7 +205,7 @@ div.first-choice-separator {
     margin: 6px auto 4px auto;
 }
 
-    .card-rqgt .desc-img img, .desc-show-container .desc-img img{
+    .card-rqgt .desc-img img {
         border-radius: 50%;
     }
 
@@ -218,9 +218,23 @@ div.h-flex {
     flex-direction: row;
 }
 
+div.h-flex.flex-start {
+    justify-content: flex-start;
+}
+
+div.h-flex.flex-center {
+    justify-content: center;
+}
+
 div.v-flex {
     display: flex;
     flex-direction: column;
+}
+
+div.v-flex.flext-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .desc-container-v-flex {
@@ -240,6 +254,32 @@ div.v-flex {
 .desc-adr-label {
     width: 24px;
     font-weight: bold;
+}
+
+/* DETAILS DESCRIPTION
+======================================================================================================*/
+.hero > .content.desc-show-container {
+    top: 0px;
+}
+
+.desc-show-container .desc-img, .desc-show-container .desc-img img {
+    background-position: center;
+    background-size: cover;
+    height: 50px;
+    width: 50px;
+    margin: 6px auto 4px auto;
+}
+
+.desc-show-container .desc-img img{
+        border-radius: 50%;
+    }
+
+.desc-img-container {
+    width: 100px;
+}
+
+.desc-show-container .desc-vol {
+    font-size: 20px;
 }
 
 /* PAX
