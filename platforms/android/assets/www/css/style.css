@@ -82,11 +82,11 @@ div.header-overlay-btn-ctn {
     padding-right: 10px;
 }
 
-div.header-overlay-btn-ctn .header-pub-btn {
-    padding-left: 8px;
-    padding-right: 8px;
-    color: #104A93;
-}
+    div.header-overlay-btn-ctn .header-pub-btn {
+        padding-left: 8px;
+        padding-right: 8px;
+        color: #104A93;
+    }
 
 
 /* MENU
@@ -194,7 +194,7 @@ div.first-choice-separator {
 .v-sep {
     border-left: 1px solid #999;
     margin-top: 4px;
-    margin-bottom: 4px; 
+    margin-bottom: 4px;
 }
 
 .card-rqgt .desc-img {
@@ -218,24 +218,24 @@ div.h-flex {
     flex-direction: row;
 }
 
-div.h-flex.flex-start {
-    justify-content: flex-start;
-}
+    div.h-flex.flex-start {
+        justify-content: flex-start;
+    }
 
-div.h-flex.flex-center {
-    justify-content: center;
-}
+    div.h-flex.flex-center {
+        justify-content: center;
+    }
 
 div.v-flex {
     display: flex;
     flex-direction: column;
 }
 
-div.v-flex.flext-center {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+    div.v-flex.flext-center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 
 .desc-container-v-flex {
     display: flex;
@@ -258,8 +258,14 @@ div.v-flex.flext-center {
 
 /* DETAILS DESCRIPTION
 ======================================================================================================*/
+
+.desc-show-container-view ion-content {
+    bottom: 83px;
+}
+
 .hero > .content.desc-show-container {
     top: 0px;
+    padding: 10px;
 }
 
 .desc-show-container .desc-img, .desc-show-container .desc-img img {
@@ -270,9 +276,13 @@ div.v-flex.flext-center {
     margin: 6px auto 4px auto;
 }
 
-.desc-show-container .desc-img img{
+    .desc-show-container .desc-img img {
         border-radius: 50%;
     }
+
+.desc-show-container .desc-adr {
+    margin-bottom: 6px;
+}
 
 .desc-img-container {
     width: 100px;
@@ -280,6 +290,42 @@ div.v-flex.flext-center {
 
 .desc-show-container .desc-vol {
     font-size: 20px;
+}
+
+.desc-show-container .desc-container {
+    font-size: 18px;
+    margin-top: 6px;
+}
+
+.desc-show-container .desc-adr-label {
+    width: 44px;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.desc-show-container .more-info-main-container {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.more-info-item-container {
+    display: flex;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.more-info-item-label {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.more-info-item-container.v-flex .more-info-item-label {
+    margin-bottom: 4px;
+}
+
+.title-more-info {
+    text-align: center;
+    font-weight: bold;
 }
 
 /* PAX
