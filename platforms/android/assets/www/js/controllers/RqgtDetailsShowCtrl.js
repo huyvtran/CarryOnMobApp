@@ -53,6 +53,17 @@
             };
         };
 
+        /* Call phone number */
+        vm.callNumber = function (numberToCall) {
+            window.plugins.CallNumber.callNumber(null, null, numberToCall, false);
+        };
+
+        vm.sendWhatsapp = function (numberToChat) {
+            cordova.plugins.Whatsapp.send(numberToChat);
+            //window.plugins.CallNumber.callNumber(null, null, numberToChat, false);
+        };
+        
+
         /* Call init controller */
         vm.initController();
 

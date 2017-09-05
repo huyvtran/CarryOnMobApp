@@ -9,11 +9,11 @@
                         <div class="av-img-container">
                             <div class="h-flex">
                                 <div class="desc-img-container">
-                                    <div class="desc-img v-flex flext-center">
+                                    <div class="desc-img v-flex flex-center">
                                         <img src="img/daenerys.jpg" />
                                     </div>
                                 </div>
-                                <div class="desc-vol v-flex flext-center">
+                                <div class="desc-vol v-flex flex-center">
                                     Luca R.
                                 </div>
                             </div>
@@ -72,7 +72,7 @@
                     <div class="more-info-item-label">
                         Volume stimato:
                     </div>
-                    <div class="more-info-item-value">
+                    <div class="more-info-item-value value-inline">
                         10 &sup3;
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                     <div class="more-info-item-label">
                         Cella frigo necessaria:
                     </div>
-                    <div class="more-info-item-value">
+                    <div class="more-info-item-value value-inline">
                         No
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                     <div class="more-info-item-label">
                         Fragile:
                     </div>
-                    <div class="more-info-item-value">
+                    <div class="more-info-item-value value-inline">
                         Si'
                     </div>
                 </div>
@@ -107,42 +107,50 @@
         </div>
     </ion-content>
     <div class="pub-rqgt-search-list footer">
-        <div class="title-and-filter double-padding-x v-flex">
-            <div>
+        <div class="title-and-filter contact-container v-flex">
+            <div class="title-and-btn-contact-container">
                 <h4 class="content title-announcements">
                     <strong>Contatti</strong>
                 </h4>
             </div>
-            <div class="h-flex flext-center">
-                <div>
-                    <div class="button button-contact"><i class="icon ion-android-call"></i></div>
-                </div>
-
-                <div>
-                    <div class="button button-contact"><i class="icon ion-android-mail"></i></div>
-                </div>
-                <div>
-                    <div class="button button-contact"><i class="icon ion-social-whatsapp-outline"></i></div>
-                </div>
-
-
+            <div class="btn-contact-container">
+                <div class="h-flex flex-space-around">
+                    <div>
+                        <!--<a class="button button-contact btn-mail" href="mailto:test@test.com"></a>-->
+                        <div class="button button-contact btn-mail"><i class="icon ion-android-mail"></i></div>
+                        </div>
+                        <div>
+                            <div class="button button-contact btn-whatsup"
+                                 ng-click="vm.sendWhatsapp('0518575896')"><i class="icon ion-social-whatsapp-outline"></i></div>
+                        </div>
+                        <div>
+                            <div class="button button-contact btn-call-phone"
+                                 ng-click="vm.callNumber('0518575896')"><i class="icon ion-android-call"></i></div>
+                        </div>
+                        <!--<div>
+                            <div class="button button-contact"><i class="icon ion-android-mail"></i></div>
+                        </div>
+                        <div>
+                            <div class="button button-contact"><i class="icon ion-social-whatsapp-outline"></i></div>
+                        </div>-->
                         <!--</div>
 
-            <button class="button button-fab button-balanced icon ion-leaf"></button>
-            <button class="button button-fab button-balanced icon ion-android-chat"></button>
+                            <button class="button button-fab button-balanced icon ion-leaf"></button>
+                            <button class="button button-fab button-balanced icon ion-android-chat"></button>
 
-        </div>-->
+                        </div>-->
                         <!--<div class="btn-contact-container h-flex">
-            <div>
-                <button class="button button-fab button-balanced icon ion-leaf"></button>
-            </div>
-            <div>
-                <h1>test</h1>
-            </div>
-            <div>
-                <button class="button button-fab button-balanced icon ion-leaf"></button>
-            </div>
-        </div>-->
+                            <div>
+                                <button class="button button-fab button-balanced icon ion-leaf"></button>
+                            </div>
+                            <div>
+                                <h1>test</h1>
+                            </div>
+                            <div>
+                                <button class="button button-fab button-balanced icon ion-leaf"></button>
+                            </div>
+                        </div>-->
                     </div>
-        </div>
+                </div>
+            </div>
 </ion-view>

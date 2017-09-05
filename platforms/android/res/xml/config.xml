@@ -20,6 +20,10 @@
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="Whatsapp">
+        <param name="android-package" value="mobi.moica.whatsapp.Whatsapp" />
+        <param name="onload" value="true" />
+    </feature>
     <icon density="ldpi" src="resources/android/icon/mipmap-ldpi/drawable-icon.png" />
     <icon density="mdpi" src="resources/android/icon/mipmap-mdpi/drawable-icon.png" />
     <icon density="hdpi" src="resources/android/icon/mipmap-hdpi/drawable-icon.png" />

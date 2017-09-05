@@ -52,4 +52,5 @@
   <plugin name="cordova-plugin-statusbar" version="2.2.3-dev" />
   <plugin name="call-number" version="0.0.2" src="https://github.com/Rohfosho/CordovaCallNumberPlugin.git" />
   <plugin name="cordova-plugin-firebase" version="0.1.21" src="https://github.com/arnesson/cordova-plugin-firebase" />
+  <plugin name="mobi.moica.whatsapp" version="0.0.1" src="https://github.com/ranjitpandit/whatsapp-phonegap-plugin.git" />
 </widget>

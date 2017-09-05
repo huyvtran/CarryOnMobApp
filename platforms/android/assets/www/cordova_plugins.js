@@ -27,6 +27,13 @@ module.exports = [
         "clobbers": [
             "window.StatusBar"
         ]
+    },
+    {
+        "file": "plugins/mobi.moica.whatsapp/www/whatsapp.js",
+        "id": "mobi.moica.whatsapp.whatsapp",
+        "clobbers": [
+            "cordova.plugins.Whatsapp"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -36,7 +43,8 @@ module.exports.metadata =
     "cordova-plugin-firebase": "0.1.21",
     "cordova-plugin-splashscreen": "4.0.1",
     "cordova-plugin-statusbar": "2.2.3-dev",
-    "cordova-plugin-whitelist": "1.3.1"
+    "cordova-plugin-whitelist": "1.3.1",
+    "mobi.moica.whatsapp": "0.0.1"
 };
 // BOTTOM OF METADATA
 });

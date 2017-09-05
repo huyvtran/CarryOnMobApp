@@ -21,6 +21,9 @@
         },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "io.cordova.PaxDeCoeur2785d518e9f4578943055878dd7a400"
+        },
+        "mobi.moica.whatsapp": {
+            "PACKAGE_NAME": "io.cordova.PaxDeCoeur2785d518e9f4578943055878dd7a401"
         }
     },
     "dependent_plugins": {}
