@@ -12,7 +12,7 @@
         self.getRqgtFiltered = _getRqgtFiltered;
         self.currentRqgtResults = [];
         self.loadedRqgtResults = false;
-                
+
         /* callbacks to be called on documents status changes */
         self.observerCallbacks = [];
         //register an observer
@@ -33,7 +33,7 @@
         };
 
         ////////////////
-        
+
         /* Get the list of searched books */
         function _getRqgtFiltered(searchFilters) {
             var deferred = $q.defer();
@@ -44,11 +44,22 @@
             };
             return $http(req).then(function (response) {
 
-                var respData = response.data;
+                var respData = response.data; 
                 if (respData) {
                     if (respData.operationResult === true) {
                         self.loadedRqgtResults = true;
                         self.currentRqgtResults = respData.resultData;
+                        /* MOCK ONLY  - multuply results */
+                        if (self.currentRqgtResults && self.currentRqgtResults.length > 0) {
+                            for (var i = 0; i < 25; i++) {
+                                var copiedObj = {};
+                                angular.copy(self.currentRqgtResults[0], copiedObj);
+                                self.currentRqgtResults.push(copiedObj);
+                            }
+                        };
+
+                        /* END MOCK ONLY  - multuply results */
+
                         deferred.resolve(respData);
                     } else {
                         deferred.reject(respData);

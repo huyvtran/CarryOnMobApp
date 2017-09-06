@@ -9,6 +9,8 @@
                
         /* Link to pax global object to allow binding to the view */
         vm.coGlobal = coGlobal;
+        vm.rqgtServ = Rqgt;
+        vm.currentRqgt = vm.rqgtServ.currentRqgtDetails;
 
         vm.setMotion = function () {
 

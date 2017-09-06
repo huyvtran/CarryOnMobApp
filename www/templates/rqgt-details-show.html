@@ -30,7 +30,7 @@
                                     Da&nbsp;:
                                 </div>
                                 <div class="desc-adr-content">
-                                    Via Rossi 3, Milano 21000
+                                    {{vm.currentRqgt.addressFromFormattedStr}}
                                 </div>
                             </div>
                             <div class="desc-adr">
@@ -38,7 +38,7 @@
                                     A&nbsp;:
                                 </div>
                                 <div class="desc-adr-content">
-                                    Via cardine 12, Ravenna 45170
+                                    {{vm.currentRqgt.addressDestFormattedStr}}
                                 </div>
                             </div>
                             <div class="desc-adr">
@@ -73,7 +73,7 @@
                         Volume stimato:
                     </div>
                     <div class="more-info-item-value value-inline">
-                        10 &sup3;
+                        {{vm.currentRqgt.volRequired}} &nbsp; m&sup3;
                     </div>
                 </div>
                 <!-- Cella frigo necessaria -->
