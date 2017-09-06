@@ -125,7 +125,7 @@
             self.currentBook = bookItem;
             var req = {
                 method: 'POST',
-                url: coGlobal.getAppUrl() + 'api/BookDetails',
+                url: coGlobal.getPaxUrl() + 'api/BookDetails',
                 data: bookItem
             };
             return $http(req).then(function (response) {
@@ -164,7 +164,7 @@
             };
             var req = {
                 method: 'GET',
-                url: coGlobal.getAppUrl() + urlToCall
+                url: coGlobal.getPaxUrl() + urlToCall
 
             };
             return $http(req).then(function (response) {
@@ -188,7 +188,7 @@
             var urlToCall = 'api/DetailsHeartBooksList';
             var req = {
                 method: 'GET',
-                url: coGlobal.getAppUrl() + urlToCall
+                url: coGlobal.getPaxUrl() + urlToCall
 
             };
             return $http(req).then(function (response) {

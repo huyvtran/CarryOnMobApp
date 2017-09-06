@@ -17,7 +17,8 @@
         function _showSystemError(errorMsg) {
             /* For the moment just redirect to home page */
             //return self.events;
-            $state.go('app.profile');
+            //$state.go('app.profile');
+            alert('error : ' + errorMsg)
         };                
     }
 })();

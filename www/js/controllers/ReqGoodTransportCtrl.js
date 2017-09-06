@@ -1,9 +1,9 @@
 ﻿(function () {
 
     app.controller('ReqGoodTransportCtrl', ReqGoodTransportCtrl);
-    ReqGoodTransportCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', '$controller', 'Books', '$state', 'ErrorMng', '$sce', '$ionicPopup', 'Events', 'ionicDatePicker', 'Rqgt', '$ionicPopup', '$interval', '$ionicActionSheet'];
+    ReqGoodTransportCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', '$controller', 'Books', '$state', 'ErrorMng', '$sce', '$ionicPopup', 'Events', 'ionicDatePicker', 'Rqgt', '$ionicPopup', '$interval', '$ionicActionSheet', 'Rqgt'];
 
-    function ReqGoodTransportCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, $controller, Books, $state, ErrorMng, $sce, $ionicPopup, Events, ionicDatePicker, Rqgt, $ionicPopup, $interval, $ionicActionSheet) {
+    function ReqGoodTransportCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, $controller, Books, $state, ErrorMng, $sce, $ionicPopup, Events, ionicDatePicker, Rqgt, $ionicPopup, $interval, $ionicActionSheet, Rqgt) {
 
         var vm = this;
 
@@ -19,21 +19,165 @@
         /* Link to pax global object to allow binding to the view */
         vm.coGlobal = coGlobal;
 
-        vm.setMotion = function () {
-
-            // Set Motion
-            //$timeout(function () {
-            //    ionicMaterialMotion.slideUp({
-            //        selector: '.slide-up'
-            //    });
-            //}, 100);
-
+        vm.setMotion = function () {            
             $timeout(function () {
                 ionicMaterialMotion.blinds({
                     startVelocity: 3000
                 });
             }, 100);
         };
+
+
+
+        /* Address Autocomplete callback initialization */
+        vm.initAutocomplete = function () {
+            stopTime = $interval(
+                function () {
+                    try {
+                        if (google != undefined) {
+                            // Search filter FROM - Create the autocomplete object
+                            vm.autocompleteFrom = new google.maps.places.Autocomplete(
+                                /** @type {!HTMLInputElement} */(document.getElementById('req-filter-from')),
+                                { types: ['geocode'] });
+                            /* bind the event place_changed which it's trigger when you needed */
+                            google.maps.event.addListener(vm.autocompleteFrom, 'place_changed', function () {
+                                $("#req-filter-from").val(this.getPlace().formatted_address);
+                                //var data = $("#req-filter-from").serialize();
+                                //console.log('data');
+                                //show_submit_data(data);
+                            });
+
+                            // Search filter TO - Create the autocomplete object
+                            vm.autocompleteTo = new google.maps.places.Autocomplete(
+                                /** @type {!HTMLInputElement} */(document.getElementById('req-filter-to')),
+                                { types: ['geocode'] });
+                            $interval.cancel(stopTime);
+                        }
+                    }
+                    catch (err) {
+                        console.log('google is not defined yet');
+                    }
+                }, 1000);
+        }
+
+        vm.focusedFrom = function () {
+            container = document.getElementById('req-filter-from');
+            // disable ionic data tab
+            angular.element(container).attr('data-tap-disabled', 'true');
+            // leave input field if google-address-entry is selected
+            angular.element(container).on("click", function () {
+                document.getElementById('type-selector').blur();
+            });
+        };
+
+        /* go to next page where rqgt details are inserted */
+        vm.selectHasCamionOrHasGood = function () {
+            /* Check if all fields have been correctly filled */
+            /* TO BE TOGGLED */
+            if (!true) {
+                //if (!vm.newRqgtFrom && !vm.newRqgtTo) {
+                var alertPopup = $ionicPopup.alert({
+                    title: 'Dati non completi',
+                    template: 'Inserisci l\'indirizzo di partenza o di destinazione'
+                });
+                return;
+            }
+
+            /* Select camion or Good */
+            vm.showActionSheet_CG();
+        }
+
+        /* Show Action sheet for camion or good selection */
+        vm.showActionSheet_CG = function () {
+            vm.hideSheet = $ionicActionSheet.show({
+                buttons: [{
+                    text: 'Hai un camion'
+                }, {
+                    text: 'Hai della merce'
+                }],
+                //destructiveText: 'Delete',
+                //titleText: 'Seleziona la tua necessita\'',
+                cancelText: 'Cancel',
+                cancel: function () {
+                    // add cancel code..
+                },
+                buttonClicked: function (index) {
+                    vm.hideSheet();
+                    if (index == 0) {
+                        /* User has a camion */
+                        vm.goToRqgtSearchList();
+                    } else if (index == 1) {
+                        /* User has good to transport */
+                        vm.goToTransportSearchList();
+                    };
+                }
+            });
+        };
+
+        /* Go to transport search good view or publish availability*/
+        vm.goToTransportSearchList = function () {
+            Rqgt.currentRqgt = {
+                from: vm.autocompleteFrom,
+                fromShown: vm.newRqgtFrom,
+                to: vm.autocompleteTo,
+                toShown: vm.newRqgtTo,
+                date: vm.newRqgtDate,
+                dateShown: vm.newRqgtDateShown
+            };
+            /* First set service loaded results to false, in order to load new results */
+            //$state.go('app.rqgt-details-publish');
+            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_TRANSPORT].sref);
+        };
+
+        /* Go to rqgt search camion view or publish request */
+        vm.goToRqgtSearchList = function () {
+            Rqgt.currentRqgt = {
+                from: vm.autocompleteFrom,
+                fromShown: vm.newRqgtFrom,
+                to: vm.autocompleteTo,
+                toShown: vm.newRqgtTo,
+                date: vm.newRqgtDate,
+                dateShown: vm.newRqgtDateShown
+            };
+            /* First set service loaded results to false, in order to load new results */
+            Rqgt.loadedRqgtResults = false;
+            /* Go to SEARCH_RQGT view */
+            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_RQGT].sref);
+        };
+
+        /* Init datepicker */
+        vm.datepickerDate = {
+            callback: function (val) {  //Mandatory
+                vm.newRqgtDate = new Date(val);
+                vm.newRqgtDateShown = vm.newRqgtDate.toLocaleDateString('it-IT');
+            },
+            inputDate: new Date(),
+            titleLabel: 'Seleziona la data',
+            setLabel: 'Vai',
+            //todayLabel: 'Today',
+            showTodayButton: false,
+            closeLabel: 'Prima Possibile',
+            mondayFirst: false,
+            weeksList: ["S", "M", "T", "W", "T", "F", "S"],
+            monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
+            templateType: 'popup',
+            from: new Date(2012, 8, 1),
+            to: new Date(2018, 8, 1),
+            dateFormat: 'dd MMMM yyyy',
+            closeOnSelect: true,
+            disableWeekdays: []
+        };
+
+        /* Init datepicker */
+        vm.openDatePicker = function () {
+            ionicDatePicker.openDatePicker(vm.datepickerDate);
+        };
+
+        /*  --------------------------------------------------------------------------------------------------------------------------------------------*/
+        /*  ------------------------------------------------------  END CARRY ON METHOD  ------------------------------------------------------*/
+        /*  --------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
 
         /* Load all heart books */
         vm.loadHeartBooks = function () {
@@ -183,152 +327,6 @@
             Books.bestSellersBooksLoaded = false;
             Events.eventsLoaded = false;
         };
-
-        /* Address Autocomplete callback initialization */
-        vm.initAutocomplete = function () {
-            stopTime = $interval(
-                function () {
-                    try {
-                        if (google != undefined) {
-                            // Search filter FROM - Create the autocomplete object
-                            vm.autocompleteFrom = new google.maps.places.Autocomplete(
-                                /** @type {!HTMLInputElement} */(document.getElementById('req-filter-from')),
-                                { types: ['geocode'] });
-                            /* bind the event place_changed which it's trigger when you needed */
-                            google.maps.event.addListener(vm.autocompleteFrom, 'place_changed', function () {
-                                $("#req-filter-from").val(this.getPlace().formatted_address);
-                                //var data = $("#req-filter-from").serialize();
-                                //console.log('data');
-                                //show_submit_data(data);
-                            });
-
-                            // Search filter TO - Create the autocomplete object
-                            vm.autocompleteTo = new google.maps.places.Autocomplete(
-                                /** @type {!HTMLInputElement} */(document.getElementById('req-filter-to')),
-                                { types: ['geocode'] });
-                            $interval.cancel(stopTime);
-                        }
-                    }
-                    catch (err) {
-                        console.log('google is not defined yet');
-                    }
-                }, 1000);
-        }
-
-        vm.focusedFrom = function () {
-            container = document.getElementById('req-filter-from');
-            // disable ionic data tab
-            angular.element(container).attr('data-tap-disabled', 'true');
-            // leave input field if google-address-entry is selected
-            angular.element(container).on("click", function () {
-                document.getElementById('type-selector').blur();
-            });
-        };
-
-        /* go to next page where rqgt details are inserted */
-        vm.selectHasCamionOrHasGood = function () {
-            /* Check if all fields have been correctly filled */
-            /* TO BE TOGGLED */
-            if (!true) {
-                //if (!vm.newRqgtFrom && !vm.newRqgtTo) {
-                var alertPopup = $ionicPopup.alert({
-                    title: 'Dati non completi',
-                    template: 'Inserisci l\'indirizzo di partenza o di destinazione'
-                });
-                return;
-            }
-
-            /* Select camion or Good */
-            vm.showActionSheet_CG();
-        }
-
-        /* Show Action sheet for camion or good selection */
-        vm.showActionSheet_CG = function () {
-            vm.hideSheet = $ionicActionSheet.show({
-                buttons: [{
-                    text: 'Hai un camion'
-                }, {
-                    text: 'Hai della merce'
-                }],
-                //destructiveText: 'Delete',
-                //titleText: 'Seleziona la tua necessita\'',
-                cancelText: 'Cancel',
-                cancel: function () {
-                    // add cancel code..
-                },
-                buttonClicked: function (index) {
-                    vm.hideSheet();
-                    if (index == 0) {
-                        /* User has a camion */
-                        vm.goToTransportSearchList();
-                    } else if (index == 1) {
-                        /* User has good to transport */
-                        vm.goToRqgtSearchList();
-                    };
-                }
-            });
-        };
-
-        /* Go to transport search good view or publish availability*/
-        vm.goToTransportSearchList = function () {
-            Rqgt.currentRqgt = {
-                from: vm.autocompleteFrom,
-                fromShown: vm.newRqgtFrom,
-                to: vm.autocompleteTo,
-                toShown: vm.newRqgtTo,
-                date: vm.newRqgtDate,
-                dateShown: vm.newRqgtDateShown
-            };
-            //$state.go('app.rqgt-details-publish');
-            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_RQGT].sref);
-        };
-
-        /* Go to rqgt search camion view or publish request */
-        vm.goToRqgtSearchList = function () {
-            Rqgt.currentRqgt = {
-                from: vm.autocompleteFrom,
-                fromShown: vm.newRqgtFrom,
-                to: vm.autocompleteTo,
-                toShown: vm.newRqgtTo,
-                date: vm.newRqgtDate,
-                dateShown: vm.newRqgtDateShown
-            };
-            //$state.go('app.rqgt-search-list'); 
-            //$state.go('app.search-transport');
-            //$state.go('app.best-sellers');
-            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_TRANSPORT].sref);
-        };
-
-
-        /* Init datepicker */
-        vm.datepickerDate = {
-            callback: function (val) {  //Mandatory
-                vm.newRqgtDate = new Date(val);
-                vm.newRqgtDateShown = vm.newRqgtDate.toLocaleDateString('it-IT');
-            },
-            inputDate: new Date(),
-            titleLabel: 'Seleziona la data',
-            setLabel: 'Vai',
-            //todayLabel: 'Today',
-            showTodayButton: false,
-            closeLabel: 'Prima Possibile',
-            mondayFirst: false,
-            weeksList: ["S", "M", "T", "W", "T", "F", "S"],
-            monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
-            templateType: 'popup',
-            from: new Date(2012, 8, 1),
-            to: new Date(2018, 8, 1),
-            dateFormat: 'dd MMMM yyyy',
-            closeOnSelect: true,
-            disableWeekdays: []
-        };
-
-        /* Init datepicker */
-        vm.openDatePicker = function () {
-            ionicDatePicker.openDatePicker(vm.datepickerDate);
-        };
-
-
 
         /*  --------------------------------------------------------------------------------------------------------------------------------------------*/
         /*  ------------------------------------------------------     INIT FUNCTIONS     ------------------------------------------------------*/

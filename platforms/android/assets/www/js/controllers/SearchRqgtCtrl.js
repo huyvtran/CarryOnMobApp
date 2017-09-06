@@ -7,17 +7,17 @@
 
         var vm = this;
 
+        /* Link to pax global object to allow binding to the view */
+        vm.coGlobal = coGlobal;
+        vm.rqgtServ = Rqgt;
+
         vm.booksLoaded = false;
         vm.bestSellersBooksLoaded = false;
         vm.booksDetailsLoaded = false;
-
         /* all document table data */
         vm.heartBooks = [];
         vm.bestSellersBooks = [];
         vm.pocheDuMois = {};
-
-        /* Link to pax global object to allow binding to the view */
-        vm.coGlobal = coGlobal;
 
         vm.setMotion = function () {
 
@@ -27,6 +27,44 @@
                 });
             }, 100);
         };
+
+        vm.initLoadRqgtResults = function initLoadRqgtResults() {
+            /* If data has not been loaded yet, then load it */
+            if (Rqgt.loadedRqgtResults == false) {
+                Rqgt.getRqgtFiltered().then(
+                function (result) {
+                    /* Refresh variables scope */
+                    coGlobal.runDigest($scope);
+                },
+                function (error) {
+                    // handle error here
+                    coGlobal.runDigest($scope);
+                });
+            };
+        };
+
+        vm.goToRqgtDetails = function (rqgt) {
+            /* Set current transport */
+            Rqgt.currentRqgtDetails = rqgt;
+
+            /* go to transport details page */
+            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.RQGT_DETAILS_SHOW].sref);
+        };
+
+        $("#btn-publish-transport-av").on("click", function () {
+            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.TRANSPORT_DETAILS_PUBLISH].sref);
+        });
+
+        /* Go to publish rqgt page */
+        vm.goRqgtDetailsPublish = function () {
+            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.RQGT_DETAILS_SHOW].sref);
+        };
+
+        /*  --------------------------------------------------------------------------------------------------------------------------------------------*/
+        /*  ------------------------------------------------------  END CARRY ON METHOD  ------------------------------------------------------*/
+        /*  --------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
 
         /* Load all heart books */
         vm.loadHeartBooks = function () {
@@ -153,56 +191,6 @@
             Events.eventsLoaded = false;
         };
 
-
-        vm.goToRqgtDetails = function (transp) {
-            /* Set current transport */
-            Rqgt.currentTransportDetails = transp;
-
-            /* go to transport details page */
-            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.RQGT_DETAILS_SHOW].sref);
-        };
-
-        $("#btn-publish-transport-av").on("click", function () {
-            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.TRANSPORT_DETAILS_PUBLISH].sref);
-        });
-
-        /* Go to publish rqgt page */
-        vm.goRqgtDetailsPublish = function () {
-            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.RQGT_DETAILS_SHOW].sref);
-        };
-                
-
-        /* Init datepicker */
-        vm.datepickerDate = {
-            callback: function (val) {  //Mandatory
-                vm.newRqgtDate = new Date(val);
-                vm.newRqgtDateShown = new Date(val);
-                console.log('Return value from the datepicker popup is : ' + val, new Date(val));
-            },
-            inputDate: new Date(),
-            titleLabel: 'Seleziona la data',
-            setLabel: 'Vai',
-            //todayLabel: 'Today',
-            showTodayButton: false,
-            closeLabel: 'Prima Possibile',
-            mondayFirst: false,
-            weeksList: ["S", "M", "T", "W", "T", "F", "S"],
-            monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
-            templateType: 'popup',
-            from: new Date(2012, 8, 1),
-            to: new Date(2018, 8, 1),
-            dateFormat: 'dd MMMM yyyy',
-            closeOnSelect: true,
-            disableWeekdays: []
-        };
-
-        /* Init datepicker */
-        vm.openDatePicker = function () {
-            ionicDatePicker.openDatePicker(vm.datepickerDate);
-        };
-
-
-
         /*  --------------------------------------------------------------------------------------------------------------------------------------------*/
         /*  ------------------------------------------------------     INIT FUNCTIONS     ------------------------------------------------------*/
         /*  --------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -216,6 +204,7 @@
                 vm.initAllIsLoadedFlags();
                 coGlobal.NotificationOccurred = false;
             };
+            vm.initLoadRqgtResults();
             vm.loadHeartBooks();
             vm.loadDetailsForHeartBooks();
             vm.loadBestSellers();

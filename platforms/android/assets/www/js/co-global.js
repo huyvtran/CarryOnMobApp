@@ -3,11 +3,15 @@
 /* ---- App url ---- */ 
 //coGlobal.appUrl = '';
 // Debug
-//coGlobal.appUrl = 'http://localhost:51267/';
+//coGlobal.appUrl = 'http://localhost:57493/';
 // IIS
-//coGlobal.appUrl = 'http://localhost:8091/';
+coGlobal.appUrl = 'http://localhost:8083/';
 // Azure
-coGlobal.appUrl = 'http://paxwebapi.azurewebsites.net/';
+//coGlobal.appUrl = 'http://carryonwebapi.azurewebsites.net/';
+
+coGlobal.getPaxUrl = function getAppUrl() {
+    return 'http://paxwebapi.azurewebsites.net/';
+};
 
 coGlobal.getAppUrl = function getAppUrl() {
     if (coGlobal.appUrl) {
@@ -44,7 +48,7 @@ coGlobal.CoStatusEnum = {
             translate_id: 'view.filters.REQ_GOOD_TRANSPORT', value: '', translate_main_title_id: 'menu.pageTitles.REQ_GOOD_TRANSPORT',
             sref: 'app.reqGoodTransport',
             url: '/reqGoodTransport',
-            templateUrl: 'templates/req-good-transport-list.html' 
+            templateUrl: 'templates/start-input-data.html' 
         },
         1: {
             translate_id: 'view.filters.SEARCH_TRANSPORT', value: '', translate_main_title_id: 'menu.pageTitles.SEARCH_TRANSPORT',
@@ -111,3 +115,9 @@ coGlobal.LoadMapsApi = function () {
         vm.initAutocomplete();
     };
 };
+
+coGlobal.runDigest = function refreshScope($scope) {
+    if (!$scope.$$phase) {
+        $scope.$digest();
+    }
+}

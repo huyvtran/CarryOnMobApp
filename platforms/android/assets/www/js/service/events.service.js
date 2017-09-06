@@ -46,7 +46,7 @@
 
             var req = {
                 method: 'GET',
-                url: coGlobal.getAppUrl() + 'api/Events'
+                url: coGlobal.getPaxUrl() + 'api/Events'
 
             };
             return $http(req).then(function (response) {

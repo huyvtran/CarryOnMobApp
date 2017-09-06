@@ -1,14 +1,16 @@
 <ion-view view-title="Trasporti richiesti" ng-controller="SearchRqgtCtrl as vm">
     <ion-content ng-class="{expanded:$scope.isExpanded}">
-        <div class="item card-item card-rqgt" ng-repeat="transp in vm.heartBooks">
-            <div ng-click="vm.goToRqgtDetails(transp)" class="card stable-bg ink ink-dark">
+        <div class="item card-item card-rqgt" ng-repeat="rqgt in vm.rqgtServ.currentRqgtResults"
+             ng-if="vm.rqgtServ.loadedRqgtResults">
+            <div ng-click="vm.goToRqgtDetails(rqgt)" class="card stable-bg ink ink-dark">
                 <div class="item-card-container">
                     <div class="av-and-desc-container">
                         <div class="av-container">
                             <div class="av-img-container">
                                 <div class="desc-container-v-flex">
                                     <div class="desc-img">
-                                        <img src="img/sansa.jpg" />
+                                        <!--<img src="img/sansa.jpg" />-->
+                                        <img src="https://dummyimage.com/120x120/3f3e73/fff.jpg&text=LR" />
                                     </div>
                                     <div class="desc-vol">
                                         Luca R.
@@ -27,7 +29,7 @@
                                         Da:
                                     </div>
                                     <div class="desc-adr-content">
-                                        Via Rossi 3, Milano 21000
+                                        {{rqgt.addressFromFormattedStr}}
                                     </div>
                                 </div>
                                 <div class="desc-adr">
@@ -35,7 +37,7 @@
                                         A:
                                     </div>
                                     <div class="desc-adr-content">
-                                        Via cardine 12, Ravenna 45170
+                                        {{rqgt.addressDestFormattedStr}}
                                     </div>
                                 </div>
                                 <div class="desc-adr">
@@ -61,6 +63,7 @@
             </div>
         </div>
     </ion-content>
+
     <div class="pub-rqgt-search-list footer">
         <div class="title-and-filter double-padding-x v-flex">
             <div>
