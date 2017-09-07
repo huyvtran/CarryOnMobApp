@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-var app = angular.module('starter', ['ionic', 'ionic-material', 'ionMdInput', 'ion-floating-menu', 'ionic-datepicker']);
+var app = angular.module('starter', ['ionic', 'ionic-material', 'ionMdInput', 'ion-floating-menu', 'ionic-datepicker', 'ion-google-autocomplete']);
 
 app.run(function ($ionicPlatform, $state, $ionicPopup, ionicMaterialInk, $timeout) {
 
@@ -17,7 +17,7 @@ app.run(function ($ionicPlatform, $state, $ionicPopup, ionicMaterialInk, $timeou
         };
 
         /* Load google maps for autocomplete */
-        coGlobal.LoadMapsApi();
+        //coGlobal.LoadMapsApi();
 
         /*  --------------------- PUSH NOTIFICATION --------------------- */
 

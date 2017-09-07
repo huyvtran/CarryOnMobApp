@@ -1,23 +1,42 @@
 <ion-view view-title="Pubblica la richiesta" class="pub-rqgt-page"
           ng-controller="ReqGoodTransportCtrl as vm">
-    <ion-content ng-class="{expanded:$scope.isExpanded}"> 
+    <ion-content ng-class="{expanded:$scope.isExpanded}">
         <div class="hero pax-bkg-img-content" style="background-image: url('img/con_reqTransportList_BW.jpg');">
-                        
+
             <div class="content list search-bar-content static">
 
                 <div class="item search-bar item-input-inset item-button-right">
                     <label class="item-input-wrapper">
-                        <!--<input type="text" id="req-filter-from" placeholder="Partenza..." ng-model="vm.newRqgtFrom">-->
+                        <input type="text" placeholder="Partenza..."
+                               google-autocomplete-suggestion location="vm.newFrom"
+                               on-selection="vm.onFromAddressSelection(location)"
+                               ng-model="vm.newFrom" required>
+                    </label>
+                </div>
+
+                <div class="item search-bar item-input-inset item-button-right">
+                    <label class="item-input-wrapper">
+                        <input type="text" placeholder="Destinazione..."
+                               google-autocomplete-suggestion location="vm.newTo"
+                               on-selection="vm.onDestAddressSelection(location)"
+                               ng-model="vm.newTo" required>
+                    </label>
+                </div>
+
+                <!--<div class="item search-bar item-input-inset item-button-right">
+                    <label class="item-input-wrapper">
+                        <input type="text" id="req-filter-from" placeholder="Partenza..." ng-model="vm.newRqgtFrom">
                         <input type="text" id="req-filter-from" placeholder="Partenza..." ng-focus="vm.focusedFrom()">
-                        <!--<input type="text" id="req-filter-from" placeholder="Partenza..." ng-model="vm.autocompleteFrom">-->
-                        <!--<input type="text" id="req-filter-from" placeholder="Partenza...">-->
+                        <input type="text" id="req-filter-from" placeholder="Partenza..." ng-model="vm.autocompleteFrom">
+                        <input type="text" id="req-filter-from" placeholder="Partenza...">
                     </label>
                 </div>
                 <div class="item search-bar item-input-inset item-button-right">
-                    <label class="item-input-wrapper"> 
+                    <label class="item-input-wrapper">
                         <input type="text" id="req-filter-to" placeholder="Destinazione..." ng-model="vm.newRqgtTo">
                     </label>
-                </div>
+                </div>-->
+
                 <div class="item search-bar item-input-inset item-button-right">
                     <label class="item-input-wrapper">
                         <input type="text" id="req-filter-date" placeholder="Data..." ng-model="vm.newRqgtDateShown"

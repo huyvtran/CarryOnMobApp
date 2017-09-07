@@ -19,7 +19,7 @@
         /* Link to pax global object to allow binding to the view */
         vm.coGlobal = coGlobal;
 
-        vm.setMotion = function () {            
+        vm.setMotion = function () {
             $timeout(function () {
                 ionicMaterialMotion.blinds({
                     startVelocity: 3000
@@ -27,48 +27,59 @@
             }, 100);
         };
 
+        /* From Address */
+        vm.onFromAddressSelection = function (location) {
+            vm.autocompleteFrom = location;
+            vm.newFrom = location.formatted_address;
+        };
 
+        /* Destination Address */
+        vm.onDestAddressSelection = function (location) {
+            vm.autocompleteTo = location;
+            vm.newTo = location.formatted_address;
+        };
+        
 
         /* Address Autocomplete callback initialization */
         vm.initAutocomplete = function () {
-            stopTime = $interval(
-                function () {
-                    try {
-                        if (google != undefined) {
-                            // Search filter FROM - Create the autocomplete object
-                            vm.autocompleteFrom = new google.maps.places.Autocomplete(
-                                /** @type {!HTMLInputElement} */(document.getElementById('req-filter-from')),
-                                { types: ['geocode'] });
-                            /* bind the event place_changed which it's trigger when you needed */
-                            google.maps.event.addListener(vm.autocompleteFrom, 'place_changed', function () {
-                                $("#req-filter-from").val(this.getPlace().formatted_address);
-                                //var data = $("#req-filter-from").serialize();
-                                //console.log('data');
-                                //show_submit_data(data);
-                            });
-
-                            // Search filter TO - Create the autocomplete object
-                            vm.autocompleteTo = new google.maps.places.Autocomplete(
-                                /** @type {!HTMLInputElement} */(document.getElementById('req-filter-to')),
-                                { types: ['geocode'] });
-                            $interval.cancel(stopTime);
-                        }
-                    }
-                    catch (err) {
-                        console.log('google is not defined yet');
-                    }
-                }, 1000);
-        }
-
-        vm.focusedFrom = function () {
-            container = document.getElementById('req-filter-from');
-            // disable ionic data tab
-            angular.element(container).attr('data-tap-disabled', 'true');
-            // leave input field if google-address-entry is selected
-            angular.element(container).on("click", function () {
-                document.getElementById('type-selector').blur();
-            });
+            //            stopTime = $interval(
+            //                function () {
+            //                    try {
+            //                        if (google != undefined) {
+            //                            // Search filter FROM - Create the autocomplete object
+            //                            vm.autocompleteFrom = new google.maps.places.Autocomplete(
+            //                                /** @type {!HTMLInputElement} */(document.getElementById('req-filter-from')),
+            //                                { types: ['geocode'] });
+            //                            /* bind the event place_changed which it's trigger when you needed */
+            //                            google.maps.event.addListener(vm.autocompleteFrom, 'place_changed', function () {
+            //                                $("#req-filter-from").val(this.getPlace().formatted_address);
+            //                                //var data = $("#req-filter-from").serialize();
+            //                                //console.log('data');
+            //                                //show_submit_data(data);
+            //                            });
+            //
+            //                            // Search filter TO - Create the autocomplete object
+            //                            vm.autocompleteTo = new google.maps.places.Autocomplete(
+            //                                /** @type {!HTMLInputElement} */(document.getElementById('req-filter-to')),
+            //                                { types: ['geocode'] });
+            //                            $interval.cancel(stopTime);
+            //                        }
+            //                    }
+            //                    catch (err) {
+            //                        console.log('google is not defined yet');
+            //                    }
+            //                }, 1000);
         };
+        //
+        //        vm.focusedFrom = function () {
+        //            container = document.getElementById('req-filter-from');
+        //            // disable ionic data tab
+        //            angular.element(container).attr('data-tap-disabled', 'true');
+        //            // leave input field if google-address-entry is selected
+        //            angular.element(container).on("click", function () {
+        //                document.getElementById('type-selector').blur();
+        //            });
+        //        };
 
         /* go to next page where rqgt details are inserted */
         vm.selectHasCamionOrHasGood = function () {
@@ -118,11 +129,11 @@
         vm.goToTransportSearchList = function () {
             Rqgt.currentRqgt = {
                 from: vm.autocompleteFrom,
-                fromShown: vm.newRqgtFrom,
+                fromShown: vm.newFrom,
                 to: vm.autocompleteTo,
-                toShown: vm.newRqgtTo,
-                date: vm.newRqgtDate,
-                dateShown: vm.newRqgtDateShown
+                toShown: vm.newTo,
+                date: vm.newDate,
+                dateShown: vm.newDateShown
             };
             /* First set service loaded results to false, in order to load new results */
             //$state.go('app.rqgt-details-publish');
@@ -131,14 +142,14 @@
 
         /* Go to rqgt search camion view or publish request */
         vm.goToRqgtSearchList = function () {
-            Rqgt.currentRqgt = {
+            Rqgt.currentTransport = {
                 from: vm.autocompleteFrom,
-                fromShown: vm.newRqgtFrom,
+                fromShown: vm.newFrom,
                 to: vm.autocompleteTo,
-                toShown: vm.newRqgtTo,
-                date: vm.newRqgtDate,
-                dateShown: vm.newRqgtDateShown
-            };
+                toShown: vm.newTo,
+                date: vm.newDate,
+                dateShown: vm.newDateShown
+            };            
             /* First set service loaded results to false, in order to load new results */
             Rqgt.loadedRqgtResults = false;
             /* Go to SEARCH_RQGT view */
@@ -341,7 +352,9 @@
                 vm.initAllIsLoadedFlags();
                 coGlobal.NotificationOccurred = false;
             };
+
             vm.initAutocomplete();
+
             vm.loadHeartBooks();
             vm.loadDetailsForHeartBooks();
             vm.loadBestSellers();

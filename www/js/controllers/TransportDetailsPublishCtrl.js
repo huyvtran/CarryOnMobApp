@@ -7,7 +7,7 @@
         
         var vm = this;
 
-        vm.currentRqgt = {};
+        vm.currentTransport = {};
         
         /* Inform coGlobal about the current controller instance */
         coGlobal.currentVm = vm;
@@ -43,9 +43,9 @@
         };
 
         /* Load current Rqgt details */
-        vm.loadCurrentRqgtDetails = function () {
+        vm.loadCurrentTransportDetails = function () {
             /* Take current Rqgt details from service */
-            vm.currentRqgt = Rqgt.currentRqgt;
+            vm.currentTransport = Rqgt.currentTransport;
         };
 
         vm.showLoading = function () {
@@ -67,7 +67,7 @@
 
         /* Init controller function */
         vm.initController = function () {
-            vm.loadCurrentRqgtDetails();
+            vm.loadCurrentTransportDetails();
         };
 
         /* Call init controller */
