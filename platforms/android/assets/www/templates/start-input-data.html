@@ -3,6 +3,10 @@
     <ion-content ng-class="{expanded:$scope.isExpanded}">
         <div class="hero pax-bkg-img-content" style="background-image: url('img/con_reqTransportList_BW.jpg');">
 
+            <div class="slogan-container">
+                <img src="img/Harlow_slog_2.png" alt="CarryOn" />
+            </div>
+
             <div class="content list search-bar-content static">
 
                 <div class="item search-bar item-input-inset item-button-right">
@@ -40,7 +44,7 @@
                 <div class="item search-bar item-input-inset item-button-right">
                     <label class="item-input-wrapper">
                         <input type="text" id="req-filter-date" placeholder="Data..." ng-model="vm.newRqgtDateShown"
-                               ng-mousedown="vm.openDatePicker()">
+                               ng-mousedown="vm.openDatePicker()" readonly>
                     </label>
                 </div>
                 <!--<div class="item search-bar item-input-inset item-button-right">

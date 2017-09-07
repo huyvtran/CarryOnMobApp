@@ -130,9 +130,31 @@ div.header-overlay-btn-ctn {
         background-color: #ECBA16;
     }
 
-    .button.button-contact.btn-mail {
+    .button.button-contact.btn-mail { 
         background-color: #006EEB;
     }
+
+
+label.item.item-input.item-floating-label {
+    padding-top: 10px !important;
+    padding-bottom: 0px !important;
+    padding-left: 0px !important;
+}
+
+.list.rqgt-publish-content label span{
+    font-weight: bold;
+}
+
+.list.rqgt-publish-content label span{
+    font-weight: bold;
+}
+
+label.item.item-input.item-floating-label input{
+    padding-bottom: 0px !important;
+    padding-left: 8px !important;
+    padding-top: 0px !important;
+    margin-bottom: -5px;
+}
 
 /* MENU
 ======================================================================================================*/
@@ -145,6 +167,15 @@ div.header-overlay-btn-ctn {
 /* FIRST CHOICE
 ======================================================================================================*/
 
+
+div.slogan-container {
+    text-align: center;
+}
+
+div.slogan-container img{
+    padding-top: 8px;
+    width: 93%;
+}
 
 ion-view.no-header {
     z-index: 50000 !important;
@@ -539,7 +570,7 @@ p {
 }
 
 .content.search-bar-content {
-    top: 28%;
+    top: 30%;
 }
 
 .search-bar-content .item-input-inset {
@@ -589,7 +620,7 @@ div.proceed {
 /* Pubblica la richiesta dettaglio
 ==================================*/
 div.rqgt-publish-content {
-    padding: 20px;
+    padding: 10px 20px 20px 20px;
 }
 
 div.item-description {
