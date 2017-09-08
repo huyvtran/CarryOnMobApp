@@ -719,6 +719,7 @@ div.pub-btn {
 
 .menu.menu-left * {
     font-weight: bold;
+    background-color: rgb(223, 226, 241);
 }
 
 .item-radio input:checked ~ .item-content {

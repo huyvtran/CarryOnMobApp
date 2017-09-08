@@ -38,6 +38,7 @@
             /* TO BE DEVELOPED */
             $timeout(function () {
                 $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REQ_GOOD_TRANSPORT].sref);
+                //$state.go('home');
                 $ionicLoading.hide();
             }, 2000)
         };
