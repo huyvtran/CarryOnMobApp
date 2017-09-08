@@ -163,6 +163,36 @@ label.item.item-input.item-floating-label input {
     flex-direction: column;
 }
 
+ion-side-menu .avatar {  
+    text-align: center;
+    background-color: white;
+}
+
+ion-side-menu div.list a:first-child, ion-side-menu .list ion-item.item{
+    margin-top: 0;
+    margin-bottom: 0;
+    border-top: 1px solid white;
+    color: #104A93;
+}
+
+.avatar img {
+    width: 65%;
+    height: 65%;
+    margin-top: 10px;
+}
+
+.menu .bar.bar-header.expanded {
+    min-height: 135px !important;
+}
+
+.has-expanded-header {
+    top: 135px !important;
+}
+
+.menu-bottom.logo-menu-title {
+    font-size: 20px;
+}
+
 
 /* FIRST CHOICE
 ======================================================================================================*/
@@ -717,10 +747,29 @@ div.pub-btn {
     transition: all .5s ease-in-out;
 }
 
-.menu.menu-left * {
+ion-side-menu ion-content#menuContainer {
     font-weight: bold;
-    background-color: rgb(223, 226, 241);
+    background-color: rgb(223, 226, 241) !important;
 }
+
+ion-side-menu ion-content .btn-howItWorks-container {
+    position: absolute;
+    bottom: 20px;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+}
+
+    ion-side-menu ion-content .btn-howItWorks-container btn {
+        width: 180px;
+        color: #104A93;
+        font-weight: bold;
+        border: 1px solid #104A93;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
 
 .item-radio input:checked ~ .item-content {
     background: transparent;

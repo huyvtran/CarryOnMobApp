@@ -7,7 +7,7 @@
             <ion-nav-buttons side="left">
                 <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
             </ion-nav-buttons>
-            <!--<ion-nav-buttons side="right"> 
+            <!--<ion-nav-buttons side="right">
                 <div ng-if="isCurrentViewState(coGlobal.CoStatusEnum.RQGT_DETAILS_PUBLISH)">
                     <button ng-click="manageHeaderRightClick()"
                             class="button button-small button-energized ink header-pub-btn">
@@ -15,7 +15,7 @@
                     </button>
                 </div>
             </ion-nav-buttons>-->
-            <div class="header-overlay-btn-ctn" 
+            <div class="header-overlay-btn-ctn"
                  ng-if="isCurrentViewState(coGlobal.CoStatusEnum.RQGT_DETAILS_PUBLISH) || isCurrentViewState(coGlobal.CoStatusEnum.TRANSPORT_DETAILS_PUBLISH)">
                 <button ng-click="manageHeaderRightClick()"
                         class="button button-small button-energized ink header-pub-btn">
@@ -30,22 +30,24 @@
         <ion-nav-view name="menuContent"></ion-nav-view>
     </ion-side-menu-content>
     <ion-side-menu side="left">
-        <ion-header-bar class="expanded">
-            <img src="img/pax-logo.jpg" class="avatar motion spin fade logo-menu-img">
+        <ion-header-bar class="expanded" style="background-image: url('img/material12.jpg');">
+            <div class="avatar motion spin fade logo-menu-img">
+                <img src="img/con-icon1.jpg" alt="CarryOn">
+            </div>
             <div class="menu-bottom logo-menu-title">
-                Librairie Pax
+                CarryOn - compl. gratuito
             </div>
         </ion-header-bar>
-        <ion-content class="stable-bg has-expanded-header">
+        <ion-content class="stable-bg has-expanded-header" id="menuContainer">
             <ion-list>
-                <ion-item nav-clear menu-close ui-sref="app.profile">
-                    Conseils
+                <ion-item nav-clear menu-close ng-click="goToState(coGlobal.CoStatusEnum.SEARCH_RQGT)">
+                    Lista richieste trasporto merci
                 </ion-item>
-                <ion-item nav-clear menu-close ui-sref="app.events">
-                    Agenda
+                <ion-item nav-clear menu-close ng-click="goToState(coGlobal.CoStatusEnum.SEARCH_TRANSPORT)">
+                    Lista mezzi disponibili
                 </ion-item>
-                <ion-item nav-clear menu-close ui-sref="app.search-transport">
-                    Meilleures ventes
+                <ion-item nav-clear menu-close ng-click="goToState(undefined)">
+                    Richiedi notifiche
                 </ion-item>
                 <!--<ion-item nav-clear menu-close ui-sref="app.book-details">
                     Poche du mois
@@ -53,10 +55,17 @@
                 <!--<ion-item nav-clear menu-close ui-sref="app.about-pax">
                     Param&egrave;tres
                 </ion-item>-->
-                <ion-item nav-clear menu-close ui-sref="app.about-pax">
-                    Informations
+                <ion-item nav-clear menu-close ng-click="goToState(undefined)">
+                    Contatti e Informazioni
                 </ion-item>
             </ion-list>
+            <div class="btn-howItWorks-container">
+                <div class="h-flex flex-center">
+                    <button id="btn-publish-transport-av" class="button button-small button-positive-900 ink btn-small-padding">
+                        Come funziona
+                    </button>
+                </div>
+            </div>
         </ion-content>
     </ion-side-menu>
 </ion-side-menus>

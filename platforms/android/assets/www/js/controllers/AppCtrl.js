@@ -43,6 +43,13 @@
             };
         };
 
+        /* Go to state whish view state enum is passed as parameter */
+        $scope.goToState = function (statusEnum) {
+            if (statusEnum) {
+                $state.go(coGlobal.CoStatusEnum.properties[statusEnum].sref);
+            };
+        };
+
         $scope.hideNavBar = function () {
             document.getElementsByTagName('ion-nav-bar')[0].style.display = 'none';
         };
