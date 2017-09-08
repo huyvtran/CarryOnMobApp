@@ -27,6 +27,8 @@
             }, 100);
         };
 
+        vm.countryCode = 'IT';
+
         /* From Address */
         vm.onFromAddressSelection = function (location) {
             vm.autocompleteFrom = location;
@@ -167,7 +169,7 @@
             setLabel: 'Vai',
             //todayLabel: 'Today',
             showTodayButton: false,
-            closeLabel: 'Prima Possibile',
+            closeLabel: 'Prima Possibile', 
             mondayFirst: false,
             weeksList: ["S", "M", "T", "W", "T", "F", "S"],
             monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],

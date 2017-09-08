@@ -1,4 +1,4 @@
-<ion-view view-title="Trasporti richiesti" ng-controller="SearchRqgtCtrl as vm">
+<ion-view view-title="Trasporti richiesti" ng-controller="SearchRqgtCtrl as vm" class="search-rqgt-view">
     <ion-content ng-class="{expanded:$scope.isExpanded}">
 
         <!-- Loader -->
@@ -21,11 +21,15 @@
                             <div class="av-img-container">
                                 <div class="desc-container-v-flex">
                                     <div class="desc-img">
-                                        <img src="https://dummyimage.com/200x200/3f3e73/fff.jpg&text=LR" />
-                                        <img src="img/m3.png" />
+                                        <!--<img src="https://dummyimage.com/200x200/3f3e73/fff.jpg&text=LR" />
+                                        <img src="img/m3.png" />-->
+                                        <div class="img-div">{{rqgt.volRequired}} m&sup3;</div>
                                     </div>
                                     <div class="desc-vol">
-                                        Luca R.
+                                        Volume
+                                    </div>
+                                    <div class="desc-vol">
+                                       Stimato
                                     </div>
                                 </div>
                             </div>
@@ -38,7 +42,7 @@
                                         Da:
                                     </div>
                                     <div class="desc-adr-content">
-                                        {{rqgt.addressFromFormattedStr}}
+                                        {{rqgt.addressFromShortFormattedStr}}
                                     </div>
                                 </div>
                                 <div class="desc-adr">
@@ -46,7 +50,7 @@
                                         A:
                                     </div>
                                     <div class="desc-adr-content">
-                                        {{rqgt.addressDestFormattedStr}}
+                                        {{rqgt.addressDestShortFormattedStr}}
                                     </div>
                                 </div>
                                 <div class="desc-adr">
@@ -59,10 +63,10 @@
                                 </div>
                                 <div class="desc-adr">
                                     <div class="desc-adr">
-                                        <strong>Volume stimato:&nbsp;</strong>
+                                        <strong>Richiedente:&nbsp;</strong>
                                     </div>
                                     <div class="desc-adr-content">
-                                        {{rqgt.volRequired}} &nbsp; m&sup3;
+                                        Luca R.
                                     </div>
                                 </div>
                             </div>

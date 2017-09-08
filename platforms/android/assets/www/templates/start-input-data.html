@@ -13,6 +13,7 @@
                     <label class="item-input-wrapper">
                         <input type="text" placeholder="Partenza..."
                                google-autocomplete-suggestion location="vm.newFrom"
+                               country-code="{{vm.countryCode}}"
                                on-selection="vm.onFromAddressSelection(location)"
                                ng-model="vm.newFrom" required>
                     </label>
@@ -22,6 +23,7 @@
                     <label class="item-input-wrapper">
                         <input type="text" placeholder="Destinazione..."
                                google-autocomplete-suggestion location="vm.newTo"
+                               country-code="{{vm.countryCode}}"
                                on-selection="vm.onDestAddressSelection(location)"
                                ng-model="vm.newTo" required>
                     </label>
