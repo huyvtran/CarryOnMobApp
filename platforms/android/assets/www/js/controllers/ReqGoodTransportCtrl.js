@@ -29,6 +29,13 @@
 
         vm.countryCode = 'IT';
 
+        /* ATTENZIONE ALLE PERFORMANCES qui !! */
+        $("body").on("click", ".ionic_datepicker_popup .popup-buttons button", function () {
+            /* Date 'prima possibile' clicked, then set model value */
+            vm.newRqgtDate = undefined;
+            vm.newRqgtDateShown = 'Prima Possibile';
+        });
+
         /* From Address */
         vm.onFromAddressSelection = function (location) {
             vm.autocompleteFrom = location;
@@ -40,7 +47,7 @@
             vm.autocompleteTo = location;
             vm.newTo = location.formatted_address;
         };
-        
+
 
         /* Address Autocomplete callback initialization */
         vm.initAutocomplete = function () {
@@ -87,11 +94,11 @@
         vm.selectHasCamionOrHasGood = function () {
             /* Check if all fields have been correctly filled */
             /* TO BE TOGGLED */
-            if (!true) {
-                //if (!vm.newRqgtFrom && !vm.newRqgtTo) {
+            //if (!true) {
+            if (!vm.autocompleteFrom && !vm.autocompleteTo) {
                 var alertPopup = $ionicPopup.alert({
                     title: 'Dati non completi',
-                    template: 'Inserisci l\'indirizzo di partenza o di destinazione'
+                    template: 'Inserisci una localita\' di partenza o di destinazione'
                 });
                 return;
             }
@@ -134,8 +141,8 @@
                 fromShown: vm.newFrom,
                 to: vm.autocompleteTo,
                 toShown: vm.newTo,
-                date: vm.newDate,
-                dateShown: vm.newDateShown
+                date: vm.newRqgtDate,
+                dateShown: vm.newRqgtDateShown
             };
             /* First set service loaded results to false, in order to load new results */
             //$state.go('app.rqgt-details-publish');
@@ -149,9 +156,9 @@
                 fromShown: vm.newFrom,
                 to: vm.autocompleteTo,
                 toShown: vm.newTo,
-                date: vm.newDate,
-                dateShown: vm.newDateShown
-            };            
+                date: vm.newRqgtDate,
+                dateShown: vm.newRqgtDateShown
+            };
             /* First set service loaded results to false, in order to load new results */
             Rqgt.loadedRqgtResults = false;
             /* Go to SEARCH_RQGT view */
@@ -159,6 +166,28 @@
         };
 
         /* Init datepicker */
+        //vm.datepickerDate = {
+        //    callback: function (val) {  //Mandatory
+        //        vm.newRqgtDate = new Date(val);
+        //        vm.newRqgtDateShown = vm.newRqgtDate.toLocaleDateString('it-IT');
+        //    },
+        //    inputDate: new Date(),
+        //    titleLabel: 'Seleziona la data',
+        //    setLabel: 'Vai',
+        //    //todayLabel: 'Today',
+        //    showTodayButton: false,
+        //    closeLabel: 'Prima Possibile',
+        //    mondayFirst: false,
+        //    weeksList: ["S", "M", "T", "W", "T", "F", "S"],
+        //    monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
+        //    templateType: 'popup',
+        //    from: new Date(2012, 8, 1),
+        //    to: new Date(2018, 8, 1),
+        //    dateFormat: 'dd MMMM yyyy',
+        //    closeOnSelect: true,
+        //    disableWeekdays: []
+        //};
+
         vm.datepickerDate = {
             callback: function (val) {  //Mandatory
                 vm.newRqgtDate = new Date(val);
@@ -166,20 +195,21 @@
             },
             inputDate: new Date(),
             titleLabel: 'Seleziona la data',
-            setLabel: 'Vai',
+            //setLabel: 'Prima Possibile',
             //todayLabel: 'Today',
-            showTodayButton: false,
-            closeLabel: 'Prima Possibile', 
-            mondayFirst: false,
-            weeksList: ["S", "M", "T", "W", "T", "F", "S"],
-            monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
+            closeLabel: 'Prima Possibile',
+            mondayFirst: true,
+            weeksList: ["D", "L", "M", "W", "G", "V", "S"],
+            monthsList: ["Gen", "Feb", "Marzo", "Aprile", "Magg", "Giugno", "Lugl", "Agos", "Sett", "Ott", "Nov", "Dic"],
             templateType: 'popup',
             from: new Date(2012, 8, 1),
             to: new Date(2018, 8, 1),
+            showTodayButton: false,
             dateFormat: 'dd MMMM yyyy',
             closeOnSelect: true,
             disableWeekdays: []
         };
+
 
         /* Init datepicker */
         vm.openDatePicker = function () {
