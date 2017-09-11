@@ -1,6 +1,19 @@
 <ion-view view-title="Trasporti disponibili" ng-controller="SearchTransportCtrl as vm">
     <ion-content ng-class="{expanded:$scope.isExpanded}">
-        <div class="item card-item card-rqgt" ng-repeat="transp in vm.heartBooks">
+
+        <!-- Loader -->
+        <div class="loader-css-material" ng-if="!vm.rqgtServ.loadedTransportResults">
+            <div class="showbox">
+                <div class="loader">
+                    <svg class="circular" viewBox="25 25 50 50">
+                        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="item card-item card-rqgt" ng-repeat="transp in vm.heartBooks"
+             ng-if="vm.transportServ.loadedTransportResults">
             <div ng-click="vm.goToTransportDetails(transp)" class="card stable-bg ink ink-dark">
                 <div class="item-card-container">
                     <div class="av-and-desc-container">
@@ -8,15 +21,17 @@
                             <div class="av-img-container">
                                 <div class="desc-container-v-flex">
                                     <div class="desc-img">
-                                        <img src="img/sansa.jpg" />
+                                        <!--<img src="https://dummyimage.com/200x200/3f3e73/fff.jpg&text=LR" />
+                                <img src="img/m3.png" />-->
+                                        <div class="img-div">{{transp.volAvailable}} m&sup3;</div>
                                     </div>
                                     <div class="desc-vol">
-                                        Luca R.
+                                        Volume
+                                    </div>
+                                    <div class="desc-vol">
+                                        Disponibile
                                     </div>
                                 </div>
-                                <!--<div class="desc-adr">
-                                    Img here
-                                </div>-->
                             </div>
                         </div>
                         <div class="v-sep"></div>
@@ -27,7 +42,7 @@
                                         Da:
                                     </div>
                                     <div class="desc-adr-content">
-                                        Via Rossi 3, Milano 21000
+                                        {{transp.addressFromShortFormattedStr}}
                                     </div>
                                 </div>
                                 <div class="desc-adr">
@@ -35,7 +50,7 @@
                                         A:
                                     </div>
                                     <div class="desc-adr-content">
-                                        Via cardine 12, Ravenna 45170
+                                        {{transp.addressDestShortFormattedStr}}
                                     </div>
                                 </div>
                                 <div class="desc-adr">
@@ -48,10 +63,10 @@
                                 </div>
                                 <div class="desc-adr">
                                     <div class="desc-adr">
-                                        <strong>Volume stimato:&nbsp;</strong>
+                                        <strong>Richiedente:&nbsp;</strong>
                                     </div>
                                     <div class="desc-adr-content">
-                                        10 &sup3;
+                                        Luca R.
                                     </div>
                                 </div>
                             </div>
@@ -59,17 +74,10 @@
                     </div>
                 </div>
             </div>
+            
         </div>
     </ion-content>
     <div class="pub-rqgt-search-list footer">
-        <!--<div class="item item-button-right">
-            <div>
-                Non trovi il trasporto?
-            </div>
-            <button class="button button-balanced ink">
-                Pubblica un annuncio
-            </button>
-        </div>-->
         <div class="title-and-filter double-padding-x v-flex">
             <div>
                 <h4 class="content title-announcements">

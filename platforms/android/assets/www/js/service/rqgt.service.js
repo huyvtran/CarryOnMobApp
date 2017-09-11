@@ -69,33 +69,10 @@
                     deferred.reject(respData);
                 };
             }, function (response) {
-                ErrorMng.showSystemError(respData.resultMessage);
+                ErrorMng.showSystemError();
             });
 
             return deferred.promise;
-
-
-            ///* ---- START ---- MOCK TO BE REPLACED  ----  */
-            //setTimeout(function () {
-            //    self.loadedRqgtResults = true;
-            //    self.currentRqgtResults = getMockRqgtResults();
-            //    deferred.resolve({ resultData: self.currentRqgtResults, operationResult: true });
-            //}, 2000);
-            //return deferred.promise;
-            ///* ---- END ---- MOCK TO BE REPLACED  ----  */
-        };
-
-
-
-
-        /* -------------------------------------------------------------------------------------------------------- */
-        /* -----------------------                          MOCK DATA                        ---------------------- */
-        /* -------------------------------------------------------------------------------------------------------- */
-
-
-        /* -------------------------------------------------------------------------------------------------------- */
-        /* -----------------------                      END MOCK DATA                        ---------------------- */
-        /* -------------------------------------------------------------------------------------------------------- */
-
+        };        
     }
 })();
