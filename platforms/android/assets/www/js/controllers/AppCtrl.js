@@ -1,9 +1,9 @@
 ﻿(function () {
 
     app.controller('AppCtrl', AppCtrl);
-    AppCtrl.$inject = ['$scope', '$ionicModal', '$ionicPopover', '$timeout', '$state'];
+    AppCtrl.$inject = ['$scope', '$ionicModal', '$ionicPopover', '$timeout', '$state', 'Principal'];
     
-    function AppCtrl($scope, $ionicModal, $ionicPopover, $timeout, $state) {
+    function AppCtrl($scope, $ionicModal, $ionicPopover, $timeout, $state, Principal) {
 
         // Form data for the login modal
         $scope.loginData = {};
@@ -41,6 +41,15 @@
             if (coGlobal.currentVm) {
                 coGlobal.currentVm.manageHeaderRightClick();
             };
+        }; 
+
+        /* Test to be removed */
+        $scope.testLogin = function () {
+            Principal.login({username: 'test', password: 'test'}).then(function () {
+                vm.error = !Principal.isAuthenticated();
+            }, function () {
+                vm.error = true;
+            });
         };
 
         /* Go to state whish view state enum is passed as parameter */

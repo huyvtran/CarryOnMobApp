@@ -5,9 +5,9 @@
 // Debug
 //coGlobal.appUrl = 'http://localhost:57493/';
 // IIS
-//coGlobal.appUrl = 'http://localhost:8083/';
+coGlobal.appUrl = 'http://localhost:8083/';
 // Azure
-coGlobal.appUrl = 'http://carryonwebapi.azurewebsites.net/';
+//coGlobal.appUrl = 'http://carryonwebapi.azurewebsites.net/';
 
 coGlobal.getPaxUrl = function getAppUrl() {
     return 'http://paxwebapi.azurewebsites.net/';
@@ -94,6 +94,55 @@ coGlobal.BookListTypeEnum = {
     HEART: 0,
     BEST_SELLERS: 1
 };
+
+/* Go to default state */
+coGlobal.goToDefaultDocumentState = function ($state) {
+    $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REQ_GOOD_TRANSPORT].sref);
+};
+
+/* ---- APP CURRENT USER ---- */
+coGlobal.user = {};
+
+/* getter */
+coGlobal.getUserData = function getUserData() {
+    if (coGlobal.user.data) {
+        /* Take data from local session */
+        return coGlobal.user.data;
+    } else {
+        /* act consequently, for the moment return undefined */
+        return undefined;
+    };
+};
+
+/* setter */
+coGlobal.setUserData = function setUserData(userData, $state) {
+    if (!userData) { /* Clean local session data */ };
+    coGlobal.user.data = userData;
+    if ($state != undefined) {
+        coGlobal.customizeUIByCompany($state);
+    };
+    coGlobal.user.setCurrentCompanyDescription();
+};
+
+/* USER NAME - Get user name */
+coGlobal.getAppUserName = function getAppUserName() {
+    var userData = coGlobal.getUserData();
+    if (userData) {
+        return userData.username;
+    } else {
+        return '';
+    };
+};
+
+/* Set Account Data */
+coGlobal.setAccountData = function setAccountData(account) {
+    if (coGlobal.user) {
+        coGlobal.user.account = account;
+    };
+};
+
+/* ---- END - APP CURRENT USER ---- */
+
 
 /* Add replaceAll method */
 String.prototype.replaceAll = function (search, replacement) {

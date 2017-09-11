@@ -143,7 +143,7 @@ app.run(function ($ionicPlatform, $state, $ionicPopup, ionicMaterialInk, $timeou
     });
 })
 
-app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, ionicDatePickerProvider) {
+app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, ionicDatePickerProvider, $httpProvider) {
 
     /* Configure date picker */
     var datePickerObj = {
@@ -167,6 +167,44 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
 
     // Turn off caching for demo simplicity's sake
     $ionicConfigProvider.views.maxCache(0);
+
+//    /* Add interceptor */
+//    $httpProvider.interceptors.push(httpInterceptor);
+//    function httpInterceptor($q, $injector) {
+//        var _request = function (config) {
+//            var userData = coGlobal.getUserData();
+//            //var userCompany = coGlobal.user.getCurrentCompany();
+//            if (userData) {
+//                config.headers = config.headers || {}; 
+//                /* Fill authorization data */
+//                config.headers['Content-Type'] = 'application/json';
+//                config.headers['auth-scheme'] = 'token';
+//                // token here
+//                config.headers['token'] = userData.token; 
+//            };
+//
+//            return config;
+//        };
+//        
+//        // response method
+//        var _response = function (response) {            
+//            return response;
+//        };
+//
+//        var _responseError = function (rejection) {            
+//            return rejection;
+//        };
+//
+//        return {
+//            request: _request,
+//            response: _response,
+//            responseError: _responseError,
+//        };
+//    };
+//    
+//    /* Interceptor to fill authentication data on each http send 
+//    call and to check if response error is 401 (UNAUTHORIZED) */
+//    httpInterceptor.$inject = ['$q', '$injector'];
 
     /*
     // Turn off back button text
