@@ -21,13 +21,13 @@
         };
 
         /* Init available transport list */
-        vm.initLoadTransportResults = function initLoadTransportResults() {
+        vm.initLoadTransportResults = function initLoadTransportResults() { 
             /* If data has not been loaded yet, then load it */
             if (Transport.loadedTransportResults == false) {
                 Transport.getTransportFiltered().then(
                 function (result) {
                     /* Refresh variables scope */
-                    coGlobal.runDigest($scope);
+                    coGlobal.runDigest($scope); 
                 },
                 function (error) {
                     // handle error here
@@ -38,10 +38,10 @@
         /* Go to transport available showdetails */
         vm.goToTransportDetails = function (transp) {
             /* Set current transport */
-            Transport.currentTransportDetails = transp;
+            Transport.currentTrAvDetails = transp;
 
             /* go to transport details page */
-            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.TR_AV_DETAILS].sref);
+            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.TRANSPORTAV_DETAILS_SHOW].sref);
         };
 
         $("#btn-publish-rqgt").on("click", function () {
@@ -50,7 +50,7 @@
 
         /* Go to publish rqgt page */
         vm.goTransportDetailsPublished = function () {
-            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.TR_AV_DETAILS].sref);
+            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.TRANSPORTAV_DETAILS_SHOW].sref);
         };
         /*  --------------------------------------------------------------------------------------------------------------------------------------------*/
         /*  ------------------------------------------------------     INIT FUNCTIONS     ------------------------------------------------------*/

@@ -1,0 +1,138 @@
+<ion-view view-title="Dettagli trasporto" ng-controller="TransportAvDetailsShowCtrl as vm" class="desc-show-container-view">
+    <ion-content ng-class="{expanded:$scope.isExpanded}" class="desc-show-container">
+        <div class="hero slide-up" style="background-image: url('img/material5.jpg');">
+            <div class="content desc-show-container">
+                <!--<div class="avatar" style="background-image: url('img/daenerys.jpg');"></div>-->
+
+                <div class="v-flex">
+                    <div class="">
+                        <div class="av-img-container">
+                            <div class="h-flex">
+                                <div class="desc-img-container">
+                                    <div class="desc-img v-flex flex-center">
+                                        <img src="img/daenerys.jpg" />
+                                    </div>
+                                </div>
+                                <div class="desc-vol v-flex flex-center">
+                                    Luca R.
+                                </div>
+                            </div>
+                            <!--<div class="desc-adr">
+                                Img here
+                            </div>-->
+                        </div>
+                    </div>
+
+                    <div class="desc-container">
+                        <div class="desc-container-v-flex">
+                            <div class="desc-adr">
+                                <div class="desc-adr-label">
+                                    Da&nbsp;:
+                                </div>
+                                <div class="desc-adr-content">
+                                    {{vm.currentTrAv.addressFromFormattedStr}}
+                                </div>
+                            </div>
+                            <div class="desc-adr">
+                                <div class="desc-adr-label">
+                                    A&nbsp;:
+                                </div>
+                                <div class="desc-adr-content">
+                                    {{vm.currentTrAv.addressDestFormattedStr}}
+                                </div>
+                            </div>
+                            <div class="desc-adr">
+                                <div class="desc-adr-label">
+                                    <strong><i class="icon ion-clock"></i>&nbsp;:</strong>
+                                </div>
+                                <div class="desc-adr-content">
+                                    Prima possibile
+                                </div>
+                            </div>
+                            <!--<div class="desc-adr">
+                                <div class="desc-adr">
+                                    <strong>Volume stimato:&nbsp;</strong>
+                                </div>
+                                <div class="desc-adr-content">
+                                    10 &sup3;
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <h4 class="content title-more-info">Informazioni aggiuntive:</h4>
+        <div class="list animate-fade-slide-in-right">
+            <div class="more-info-main-container">
+                <!-- Volume stimato -->
+                <div class="more-info-item-container">
+                    <div class="more-info-item-label">
+                        Volume stimato:
+                    </div>
+                    <div class="more-info-item-value value-inline">
+                        {{vm.currentTrAv.volAvailable}} &nbsp; m&sup3;
+                    </div>
+                </div>
+                <!-- Cella frigo disponibile -->
+                <div class="more-info-item-container">
+                    <div class="more-info-item-label">
+                        Cella frigo disponibile:
+                    </div>
+                    <div class="more-info-item-value value-inline">
+                        No
+                    </div>
+                </div>
+                <!-- Fragile -->
+                <div class="more-info-item-container">
+                    <div class="more-info-item-label">
+                        Trasporto fragile possibile:
+                    </div>
+                    <div class="more-info-item-value value-inline">
+                        Si'
+                    </div>
+                </div>
+                <!-- Descrizione merce -->
+                <div class="more-info-item-container v-flex">
+                    <div class="more-info-item-label">
+                        Descrizione disponibilita':
+                    </div>
+                    <div class="more-info-item-value">
+                        Lorem Ipsum un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e per preparare un testo campione. Lorem Ipsum un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum considerato il testo segnaposto standard sin dal sedicesimo secolo.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <div class="pub-rqgt-search-list footer">
+        <div class="title-and-filter contact-container v-flex">
+            <div class="title-and-btn-contact-container">
+                <h4 class="content title-announcements">
+                    <strong>Contatti</strong>
+                </h4>
+            </div>
+            <div class="btn-contact-container">
+                <div class="h-flex flex-space-around">
+                    <div>
+                        <div class="button button-contact btn-mail">
+                            <a href="mailto:test@test.com">
+                                <i class="icon ion-android-mail"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="button button-contact btn-whatsup"
+                             ng-click="vm.sendWhatsapp('0518575896')">
+                            <i class="icon ion-social-whatsapp-outline"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="button button-contact btn-call-phone"
+                             ng-click="vm.callNumber('0518575896')"><i class="icon ion-android-call"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</ion-view>

@@ -2,7 +2,7 @@
     <ion-content ng-class="{expanded:$scope.isExpanded}">
 
         <!-- Loader -->
-        <div class="loader-css-material" ng-if="!vm.rqgtServ.loadedTransportResults">
+        <div class="loader-css-material" ng-if="!vm.transportServ.loadedTransportResults">
             <div class="showbox">
                 <div class="loader">
                     <svg class="circular" viewBox="25 25 50 50">
@@ -12,7 +12,7 @@
             </div>
         </div>
 
-        <div class="item card-item card-rqgt" ng-repeat="transp in vm.heartBooks"
+        <div class="item card-item card-rqgt" ng-repeat="transp in vm.transportServ.currentTransportResults"
              ng-if="vm.transportServ.loadedTransportResults">
             <div ng-click="vm.goToTransportDetails(transp)" class="card stable-bg ink ink-dark">
                 <div class="item-card-container">

@@ -39,7 +39,7 @@ coGlobal.CoStatusEnum = {
     REQ_GOOD_TRANSPORT: 0,
     SEARCH_TRANSPORT: 1,
     RQGT_DETAILS_PUBLISH: 2,
-    TR_AV_DETAILS: 3,
+    TRANSPORTAV_DETAILS_SHOW: 3,
     SEARCH_RQGT: 4,
     TRANSPORT_DETAILS_PUBLISH: 5,
     RQGT_DETAILS_SHOW: 6,
@@ -63,10 +63,10 @@ coGlobal.CoStatusEnum = {
             templateUrl: 'templates/rqgt-details-publish.html'
         },
         3: {
-            translate_id: 'view.filters.TR_AV_DETAILS', value: '', translate_main_title_id: 'menu.pageTitles.TR_AV_DETAILS',
+            translate_id: 'view.filters.TRANSPORTAV_DETAILS_SHOW', value: '', translate_main_title_id: 'menu.pageTitles.TRANSPORTAV_DETAILS_SHOW',
             sref: 'app.tr-av-details',
             url: '/trAvDetails',
-            templateUrl: 'templates/tr-av-details.html'
+            templateUrl: 'templates/transportav-details-show.html'
         },
         4: {
             translate_id: 'view.filters.SEARCH_RQGT', value: '', translate_main_title_id: 'menu.pageTitles.SEARCH_RQGT',

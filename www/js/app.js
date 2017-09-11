@@ -185,10 +185,10 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
     var RQGT_DETAILS_PUBLISH_sref = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.RQGT_DETAILS_PUBLISH].sref;
     var RQGT_DETAILS_PUBLISH_url = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.RQGT_DETAILS_PUBLISH].url;
     var RQGT_DETAILS_PUBLISH_templateUrl = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.RQGT_DETAILS_PUBLISH].templateUrl;
-    /* TR_AV_DETAILS */
-    var TR_AV_DETAILS_sref = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.TR_AV_DETAILS].sref;
-    var TR_AV_DETAILS_url = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.TR_AV_DETAILS].url;
-    var TR_AV_DETAILS_templateUrl = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.TR_AV_DETAILS].templateUrl;
+    /* TRANSPORTAV_DETAILS_SHOW */
+    var TRANSPORTAV_DETAILS_SHOW_sref = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.TRANSPORTAV_DETAILS_SHOW].sref;
+    var TRANSPORTAV_DETAILS_SHOW_url = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.TRANSPORTAV_DETAILS_SHOW].url;
+    var TRANSPORTAV_DETAILS_SHOW_templateUrl = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.TRANSPORTAV_DETAILS_SHOW].templateUrl;
     /* SEARCH_RQGT */
     var SEARCH_RQGT_sref = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_RQGT].sref;
     var SEARCH_RQGT_url = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_RQGT].url;
@@ -322,11 +322,11 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
         }
     }
 })
-.state(TR_AV_DETAILS_sref, {
-    url: TR_AV_DETAILS_url,
+.state(TRANSPORTAV_DETAILS_SHOW_sref, {
+    url: TRANSPORTAV_DETAILS_SHOW_url,
     views: {
         'menuContent': {
-            templateUrl: TR_AV_DETAILS_templateUrl
+            templateUrl: TRANSPORTAV_DETAILS_SHOW_templateUrl
         },
         'fabContent': {
             template: ''

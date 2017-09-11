@@ -94,8 +94,8 @@
         vm.selectHasCamionOrHasGood = function () {
             /* Check if all fields have been correctly filled */
             /* TO BE TOGGLED */
-            //if (!true) {
-            if (!vm.autocompleteFrom && !vm.autocompleteTo) {
+            if (!true) {
+            //if (!vm.autocompleteFrom && !vm.autocompleteTo) {
                 var alertPopup = $ionicPopup.alert({
                     title: 'Dati non completi',
                     template: 'Inserisci una localita\' di partenza o di destinazione'
