@@ -43,6 +43,7 @@ coGlobal.CoStatusEnum = {
     SEARCH_RQGT: 4,
     TRANSPORT_DETAILS_PUBLISH: 5,
     RQGT_DETAILS_SHOW: 6,
+    LOGIN_SIGNIN: 7,
     properties: {
         0: {
             translate_id: 'view.filters.REQ_GOOD_TRANSPORT', value: '', translate_main_title_id: 'menu.pageTitles.REQ_GOOD_TRANSPORT',
@@ -85,6 +86,12 @@ coGlobal.CoStatusEnum = {
             sref: 'app.rqgt-details-show',
             url: '/rqgtDetailsShow',
             templateUrl: 'templates/rqgt-details-show.html'
+        },
+        7: {
+            translate_id: 'view.filters.LOGIN_SIGNIN', value: '', translate_main_title_id: 'menu.pageTitles.LOGIN_SIGNIN',
+            sref: 'app.rqgt-details-show',
+            url: '/loginSignin',
+            templateUrl: 'templates/login-signin.html'
         }
     }
 };
@@ -102,6 +109,7 @@ coGlobal.goToDefaultDocumentState = function ($state) {
 
 /* ---- APP CURRENT USER ---- */
 coGlobal.user = {};
+coGlobal.isUserLogged = false;
 
 /* getter */
 coGlobal.getUserData = function getUserData() {
@@ -113,22 +121,23 @@ coGlobal.getUserData = function getUserData() {
         return undefined;
     };
 };
-
+ 
 /* setter */
 coGlobal.setUserData = function setUserData(userData, $state) {
-    if (!userData) { /* Clean local session data */ };
+    if (userData) { 
+        window.localStorage.setItem("coUserName", userData.uten);
+        window.localStorage.setItem("coPass", userData.pass);
+        window.localStorage.setItem("coToken", userData.token);
+        window.localStorage.setItem("coNome", userData.nome);
     coGlobal.user.data = userData;
-    if ($state != undefined) {
-        coGlobal.customizeUIByCompany($state);
     };
-    coGlobal.user.setCurrentCompanyDescription();
 };
 
 /* USER NAME - Get user name */
 coGlobal.getAppUserName = function getAppUserName() {
     var userData = coGlobal.getUserData();
     if (userData) {
-        return userData.username;
+        return userData.nome;
     } else {
         return '';
     };

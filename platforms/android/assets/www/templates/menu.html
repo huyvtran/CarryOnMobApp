@@ -35,11 +35,36 @@
                 <img src="img/con-icon1.jpg" alt="CarryOn">
             </div>
             <div class="menu-bottom logo-menu-title">
-                CarryOn - compl. gratuito
+                {{getHelloUserTitle()}}
             </div>
         </ion-header-bar>
         <ion-content class="stable-bg has-expanded-header" id="menuContainer">
             <ion-list>
+                <ion-item nav-clear ng-if="coGlobal.isUserLogged">
+                    <div class="hello-user-accordion">
+                        <div class="tab">
+                            <!--<input id="tab-one" type="checkbox" name="tabs">-->
+                            <div class="h-flex flex-space-between acc-title-container" ng-click="isPersonalItemsExpanded = !isPersonalItemsExpanded">
+                                <label for="tab-one">Area Personale</label>
+                                <i class="icon ion-arrow-right-b" ng-class="{isOpened: isPersonalItemsExpanded}"></i>
+                            </div>
+                            <div class="tab-content" ng-class="{isOpened: isPersonalItemsExpanded}">
+                                <ion-item nav-clear menu-close>
+                                    <span class="sm-w">Le mie richieste trasporto merci</span>
+                                </ion-item>
+                                <ion-item nav-clear menu-close>
+                                    <span class="sm-w">I miei annunci mezzi disponibili</span>
+                                </ion-item>
+                                <ion-item nav-clear menu-close>
+                                    <span class="sm-w">Gestione notifiche</span>
+                                </ion-item>
+                                <ion-item nav-clear menu-close>
+                                    <span class="sm-w">Dati Utente</span>
+                                </ion-item>
+                            </div>
+                        </div>
+                    </div>
+                </ion-item>
                 <ion-item nav-clear menu-close ng-click="goToState(coGlobal.CoStatusEnum.SEARCH_RQGT)">
                     Lista richieste trasporto merci
                 </ion-item>
@@ -59,13 +84,10 @@
                     Contatti e Informazioni
                 </ion-item>
             </ion-list>
-            <div class="btn-howItWorks-container">
+            <div class="btn-howItWorks-container" ng-if="!coGlobal.isUserLogged">
                 <div class="h-flex flex-center">
                     <button id="btn-publish-transport-av" class="button button-small button-positive-900 ink btn-small-padding">
                         Come funziona
-                    </button>
-                    <button ng-click="testLogin()" class="button button-small button-positive-900 ink btn-small-padding">
-                        test login
                     </button>
                 </div>
             </div>

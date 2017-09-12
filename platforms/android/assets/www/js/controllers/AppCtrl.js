@@ -26,6 +26,8 @@
         // Layout Methods
         //////////////////////////////////////// 
 
+        $scope.isPersonalItemsExpanded = false;
+
         /* Return true if the current view status is the one passed as parameter */
         $scope.isCurrentViewState = function (coStatusEnum_toCompare) {
             srefToCompare = coGlobal.CoStatusEnum.properties[coStatusEnum_toCompare].sref;
@@ -42,16 +44,13 @@
                 coGlobal.currentVm.manageHeaderRightClick();
             };
         }; 
-
-        /* Test to be removed */
-        $scope.testLogin = function () {
-            Principal.login({username: 'test', password: 'test'}).then(function () {
-                vm.error = !Principal.isAuthenticated();
-            }, function () {
-                vm.error = true;
-            });
+       
+        /*  */
+        $scope.getHelloUserTitle = function () {
+            var userName = coGlobal.getAppUserName();
+            return userName ? 'Ciao, ' + userName : 'CarryOn - complet. gratuito';
         };
-
+        
         /* Go to state whish view state enum is passed as parameter */
         $scope.goToState = function (statusEnum) {
             if (statusEnum) {

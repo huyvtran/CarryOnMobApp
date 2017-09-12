@@ -1,0 +1,96 @@
+<ion-view view-title="Trasporti disponibili" ng-controller="SearchTransportCtrl as vm">
+    <ion-content ng-class="{expanded:$scope.isExpanded}">
+
+        <!-- Loader -->
+        <div class="loader-css-material" ng-if="!vm.transportServ.loadedTransportResults">
+            <div class="showbox">
+                <div class="loader">
+                    <svg class="circular" viewBox="25 25 50 50">
+                        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="item card-item card-rqgt" ng-repeat="transp in vm.transportServ.currentTransportResults"
+             ng-if="vm.transportServ.loadedTransportResults">
+            <div ng-click="vm.goToTransportDetails(transp)" class="card stable-bg ink ink-dark">
+                <div class="item-card-container">
+                    <div class="av-and-desc-container">
+                        <div class="av-container">
+                            <div class="av-img-container">
+                                <div class="desc-container-v-flex">
+                                    <div class="desc-img">
+                                        <!--<img src="https://dummyimage.com/200x200/3f3e73/fff.jpg&text=LR" />
+                                <img src="img/m3.png" />-->
+                                        <div class="img-div">{{transp.volAvailable}} m&sup3;</div>
+                                    </div>
+                                    <div class="desc-vol">
+                                        Volume
+                                    </div>
+                                    <div class="desc-vol">
+                                        Disponibile
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="v-sep"></div>
+                        <div class="desc-container">
+                            <div class="desc-container-v-flex pl8">
+                                <div class="desc-adr">
+                                    <div class="desc-adr-label">
+                                        Da:
+                                    </div>
+                                    <div class="desc-adr-content">
+                                        {{transp.addressFromShortFormattedStr}}
+                                    </div>
+                                </div>
+                                <div class="desc-adr">
+                                    <div class="desc-adr-label">
+                                        A:
+                                    </div>
+                                    <div class="desc-adr-content">
+                                        {{transp.addressDestShortFormattedStr}}
+                                    </div>
+                                </div>
+                                <div class="desc-adr">
+                                    <div class="desc-adr-label">
+                                        <strong><i class="icon ion-clock"></i></strong>
+                                    </div>
+                                    <div class="desc-adr-content">
+                                        Prima possibile
+                                    </div>
+                                </div>
+                                <div class="desc-adr">
+                                    <div class="desc-adr">
+                                        <strong>Richiedente:&nbsp;</strong>
+                                    </div>
+                                    <div class="desc-adr-content">
+                                        Luca R.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </ion-content>
+    <div class="pub-rqgt-search-list footer">
+        <div class="title-and-filter double-padding-x v-flex">
+            <div>
+                <h4 class="content title-announcements">
+                    Non trovi il trasporto?
+                </h4>
+            </div>
+            <div>
+                <div class="btn-announcement-container">
+                    <button id="btn-publish-rqgt" class="button button-small button-energized ink">
+                        Pubblica l'annuncio
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-view>

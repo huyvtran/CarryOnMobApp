@@ -83,20 +83,19 @@
             self.loading = true;
             var req = {
                 method: 'POST',
-                url: coGlobal.getAppUrl() + 'Account/Login',
+                url: coGlobal.getAppUrl() + 'api/Account/Login',
                 data: {
-                    model: {
-                        Username: account.username,
-                        Password: account.password
-                    }
+                    Username: account.username,
+                    Password: account.password,
+                    Token: account.token
                 }
             };
             return $http(req).then(function (response) {
-                if (response.data.data != null) {
+                if (response.data.operationResult != null) {
                     self.authenticate(response.data);
                     /* Fill local storage data */
                     //localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName });
-                    coGlobal.setUserData(response.data.data, $state);
+                    coGlobal.setUserData(response.data.resultData, $state);
                     /* Then fill all companies with associated JSON file properties (name of each file is 'companyId'.json) */
                     if (!callbackGoState) {
                         callbackGoState = self.goStateDeferred;
@@ -118,7 +117,7 @@
         self.logout = function (avoidRedirect) {
             var req = {
                 method: 'POST',
-                url: coGlobal.getAppUrl() + 'Account/Logout',
+                url: coGlobal.getAppUrl() + 'api/Account/Logout',
                 data: {
                 }
             };
@@ -144,7 +143,7 @@
             var basicUrl = coGlobal.getAppUrl() + '/#/user/recover-pswd';
             var req = {
                 method: 'POST',
-                url: coGlobal.getAppUrl() + 'Account/ForgotPassword',
+                url: coGlobal.getAppUrl() + 'api/Account/ForgotPassword',
                 data: {
                     model: {
                         'Email': account.email
@@ -159,7 +158,7 @@
             var deferredLoadItems = $q.defer();
             var req = {
                 method: 'POST',
-                url: coGlobal.getAppUrl() + 'Account/ChangePassword',
+                url: coGlobal.getAppUrl() + 'api/Account/ChangePassword',
                 data: {
                     oldPassword: oldPassword,
                     newPassword: newPassword
@@ -182,7 +181,7 @@
             var deferredLoadItems = $q.defer();
             var req = {
                 method: 'POST',
-                url: coGlobal.getAppUrl() + 'Account/RegisterEmail',
+                url: coGlobal.getAppUrl() + 'api/Account/RegisterEmail',
                 data: {
                     userName: userName,
                     email: email
@@ -205,7 +204,7 @@
             var deferredLoadItems = $q.defer();
             var req = {
                 method: 'POST',
-                url: coGlobal.getAppUrl() + 'Account/ResetPassword',
+                url: coGlobal.getAppUrl() + 'api/Account/ResetPassword',
                 data: {
                     resetPswdUserName: resetPswdUserName,
                     resetPswdToken: resetPswdToken,

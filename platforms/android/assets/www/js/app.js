@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 var app = angular.module('starter', ['ionic', 'ionic-material', 'ionMdInput', 'ion-floating-menu', 'ionic-datepicker', 'ion-google-autocomplete']);
 
-app.run(function ($ionicPlatform, $state, $ionicPopup, ionicMaterialInk, $timeout) {
+app.run(function ($ionicPlatform, $state, $ionicPopup, ionicMaterialInk, $timeout, Principal) {
 
     /* When platform is ready, then add notification plug in registration */
     window.ionic.Platform.ready(function () {
@@ -14,6 +14,17 @@ app.run(function ($ionicPlatform, $state, $ionicPopup, ionicMaterialInk, $timeou
         /* Hide splash screen */
         if (navigator && navigator.splashscreen) {
             navigator.splashscreen.hide();
+        };
+         
+        /* Load credential data from session, if present */
+        var coToken = window.localStorage.getItem("coToken");
+        var coNome = window.localStorage.getItem("coNome");
+        if (coToken && coToken) {
+            Principal.login({ username: undefined, password: undefined, token: coToken }).then(function () {
+                coGlobal.isUserLogged = true;
+            }, function () {
+                //alert('log in failed');
+            });
         };
 
         /* Load google maps for autocomplete */
@@ -168,43 +179,43 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
     // Turn off caching for demo simplicity's sake
     $ionicConfigProvider.views.maxCache(0);
 
-//    /* Add interceptor */
-//    $httpProvider.interceptors.push(httpInterceptor);
-//    function httpInterceptor($q, $injector) {
-//        var _request = function (config) {
-//            var userData = coGlobal.getUserData();
-//            //var userCompany = coGlobal.user.getCurrentCompany();
-//            if (userData) {
-//                config.headers = config.headers || {}; 
-//                /* Fill authorization data */
-//                config.headers['Content-Type'] = 'application/json';
-//                config.headers['auth-scheme'] = 'token';
-//                // token here
-//                config.headers['token'] = userData.token; 
-//            };
-//
-//            return config;
-//        };
-//        
-//        // response method
-//        var _response = function (response) {            
-//            return response;
-//        };
-//
-//        var _responseError = function (rejection) {            
-//            return rejection;
-//        };
-//
-//        return {
-//            request: _request,
-//            response: _response,
-//            responseError: _responseError,
-//        };
-//    };
-//    
-//    /* Interceptor to fill authentication data on each http send 
-//    call and to check if response error is 401 (UNAUTHORIZED) */
-//    httpInterceptor.$inject = ['$q', '$injector'];
+    /* Add interceptor */
+    $httpProvider.interceptors.push(httpInterceptor);
+    function httpInterceptor($q, $injector) {
+        var _request = function (config) {
+            var userData = coGlobal.getUserData();
+            //var userCompany = coGlobal.user.getCurrentCompany();
+            if (userData) {
+                config.headers = config.headers || {}; 
+                /* Fill authorization data */
+                config.headers['Content-Type'] = 'application/json';
+                config.headers['auth-scheme'] = 'token';
+                // token here
+                config.headers['token'] = userData.token; 
+            };
+
+            return config;
+        };
+        
+        // response method
+        var _response = function (response) {            
+            return response;
+        };
+
+        var _responseError = function (rejection) {            
+            return rejection;
+        };
+
+        return {
+            request: _request,
+            response: _response,
+            responseError: _responseError,
+        };
+    };
+    
+    /* Interceptor to fill authentication data on each http send 
+    call and to check if response error is 401 (UNAUTHORIZED) */
+    httpInterceptor.$inject = ['$q', '$injector'];
 
     /*
     // Turn off back button text

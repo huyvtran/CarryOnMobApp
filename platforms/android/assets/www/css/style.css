@@ -156,6 +156,72 @@ label.item.item-input.item-floating-label input {
     margin-bottom: -5px;
 }
 
+/* MENU USER SECTION ACCORDION
+======================================================================================================*/
+
+/* Acordeon styles */
+div.hello-user-accordion .tab {
+    position: relative;
+    margin-bottom: 1px;
+    width: 100%;
+    overflow: hidden;
+}
+
+div.hello-user-accordion input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+}
+
+div.hello-user-accordion label {
+    position: relative;
+    display: block;
+    font-weight: bold;
+}
+
+div.hello-user-accordion .tab-content {
+    margin-left: 8px;
+    max-height: 0;
+    overflow: hidden;
+    -webkit-transition: max-height .35s;
+    -o-transition: max-height .35s;
+    transition: max-height .35s;
+}
+
+div.hello-user-accordion ion-item span.sm-w {
+    font-weight: normal;
+}
+
+/* :checked */
+div.hello-user-accordion input:checked ~ .tab-content,
+div.hello-user-accordion .tab-content.isOpened {
+    margin-top: 8px;
+    max-height: 10em;
+}
+/* Icon */
+div.hello-user-accordion label::after {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    width: 3em;
+    height: 3em;
+    line-height: 3;
+    text-align: center;
+    -webkit-transition: all .35s;
+    -o-transition: all .35s;
+    transition: all .35s;
+}
+
+.acc-title-container {
+    padding-right: 5px;
+}
+
+.acc-title-container .icon.isOpened{
+    transform: rotate(90deg);
+}
+
+
 /* MENU
 ======================================================================================================*/
 .filter-container {
@@ -163,12 +229,12 @@ label.item.item-input.item-floating-label input {
     flex-direction: column;
 }
 
-ion-side-menu .avatar {  
+ion-side-menu .avatar {
     text-align: center;
     background-color: white;
 }
 
-ion-side-menu div.list a:first-child, ion-side-menu .list ion-item.item{
+ion-side-menu div.list a:first-child, ion-side-menu .list ion-item.item {
     margin-top: 0;
     margin-bottom: 0;
     border-top: 1px solid white;
@@ -339,8 +405,8 @@ div.first-choice-separator {
 }
 
 .search-rqgt-view .av-container .av-img-container {
-        width: 60px;
-    }
+    width: 60px;
+}
 
 .search-rqgt-view .desc-adr {
     margin-bottom: 1px;
@@ -367,6 +433,10 @@ div.h-flex {
     div.h-flex.flex-space-around {
         justify-content: space-around;
     }
+
+    div.h-flex.flex-space-between {
+        justify-content: space-between;
+    }    
 
 div.v-flex {
     display: flex;
