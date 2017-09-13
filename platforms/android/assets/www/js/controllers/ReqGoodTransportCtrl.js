@@ -107,6 +107,10 @@
             vm.showActionSheet_CG();
         }
 
+        vm.testGoLogin = function () {
+            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.LOGIN_SIGNIN].sref);
+        };
+
         /* Show Action sheet for camion or good selection */
         vm.showActionSheet_CG = function () {
             vm.hideSheet = $ionicActionSheet.show({

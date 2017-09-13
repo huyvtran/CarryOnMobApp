@@ -89,7 +89,7 @@ coGlobal.CoStatusEnum = {
         },
         7: {
             translate_id: 'view.filters.LOGIN_SIGNIN', value: '', translate_main_title_id: 'menu.pageTitles.LOGIN_SIGNIN',
-            sref: 'app.rqgt-details-show',
+            sref: 'app.login-signin',
             url: '/loginSignin',
             templateUrl: 'templates/login-signin.html'
         }

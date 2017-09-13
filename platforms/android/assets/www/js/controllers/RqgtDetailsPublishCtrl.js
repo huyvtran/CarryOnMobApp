@@ -33,13 +33,19 @@
 
         /* Publish rqgt details finalization */
         vm.manageHeaderRightClick = function () {
+            /* MOCK to be removed */
+            if (true) {
+                //if (!coGlobal.isUserLogged) {
+                $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.LOGIN_SIGNIN].sref);
+            };
+
             vm.showLoading();
             /* Simulate calling service and backend */
             /* TO BE DEVELOPED */
             $timeout(function () {
                 $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REQ_GOOD_TRANSPORT].sref);
                 $ionicLoading.hide();
-            }, 2000)
+            }, 2000);
         };
 
         /* Load current Rqgt details */
@@ -52,17 +58,6 @@
             $ionicLoading.show({
                 template: '<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'
             });
-        };
-
-        /* publish rqgt item */
-        vm.publishItem = function () {
-            vm.showLoading();
-            /* Simulate calling service and backend */
-            /* TO BE DEVELOPED */
-            $timeout(function () {
-                $state.go('app.reqGoodTransport');
-                $ionicLoading.hide();
-            }, 2000)
         };
 
         /* Init controller function */

@@ -250,6 +250,10 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
     var RQGT_DETAILS_SHOW_sref = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.RQGT_DETAILS_SHOW].sref;
     var RQGT_DETAILS_SHOW_url = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.RQGT_DETAILS_SHOW].url;
     var RQGT_DETAILS_SHOW_templateUrl = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.RQGT_DETAILS_SHOW].templateUrl;
+    /* LOGIN_SIGNIN */
+    var LOGIN_SIGNIN_sref = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.LOGIN_SIGNIN].sref;
+    var LOGIN_SIGNIN_url = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.LOGIN_SIGNIN].url;
+    var LOGIN_SIGNIN_templateUrl = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.LOGIN_SIGNIN].templateUrl;
 
     $stateProvider.state('app', {
         url: '/app',
@@ -404,11 +408,22 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
         }
     }
 })
-        .state(RQGT_DETAILS_SHOW_sref, {
+        .state(RQGT_DETAILS_SHOW_sref, { 
             url: RQGT_DETAILS_SHOW_url,
             views: {
                 'menuContent': {
                     templateUrl: RQGT_DETAILS_SHOW_templateUrl
+                },
+                'fabContent': {
+                    template: ''
+                }
+            }
+        })
+        .state(LOGIN_SIGNIN_sref, {
+            url: LOGIN_SIGNIN_url,
+            views: {
+                'menuContent': {
+                    templateUrl: LOGIN_SIGNIN_templateUrl
                 },
                 'fabContent': {
                     template: ''

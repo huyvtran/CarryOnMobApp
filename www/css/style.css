@@ -259,6 +259,33 @@ ion-side-menu div.list a:first-child, ion-side-menu .list ion-item.item {
     font-size: 20px;
 }
 
+/* LOGIN
+======================================================================================================*/
+
+
+.log-sign-btn-container {
+    margin-top: 40px;
+}
+
+.log-slogan-title-container {
+    padding-top: 20px;
+    margin-bottom: 4px;
+}
+
+.log-slogan-title-container h4 {
+    text-align: center;
+    color: #575757;
+    font-weight: bold;
+    font-style: oblique;
+    font-size: 17px;
+    margin-bottom: 0;
+}
+
+.very-first-access h4, .very-first-access h5 {
+    color: #575757;
+    margin-bottom: 2px;
+}
+
 
 /* FIRST CHOICE
 ======================================================================================================*/
@@ -788,24 +815,6 @@ div.pub-btn {
 .list.search-result-list {
     padding-bottom: 20px;
 }
-
-/* Login
-==================================*/
-.app-icon {
-    background-color: #fff;
-    background: url('../img/crown.jpg') center;
-    background-size: cover;
-    border-radius: 50%;
-    height: 125px;
-    margin: 0 auto;
-    width: 125px;
-}
-
-.social-login {
-    position: fixed;
-    bottom: 0;
-}
-
 
 
 /* Menu */
