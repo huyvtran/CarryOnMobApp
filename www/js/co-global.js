@@ -5,9 +5,9 @@
 // Debug
 //coGlobal.appUrl = 'http://localhost:57493/';
 // IIS
-coGlobal.appUrl = 'http://localhost:8083/';
+//coGlobal.appUrl = 'http://localhost:8083/';
 // Azure
-//coGlobal.appUrl = 'http://carryonwebapi.azurewebsites.net/';
+coGlobal.appUrl = 'http://carryonwebapi.azurewebsites.net/';
 
 coGlobal.getPaxUrl = function getAppUrl() {
     return 'http://paxwebapi.azurewebsites.net/';
@@ -45,6 +45,8 @@ coGlobal.CoStatusEnum = {
     RQGT_DETAILS_SHOW: 6,
     LOGIN_SIGNIN: 7,
     REGISTER_USER: 8,
+    RESET_PSWD: 9,
+    PERSONAL_DATA: 10,
     properties: {
         0: {
             translate_id: 'view.filters.REQ_GOOD_TRANSPORT', value: '', translate_main_title_id: 'menu.pageTitles.REQ_GOOD_TRANSPORT',
@@ -99,6 +101,18 @@ coGlobal.CoStatusEnum = {
             sref: 'app.register-user',
             url: '/registerUser',
             templateUrl: 'templates/register-user.html'
+        },
+        9: {
+            translate_id: 'view.filters.RESET_PSWD', value: '', translate_main_title_id: 'menu.pageTitles.RESET_PSWD',
+            sref: 'app.reset-pswd',
+            url: '/resetPswd',
+            templateUrl: 'templates/reset-pswd.html'
+        },
+        10: {
+            translate_id: 'view.filters.PERSONAL_DATA', value: '', translate_main_title_id: 'menu.pageTitles.PERSONAL_DATA',
+            sref: 'app.personal-data',
+            url: '/personalData',
+            templateUrl: 'templates/personal-data.html'
         }
     }
 };

@@ -1,4 +1,4 @@
-<ion-view view-title="Inserisci i tuoi dati" ng-controller="RegisterUserCtrl as vm" class="log-sign-view">
+<ion-view view-title="Dati Personali" ng-controller="PersonalDataCtrl as vm" class="log-sign-view">
     <ion-content ng-class="{expanded:$scope.isExpanded}" class="log-sign-page-content">
        
         <div class="list rqgt-publish-content">
@@ -28,8 +28,8 @@
 
             <div class="log-sign-btn-container">
                 <button class="button button-block button-positive ink register-btn"
-                        ng-click="vm.signIn()">
-                    Procedi
+                        ng-click="vm.editUserInfo()">
+                    Aggiorna Dati
                 </button>
             </div>
         </div>

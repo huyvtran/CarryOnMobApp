@@ -159,6 +159,10 @@ label.item.item-input.item-floating-label input {
 /* MENU USER SECTION ACCORDION
 ======================================================================================================*/
 
+.item.personal-area-item {
+    padding-bottom: 0px;
+}
+
 /* Acordeon styles */
 div.hello-user-accordion .tab {
     position: relative;
@@ -196,7 +200,7 @@ div.hello-user-accordion ion-item span.sm-w {
 div.hello-user-accordion input:checked ~ .tab-content,
 div.hello-user-accordion .tab-content.isOpened {
     margin-top: 8px;
-    max-height: 10em;
+    max-height: none;
 }
 /* Icon */
 div.hello-user-accordion label::after {
@@ -272,7 +276,7 @@ ion-side-menu div.list a:first-child, ion-side-menu .list ion-item.item {
     margin-bottom: 4px;
 }
 
-.log-slogan-title-container h4 {
+.log-slogan-title-container h4 {  
     text-align: center;
     color: #575757;
     font-weight: bold;

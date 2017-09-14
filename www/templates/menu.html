@@ -40,7 +40,7 @@
         </ion-header-bar>
         <ion-content class="stable-bg has-expanded-header" id="menuContainer">
             <ion-list>
-                <ion-item nav-clear ng-if="coGlobal.isUserLogged">
+                <ion-item nav-clear ng-if="coGlobal.isUserLogged" class="personal-area-item">
                     <div class="hello-user-accordion">
                         <div class="tab">
                             <!--<input id="tab-one" type="checkbox" name="tabs">-->
@@ -58,7 +58,7 @@
                                 <ion-item nav-clear menu-close>
                                     <span class="sm-w">Gestione notifiche</span>
                                 </ion-item>
-                                <ion-item nav-clear menu-close>
+                                <ion-item nav-clear menu-close ng-click="goToState(coGlobal.CoStatusEnum.PERSONAL_DATA)">
                                     <span class="sm-w">Dati Utente</span>
                                 </ion-item>
                             </div>

@@ -37,10 +37,16 @@
             /* Simulate calling service and backend */
             /* TO BE DEVELOPED */
             $timeout(function () {
-                $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REQ_GOOD_TRANSPORT].sref);
-                //$state.go('home');
                 $ionicLoading.hide();
-            }, 2000)
+                var alertPopup = $ionicPopup.alert({
+                    title: 'Operazione riuscita',
+                    template: 'La tua richiesta è stata pubblicata. Sarai ora reindirizzato alla pagina iniziale.'
+                });
+
+                alertPopup.then(function (res) {
+                    $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REQ_GOOD_TRANSPORT].sref);
+                });
+            }, 2000);
         };
 
         /* Load current Rqgt details */
@@ -61,9 +67,16 @@
             /* Simulate calling service and backend */
             /* TO BE DEVELOPED */
             $timeout(function () {
-                $state.go('app.reqGoodTransport');
                 $ionicLoading.hide();
-            }, 2000)
+                var alertPopup = $ionicPopup.alert({
+                    title: 'Operazione riuscita',
+                    template: 'La tua richiesta è stata pubblicata. Sarai ora reindirizzato alla pagina iniziale.'
+                });
+
+                alertPopup.then(function (res) {
+                    $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REQ_GOOD_TRANSPORT].sref);
+                });
+            }, 2000);
         };
 
         /* Init controller function */

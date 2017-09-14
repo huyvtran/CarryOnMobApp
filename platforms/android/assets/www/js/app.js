@@ -51,16 +51,14 @@ app.run(function ($ionicPlatform, $state, $ionicPopup, ionicMaterialInk, $timeou
         //FCMPlugin.subscribeToTopic( topic, successCallback(msg), errorCallback(err) );
         //All devices are subscribed automatically to 'all' and 'ios' or 'android' topic respectively.
         //Must match the following regular expression: "[a-zA-Z0-9-_.~%]{1,900}".
-        //FCMPlugin.subscribeToTopic('paxNewHeratBooks');
-        //FCMPlugin.subscribeToTopic('testPaxNewHeratBooks');
-        window.FirebasePlugin.subscribe("paxNewHeratBooks");
-        window.FirebasePlugin.subscribe("testPaxNewHeratBooks");
-        window.FirebasePlugin.subscribe("testPaxNewHeratBooks2");
+        //window.FirebasePlugin.subscribe("paxNewHeratBooks");
+        //window.FirebasePlugin.subscribe("testPaxNewHeratBooks");
+        //window.FirebasePlugin.subscribe("testPaxNewHeratBooks2");
 
         /* Notification popup */
         var showNotificationPopup = function () {
             var alertPopup = $ionicPopup.alert({
-                title: 'Nouveaux livres apparu'
+                title: 'Notifica ricevuta'
             });
 
             $timeout(function () {
@@ -258,8 +256,16 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
     var REGISTER_USER_sref = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REGISTER_USER].sref;
     var REGISTER_USER_url = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REGISTER_USER].url;
     var REGISTER_USER_templateUrl = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REGISTER_USER].templateUrl;
+    /* RESET_PSWD */
+    var RESET_PSWD_sref = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.RESET_PSWD].sref;
+    var RESET_PSWD_url = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.RESET_PSWD].url;
+    var RESET_PSWD_templateUrl = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.RESET_PSWD].templateUrl;
+    /* PERSONAL_DATA */
+    var PERSONAL_DATA_sref = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.PERSONAL_DATA].sref;
+    var PERSONAL_DATA_url = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.PERSONAL_DATA].url;
+    var PERSONAL_DATA_templateUrl = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.PERSONAL_DATA].templateUrl;
 
-    $stateProvider.state('app', {
+     $stateProvider.state('app', {
         url: '/app',
         abstract: true,
         templateUrl: 'templates/menu.html',
@@ -445,6 +451,28 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
                 }
             }
         })
+        .state(RESET_PSWD_sref, {
+            url: RESET_PSWD_url,
+            views: {
+                'menuContent': {
+                    templateUrl: RESET_PSWD_templateUrl
+                },
+                'fabContent': {
+                    template: ''
+                }
+            }
+        })
+         .state(PERSONAL_DATA_sref, {
+             url: PERSONAL_DATA_url,
+             views: {
+                 'menuContent': {
+                     templateUrl: PERSONAL_DATA_templateUrl
+                 },
+                 'fabContent': {
+                     template: ''
+                 }
+             }
+         })
         .state('app.rqgt-search-list', {
             url: '/SearchTransportCtrl',
             views: {
