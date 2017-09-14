@@ -254,6 +254,10 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
     var LOGIN_SIGNIN_sref = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.LOGIN_SIGNIN].sref;
     var LOGIN_SIGNIN_url = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.LOGIN_SIGNIN].url;
     var LOGIN_SIGNIN_templateUrl = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.LOGIN_SIGNIN].templateUrl;
+    /* REGISTER_USER */
+    var REGISTER_USER_sref = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REGISTER_USER].sref;
+    var REGISTER_USER_url = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REGISTER_USER].url;
+    var REGISTER_USER_templateUrl = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REGISTER_USER].templateUrl;
 
     $stateProvider.state('app', {
         url: '/app',
@@ -424,6 +428,17 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
             views: {
                 'menuContent': {
                     templateUrl: LOGIN_SIGNIN_templateUrl
+                },
+                'fabContent': {
+                    template: ''
+                }
+            }
+        })
+        .state(REGISTER_USER_sref, {
+            url: REGISTER_USER_url,
+            views: {
+                'menuContent': {
+                    templateUrl: REGISTER_USER_templateUrl
                 },
                 'fabContent': {
                     template: ''

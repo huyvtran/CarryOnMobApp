@@ -1,15 +1,17 @@
 ﻿(function () {
 
-    app.controller('LoginSigninCtrl', LoginSigninCtrl);
-    LoginSigninCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', '$controller', 'Books', '$state', 'ErrorMng', '$sce', '$ionicPopup', 'Events', 'ionicDatePicker', 'Transport', '$ionicPopup', '$interval', '$ionicActionSheet', '$ionicLoading', 'Principal'];
+    app.controller('RegisterUserCtrl', RegisterUserCtrl);
+    RegisterUserCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', '$controller', 'Books', '$state', 'ErrorMng', '$sce', '$ionicPopup', 'Events', 'ionicDatePicker', 'Principal', '$ionicPopup', '$interval', '$ionicActionSheet', '$ionicLoading'];
 
-    function LoginSigninCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, $controller, Books, $state, ErrorMng, $sce, $ionicPopup, Events, ionicDatePicker, Transport, $ionicPopup, $interval, $ionicActionSheet, $ionicLoading, Principal) {
+    function RegisterUserCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, $controller, Books, $state, ErrorMng, $sce, $ionicPopup, Events, ionicDatePicker, Principal, $ionicPopup, $interval, $ionicActionSheet, $ionicLoading) {
         
         var vm = this;
         
         /* Link to pax global object to allow binding to the view */
         vm.coGlobal = coGlobal;
-        vm.transportServ = Transport;
+        /* Get user info from service */
+        vm.userInfo = Principal.userInfo;
+
 
         vm.setMotion = function () {
             $timeout(function () {
@@ -20,14 +22,7 @@
         };
         
         /* Handler for 'register' first click */
-        vm.signinFirstCall = function () {
-            /* Save user info in service and go to signin page */
-            Principal.userInfo = vm.userInfo;
-            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REGISTER_USER].sref);
-        };
-
-        /* Handler for 'register' first click */
-        vm.logIn = function () {
+        vm.signIn = function () {
             vm.showLoading();
             /* Simulate calling service and backend */
             /* TO BE DEVELOPED */

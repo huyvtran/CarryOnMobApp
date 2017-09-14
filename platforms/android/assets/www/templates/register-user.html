@@ -1,0 +1,38 @@
+<ion-view view-title="Aggiungi i tuoi dati" ng-controller="RegisterUserCtrl as vm" class="log-sign-view">
+    <ion-content ng-class="{expanded:$scope.isExpanded}" class="log-sign-page-content">
+       
+        <div class="list rqgt-publish-content">
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Mail</span>
+                <input type="text" placeholder="Inserisci mail" ng-model="vm.userInfo.email">
+            </label>
+
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Password</span>
+                <input type="text" placeholder="Inserisci password" ng-model="vm.userInfo.password">
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Conferma Password</span>
+                <input type="text" placeholder="Conferma password" ng-model="vm.userInfo.confirmPassword">
+            </label>
+
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Nome</span>
+                <input type="text" placeholder="Inserisci nome" ng-model="vm.userInfo.nome">
+            </label>
+
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Telefono</span>
+                <input type="text" placeholder="Inserisci numero di telefono" ng-model="vm.userInfo.telefono">
+            </label>
+
+            <div class="log-sign-btn-container">
+                <button class="button button-block button-positive ink register-btn"
+                        ng-click="vm.signIn()">
+                    Procedi
+                </button>
+            </div>
+        </div>
+    </ion-content>
+
+</ion-view>

@@ -286,6 +286,16 @@ ion-side-menu div.list a:first-child, ion-side-menu .list ion-item.item {
     margin-bottom: 2px;
 }
 
+.very-first-access.pswd-forgot h5 {
+    margin-top: 15px;
+    font-size: 15px;
+    text-decoration: underline; 
+}
+
+.button.button-block.register-btn, .button.button-full.register-btn {
+    margin-top: 4px;
+}
+
 
 /* FIRST CHOICE
 ======================================================================================================*/

@@ -44,6 +44,7 @@ coGlobal.CoStatusEnum = {
     TRANSPORT_DETAILS_PUBLISH: 5,
     RQGT_DETAILS_SHOW: 6,
     LOGIN_SIGNIN: 7,
+    REGISTER_USER: 8,
     properties: {
         0: {
             translate_id: 'view.filters.REQ_GOOD_TRANSPORT', value: '', translate_main_title_id: 'menu.pageTitles.REQ_GOOD_TRANSPORT',
@@ -92,6 +93,12 @@ coGlobal.CoStatusEnum = {
             sref: 'app.login-signin',
             url: '/loginSignin',
             templateUrl: 'templates/login-signin.html'
+        },
+        8: {
+            translate_id: 'view.filters.REGISTER_USER', value: '', translate_main_title_id: 'menu.pageTitles.REGISTER_USER',
+            sref: 'app.register-user',
+            url: '/registerUser',
+            templateUrl: 'templates/register-user.html'
         }
     }
 };

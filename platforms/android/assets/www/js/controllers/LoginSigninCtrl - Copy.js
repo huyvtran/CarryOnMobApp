@@ -1,9 +1,9 @@
 ﻿(function () {
 
     app.controller('LoginSigninCtrl', LoginSigninCtrl);
-    LoginSigninCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', '$controller', 'Books', '$state', 'ErrorMng', '$sce', '$ionicPopup', 'Events', 'ionicDatePicker', 'Transport', '$ionicPopup', '$interval', '$ionicActionSheet', '$ionicLoading', 'Principal'];
+    LoginSigninCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', '$controller', 'Books', '$state', 'ErrorMng', '$sce', '$ionicPopup', 'Events', 'ionicDatePicker', 'Transport', '$ionicPopup', '$interval', '$ionicActionSheet', '$ionicLoading'];
 
-    function LoginSigninCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, $controller, Books, $state, ErrorMng, $sce, $ionicPopup, Events, ionicDatePicker, Transport, $ionicPopup, $interval, $ionicActionSheet, $ionicLoading, Principal) {
+    function LoginSigninCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, $controller, Books, $state, ErrorMng, $sce, $ionicPopup, Events, ionicDatePicker, Transport, $ionicPopup, $interval, $ionicActionSheet, $ionicLoading) {
         
         var vm = this;
         
@@ -18,12 +18,12 @@
                 });
             }, 100);
         };
-        
+
+        vm.isResistering = false;
+
         /* Handler for 'register' first click */
         vm.signinFirstCall = function () {
-            /* Save user info in service and go to signin page */
-            Principal.userInfo = vm.userInfo;
-            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REGISTER_USER].sref);
+            vm.isResistering = true;
         };
 
         /* Handler for 'register' first click */

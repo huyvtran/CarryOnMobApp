@@ -16,19 +16,27 @@
                 <input type="text" placeholder="Inserisci password" ng-model="vm.userInfo.password">
             </label>
 
+            <div class="register-info-container" ng-if="vm.isResistering">
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Nome</span>
+                    <input type="text" placeholder="Inserisci nome" ng-model="vm.userInfo.nome">
+                </label>
+            </div>
+
             <div class="log-sign-btn-container">
                 <button class="button button-block button-assertive ink"
-                        ng-click="vm.logIn()">
+                        ng-click="vm.logIn()" ng-if="!vm.isResistering">
                     Login
                 </button>
-                <div class="h-flex flex-center very-first-access">
+                <div class="h-flex flex-center very-first-access" ng-if="!vm.isResistering">
                     <h4 class="content">Primissimo accesso?</h4>
                 </div>
                 <button class="button button-block button-positive ink register-btn"
                         ng-click="vm.signinFirstCall()">
                     Registrati
                 </button>
-                <div class="h-flex flex-center very-first-access pswd-forgot">
+                <div class="h-flex flex-center very-first-access pswd-forgot" 
+                     ng-if="!vm.isResistering">
                     <h5 class="content">Password dimenticata?</h5>
                 </div>
             </div>
