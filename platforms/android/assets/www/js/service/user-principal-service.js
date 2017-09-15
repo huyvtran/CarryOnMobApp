@@ -14,7 +14,7 @@
 
         self.goStateDeferred = function (cfg) {
             if (_deferred_state != undefined) {
-                $state.go(_deferred_state);
+                $state.go(_deferred_state); 
             } else {
                 // default state
                 coGlobal.goToDefaultDocumentState($state);
@@ -24,7 +24,7 @@
             _deferred_state = stateName;
         }
         self.coGlobal = coGlobal;
-        Principal.userInfo = {};
+        self.userInfo = {};
 
         self.isIdentityResolved = function () {
             return angular.isDefined(_identity);
@@ -96,7 +96,7 @@
                     self.authenticate(response.data);
                     /* Fill local storage data */
                     //localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName });
-                    coGlobal.setUserData(response.data.resultData, $state, true);
+                    coGlobal.setUserData(response.data.resultData, $state, true, window.localStorage);
                     if (!callbackGoState) {
                         callbackGoState = self.goStateDeferred;
                     };
@@ -123,11 +123,11 @@
                 //if (avoidRedirect !== true) {
                 //    $state.go('user.login');
                 //};
-                coGlobal.setUserData(undefined, undefined, false);
+                coGlobal.setUserData(undefined, undefined, false, window.localStorage);
             }, function (response) {
                 _authenticated = false;
                 /* clean user information */
-                coGlobal.setUserData(undefined, undefined, false);
+                coGlobal.setUserData(undefined, undefined, false, window.localStorage);
                 //if (avoidRedirect !== true) {
                 //    $state.go('user.login');
                 //};
@@ -230,7 +230,7 @@
                     password: account.password
                 }, function () {
                     var user = coGlobal.getUserData();
-                    coGlobal.setUserData(user, state, true);
+                    coGlobal.setUserData(user, state, true, window.localStorage);
                     coGlobal.goToDefaultDocumentState(state);
                     state.reload();
                 });

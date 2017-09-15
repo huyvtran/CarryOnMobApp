@@ -14,7 +14,7 @@
         vm.transportServ = Transport;
         /* Get user info from service */
         vm.userInfo = Principal.userInfo;
-
+         
         vm.setMotion = function () {
             $timeout(function () {
                 ionicMaterialMotion.blinds({

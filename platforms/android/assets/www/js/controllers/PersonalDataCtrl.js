@@ -4,9 +4,9 @@
     PersonalDataCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', '$controller', 'Books', '$state', 'ErrorMng', '$sce', '$ionicPopup', 'Events', 'ionicDatePicker', 'Principal', '$ionicPopup', '$interval', '$ionicActionSheet', '$ionicLoading'];
 
     function PersonalDataCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, $controller, Books, $state, ErrorMng, $sce, $ionicPopup, Events, ionicDatePicker, Principal, $ionicPopup, $interval, $ionicActionSheet, $ionicLoading) {
-        
+
         var vm = this;
-        
+
         /* Link to pax global object to allow binding to the view */
         vm.coGlobal = coGlobal;
         /* Get user info from service */
@@ -22,7 +22,7 @@
                 });
             }, 100);
         };
-        
+
         /* Handler for 'register' first click */
         vm.editUserInfo = function () {
             vm.showLoading();
@@ -32,18 +32,25 @@
                 $ionicLoading.hide();
                 var alertPopup = $ionicPopup.alert({
                     title: 'Operazione riuscita',
-                    template: 'Dati aggiornati.'
+                    template: 'Dati aggiornati.' 
                 });
             }, 2000);
         };
 
         /* manageHeaderRightClick - Logout click */
         vm.manageHeaderRightClick = function () {
-            // LOGOUT
-            Principal.logout();
+
+            var logoutPopup = $ionicPopup.alert({
+                title: 'Confermi logout?',
+                template: '.'
+            });
+            logoutPopup.then(function (res) {
+                // LOGOUT
+                Principal.logout();
+            });
         };
 
-        
+
 
         /*  --------------------------------------------------------------------------------------------------------------------------------------------*/
         /*  ------------------------------------------------------     INIT FUNCTIONS     ------------------------------------------------------*/

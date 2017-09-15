@@ -14,7 +14,7 @@ app.run(function ($ionicPlatform, $state, $ionicPopup, ionicMaterialInk, $timeou
         /* Hide splash screen */
         if (navigator && navigator.splashscreen) {
             navigator.splashscreen.hide();
-        };
+        }; 
          
         /* Load credential data from session, if present */
         var coToken = window.localStorage.getItem("coToken");

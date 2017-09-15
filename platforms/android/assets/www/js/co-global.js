@@ -1,6 +1,6 @@
 ﻿coGlobal = {};
 
-/* ---- App url ---- */ 
+/* ---- App url ---- */
 //coGlobal.appUrl = '';
 // Debug
 //coGlobal.appUrl = 'http://localhost:57493/';
@@ -52,7 +52,7 @@ coGlobal.CoStatusEnum = {
             translate_id: 'view.filters.REQ_GOOD_TRANSPORT', value: '', translate_main_title_id: 'menu.pageTitles.REQ_GOOD_TRANSPORT',
             sref: 'app.reqGoodTransport',
             url: '/reqGoodTransport',
-            templateUrl: 'templates/start-input-data.html' 
+            templateUrl: 'templates/start-input-data.html'
         },
         1: {
             translate_id: 'view.filters.SEARCH_TRANSPORT', value: '', translate_main_title_id: 'menu.pageTitles.SEARCH_TRANSPORT',
@@ -142,34 +142,32 @@ coGlobal.getUserData = function getUserData() {
         return undefined;
     };
 };
- 
-coGlobal.setLocalStorageUserInfo = function setLocalStorageUserInfo(userData) {
+
+coGlobal.setLocalStorageUserInfo = function setLocalStorageUserInfo(userData, localStorage) {
     if (userData) {
-        window.localStorage.setItem("coUserName", userData.uten);
-        window.localStorage.setItem("coPass", userData.pass);
-        window.localStorage.setItem("coToken", userData.token);
-        window.localStorage.setItem("coNome", userData.nome);
+        localStorage.setItem("coUserName", userData.uten);
+        localStorage.setItem("coPass", userData.pass);
+        localStorage.setItem("coToken", userData.token);
+        localStorage.setItem("coNome", userData.nome);
     };
 };
 
-coGlobal.cleanLocalStorageUserInfo = function cleanLocalStorageUserInfo() {
-    if (userData) {
-        window.localStorage.window.localStorage.removeItem("coUserName");
-        window.localStorage.window.localStorage.removeItem("coPass");
-        window.localStorage.window.localStorage.removeItem("coToken");
-        window.localStorage.window.localStorage.removeItem("coNome");
-    };
-};
+coGlobal.cleanLocalStorageUserInfo = function cleanLocalStorageUserInfo(localStorage) {
+    localStorage.removeItem("coUserName");
+    localStorage.removeItem("coPass");
+    localStorage.removeItem("coToken");
+    localStorage.removeItem("coNome");
+}; 
 
 /* setter */
-coGlobal.setUserData = function setUserData(userData, $state, isUserLoggedIn) {
-    coGlobal.setLocalStorageUserInfo(userData);
+coGlobal.setUserData = function setUserData(userData, $state, isUserLoggedIn, localStorage) {
+    coGlobal.setLocalStorageUserInfo(userData, localStorage);
     coGlobal.user.data = userData;
 
     if (isUserLoggedIn === true) {
         coGlobal.isUserLogged = true;
     } else if (isUserLoggedIn === false) {
-        coGlobal.cleanLocalStorageUserInfo();
+        coGlobal.cleanLocalStorageUserInfo(localStorage);
         coGlobal.isUserLogged = false;
     };
 };
