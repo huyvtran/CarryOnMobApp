@@ -40,7 +40,7 @@
             self.loadedTransportResults = false;
             var req = {
                 method: 'GET',
-                url: coGlobal.getAppUrl() + 'api/TransportAv?id=null'
+                url: coGlobal.getAppUrl() + 'api/TransportAv/get?id=null&userId=null'
             };
             return $http(req).then(function (response) {
 

@@ -32,7 +32,7 @@
                 $ionicLoading.hide();
                 var alertPopup = $ionicPopup.alert({
                     title: 'Operazione riuscita',
-                    template: 'Dati aggiornati.' 
+                    template: 'Dati aggiornati.'
                 });
             }, 2000);
         };
@@ -45,8 +45,15 @@
                 template: '.'
             });
             logoutPopup.then(function (res) {
+                vm.showLoading();
                 // LOGOUT
-                Principal.logout();
+                Principal.logout().then(function () {
+                    $ionicLoading.hide();
+                    $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REQ_GOOD_TRANSPORT].sref);
+                }, function () {
+                    $ionicLoading.hide();
+                    ErrorMng.showSystemError();
+                });
             });
         };
 

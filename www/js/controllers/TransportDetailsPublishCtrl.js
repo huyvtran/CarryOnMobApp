@@ -1,20 +1,22 @@
 ﻿(function () {
 
     app.controller('TransportDetailsPublishCtrl', TransportDetailsPublishCtrl);
-    TransportDetailsPublishCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', 'Books', '$ionicLoading', 'ErrorMng', 'Rqgt', '$state'];
+    TransportDetailsPublishCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion',
+        'Books', '$ionicLoading', 'ErrorMng', 'Rqgt', '$state', '$ionicPopup', 'Principal'];
 
-    function TransportDetailsPublishCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, Books, $ionicLoading, ErrorMng, Rqgt, $state) {
-        
+    function TransportDetailsPublishCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, Books,
+        $ionicLoading, ErrorMng, Rqgt, $state, $ionicPopup, Principal) {
+
         var vm = this;
 
         vm.currentTransport = {};
-        
+
         /* Inform coGlobal about the current controller instance */
         coGlobal.currentVm = vm;
 
         /* Link to pax global object to allow binding to the view */
         vm.coGlobal = coGlobal;
-         
+
         vm.getPageTitle = function () {
             return 'Pubblica la richiesta';
         };
@@ -33,10 +35,19 @@
 
         /* Publish rqgt details finalization */
         vm.manageHeaderRightClick = function () {
+            if (!coGlobal.isUserLogged) {
+                $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.LOGIN_SIGNIN].sref);
+            } else {
+                vm.callbackAfterLogin();
+            };
+        };
+
+        /* Callback to be called once user has logged in to publish the request */
+        vm.callbackAfterLogin = function () {
             vm.showLoading();
-            /* Simulate calling service and backend */
-            /* TO BE DEVELOPED */
             $timeout(function () {
+                /* Simulate calling service and backend */
+                /* TO BE DEVELOPED */
                 $ionicLoading.hide();
                 var alertPopup = $ionicPopup.alert({
                     title: 'Operazione riuscita',
@@ -82,6 +93,7 @@
         /* Init controller function */
         vm.initController = function () {
             vm.loadCurrentTransportDetails();
+            Principal.cb_afterLogin = vm.callbackAfterLogin;
         };
 
         /* Call init controller */

@@ -217,4 +217,6 @@ coGlobal.runDigest = function refreshScope($scope) {
     if (!$scope.$$phase) {
         $scope.$digest();
     }
-}
+};
+
+coGlobal.noope = function noope() { };

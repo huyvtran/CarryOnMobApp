@@ -38,19 +38,16 @@
         function _getRqgtFiltered(searchFilters) {
             var deferred = $q.defer();
             self.loadedRqgtResults = false;
-            //var req = {
-            //    method: 'GET',
-            //    url: coGlobal.getAppUrl() + 'api/ReqGoodTransfer/get?id=null&userId=null'
-            //};
-            //return $http(req)
 
             var req = {
                 method: 'POST',
                 url: coGlobal.getAppUrl() + 'api/ReqGoodTransfer/FilteredRqgt',
                 data: {
-                    RqgtFilter: undefined,
-                    TransportAvModel: undefined,
-                    FilterParams: undefined
+                    filterparams: {
+                        RqgtFilter: undefined,
+                        TransportAvModel: undefined,
+                        FilterParams: undefined
+                    }
                 }
             };
             return $http(req).then(function (response) {

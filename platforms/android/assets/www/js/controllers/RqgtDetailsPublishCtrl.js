@@ -1,20 +1,22 @@
 ﻿(function () {
 
     app.controller('RqgtDetailsPublishCtrl', RqgtDetailsPublishCtrl);
-    RqgtDetailsPublishCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', 'Books', '$ionicLoading', 'ErrorMng', 'Rqgt', '$state'];
+    RqgtDetailsPublishCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion',
+        'Books', '$ionicLoading', 'ErrorMng', 'Rqgt', '$state', '$ionicPopup', 'Principal'];
 
-    function RqgtDetailsPublishCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, Books, $ionicLoading, ErrorMng, Rqgt, $state) {
-        
+    function RqgtDetailsPublishCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, Books,
+        $ionicLoading, ErrorMng, Rqgt, $state, $ionicPopup, Principal) {
+
         var vm = this;
 
         vm.currentRqgt = {};
-        
-        /* Inform coGlobal about the current controller instance */
-        coGlobal.currentVm = vm;
 
         /* Link to pax global object to allow binding to the view */
         vm.coGlobal = coGlobal;
-         
+
+        /* Inform coGlobal about the current controller instance */
+        coGlobal.currentVm = vm;
+
         vm.getPageTitle = function () {
             return 'Pubblica la richiesta';
         };
@@ -33,16 +35,19 @@
 
         /* Publish rqgt details finalization */
         vm.manageHeaderRightClick = function () {
-            /* MOCK to be removed */
-            if (true) {
-                //if (!coGlobal.isUserLogged) {
+            if (!coGlobal.isUserLogged) {
                 $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.LOGIN_SIGNIN].sref);
+            } else {
+                vm.callbackAfterLogin();
             };
+        };
 
+        /* Callback to be called once user has logged in to publish the request */
+        vm.callbackAfterLogin = function () {
             vm.showLoading();
-            /* Simulate calling service and backend */
-            /* TO BE DEVELOPED */
             $timeout(function () {
+                /* Simulate calling service and backend */
+                /* TO BE DEVELOPED */
                 $ionicLoading.hide();
                 var alertPopup = $ionicPopup.alert({
                     title: 'Operazione riuscita',
@@ -52,7 +57,7 @@
                 alertPopup.then(function (res) {
                     $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REQ_GOOD_TRANSPORT].sref);
                 });
-            }, 2000);
+            }, 2000);            
         };
 
         /* Load current Rqgt details */
@@ -70,6 +75,7 @@
         /* Init controller function */
         vm.initController = function () {
             vm.loadCurrentRqgtDetails();
+            Principal.cb_afterLogin = vm.callbackAfterLogin;
         };
 
         /* Call init controller */

@@ -36,6 +36,7 @@
 
             Principal.login(vm.userInfo).then(function () {
                 $ionicLoading.hide();
+
             }, function (err) {
                 $ionicLoading.hide();
                 ErrorMng.showSystemError(err);

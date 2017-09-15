@@ -28,6 +28,22 @@
 
         $scope.isPersonalItemsExpanded = false;
 
+        /* goTo My Rqgt requested */
+        $scope.goToMyRqgt = function () {
+            /* First set filter search with my user name */
+            // -- TO BE DEVELOPED
+            /* Then go to  */
+            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_RQGT].sref);
+        };
+
+        /* goTo My Transport availabilities published */
+        $scope.goToMyTransportAv = function () {
+            /* First set filter search with my user name */
+            // -- TO BE DEVELOPED
+            /* Then go to  */
+            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_TRANSPORT].sref);
+        };
+
         /* Return true if the current view status is the one passed as parameter */
         $scope.isCurrentViewState = function (coStatusEnum_toCompare) {
             srefToCompare = coGlobal.CoStatusEnum.properties[coStatusEnum_toCompare].sref;

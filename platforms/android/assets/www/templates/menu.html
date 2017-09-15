@@ -56,10 +56,10 @@
                                 <i class="icon ion-arrow-right-b" ng-class="{isOpened: isPersonalItemsExpanded}"></i>
                             </div>
                             <div class="tab-content" ng-class="{isOpened: isPersonalItemsExpanded}">
-                                <ion-item nav-clear menu-close>
+                                <ion-item nav-clear menu-close ng-click="goToMyRqgt()">
                                     <span class="sm-w">Le mie richieste trasporto merci</span>
                                 </ion-item>
-                                <ion-item nav-clear menu-close>
+                                <ion-item nav-clear menu-close ng-click="goToMyTransportAv()">
                                     <span class="sm-w">I miei annunci mezzi disponibili</span>
                                 </ion-item>
                                 <ion-item nav-clear menu-close>

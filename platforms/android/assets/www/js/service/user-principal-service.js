@@ -23,8 +23,10 @@
         self.setStateDeferred = function (stateName) {
             _deferred_state = stateName;
         }
+        /* Shared variables */
         self.coGlobal = coGlobal;
         self.userInfo = {};
+        self.cb_afterLogin = coGlobal.noope;
 
         self.isIdentityResolved = function () {
             return angular.isDefined(_identity);
@@ -79,14 +81,14 @@
         /* Login */
         self.login = function (account, callbackGoState) {
 
-            /* save account data into */
+            /* save account data into */ 
             coGlobal.setAccountData(account);
             self.loading = true;
             var req = {
                 method: 'POST',
                 url: coGlobal.getAppUrl() + 'api/Account/Login',
                 data: {
-                    Username: account.username,
+                    Username: account.email,
                     Password: account.password,
                     Token: account.token
                 }
@@ -97,8 +99,10 @@
                     /* Fill local storage data */
                     //localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName });
                     coGlobal.setUserData(response.data.resultData, $state, true, window.localStorage);
-                    if (!callbackGoState) {
+                    if (callbackGoState) {
                         callbackGoState = self.goStateDeferred;
+                    } else {
+                        self.cb_afterLogin();
                     };
                 }
                 else {
