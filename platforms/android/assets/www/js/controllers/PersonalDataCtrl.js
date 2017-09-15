@@ -10,7 +10,9 @@
         /* Link to pax global object to allow binding to the view */
         vm.coGlobal = coGlobal;
         /* Get user info from service */
-        vm.userInfo = Principal.userInfo; 
+        vm.userInfo = Principal.userInfo;
+        /* Inform coGlobal about the current controller instance */
+        coGlobal.currentVm = vm;
 
 
         vm.setMotion = function () {
@@ -33,6 +35,12 @@
                     template: 'Dati aggiornati.'
                 });
             }, 2000);
+        };
+
+        /* manageHeaderRightClick - Logout click */
+        vm.manageHeaderRightClick = function () {
+            // LOGOUT
+            Principal.logout();
         };
 
         

@@ -17,8 +17,10 @@
         function _showSystemError(errorMsg) {
             /* For the moment just redirect to home page */
             //return self.events;
-            //$state.go('app.profile');
-            alert('error : ' + errorMsg)
+            var alertPopup = $ionicPopup.alert({
+                title: 'Errore',
+                template: 'L\'operazione non è riuscita. Riprovare o contattare l\'amministratore dell\'applicazione se l\'errore persiste.' + errorMsg
+            });
         };                
     }
 })();

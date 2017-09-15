@@ -22,6 +22,13 @@
                     Pubblica
                 </button>
             </div>
+            <div class="header-overlay-btn-ctn"
+                 ng-if="isCurrentViewState(coGlobal.CoStatusEnum.PERSONAL_DATA)">
+                <button ng-click="manageHeaderRightClick()"
+                        class="button button-small button-energized ink header-pub-btn">
+                    Logout
+                </button>
+            </div>
         </ion-nav-bar>
         <ion-nav-view name="fabContent"></ion-nav-view>
         <!--<button id="fab" class="button button-positive button-fab button-fab-bottom-right">

@@ -9,7 +9,11 @@
         
         /* Link to pax global object to allow binding to the view */
         vm.coGlobal = coGlobal;
+        /* Inform coGlobal about the current controller instance */
+        coGlobal.currentVm = vm;
         vm.transportServ = Transport;
+        /* Get user info from service */
+        vm.userInfo = Principal.userInfo;
 
         vm.setMotion = function () {
             $timeout(function () {
@@ -29,19 +33,34 @@
         /* Handler for 'register' first click */
         vm.logIn = function () {
             vm.showLoading();
-            /* Simulate calling service and backend */
-            /* TO BE DEVELOPED */
-            $timeout(function () {
-                $ionicLoading.hide();
-                var alertPopup = $ionicPopup.alert({
-                    title: 'Operazione riuscita',
-                    template: 'La tua richiesta è stata pubblicata. Sarai ora reindirizzato alla pagina iniziale.'
-                });
 
-                alertPopup.then(function (res) {
-                    $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REQ_GOOD_TRANSPORT].sref);
-                });
-            }, 2000);
+            Principal.login(vm.userInfo).then(function () {
+                $ionicLoading.hide();
+            }, function (err) {
+                $ionicLoading.hide();
+                ErrorMng.showSystemError(err);
+            });
+
+            ///* Simulate calling service and backend */
+            ///* TO BE DEVELOPED */
+            //$timeout(function () {
+            //    var mockUserData = {
+            //        uten: "test",
+            //        pass: "test",
+            //        token: "123456789",
+            //        nome: "Luca Liguori",
+            //    };
+            //    coGlobal.setUserData(mockUserData, undefined, true);
+            //    $ionicLoading.hide();
+            //    var alertPopup = $ionicPopup.alert({
+            //        title: 'Operazione riuscita',
+            //        template: 'La tua richiesta è stata pubblicata. Sarai ora reindirizzato alla pagina iniziale.'
+            //    });
+
+            //    alertPopup.then(function (res) {
+            //        $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REQ_GOOD_TRANSPORT].sref);
+            //    });
+            //}, 2000);
         };
 
         /* Reset password */

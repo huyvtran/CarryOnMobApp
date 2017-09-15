@@ -1,9 +1,9 @@
 ﻿(function () {
 
     app.controller('ReqGoodTransportCtrl', ReqGoodTransportCtrl);
-    ReqGoodTransportCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', '$controller', 'Books', '$state', 'ErrorMng', '$sce', '$ionicPopup', 'Events', 'ionicDatePicker', 'Rqgt', '$ionicPopup', '$interval', '$ionicActionSheet', 'Rqgt'];
+    ReqGoodTransportCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', '$controller', 'Books', '$state', 'ErrorMng', '$sce', 'Events', 'ionicDatePicker', 'Rqgt', '$ionicPopup', '$interval', '$ionicActionSheet', 'Rqgt'];
 
-    function ReqGoodTransportCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, $controller, Books, $state, ErrorMng, $sce, $ionicPopup, Events, ionicDatePicker, Rqgt, $ionicPopup, $interval, $ionicActionSheet, Rqgt) {
+    function ReqGoodTransportCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, $controller, Books, $state, ErrorMng, $sce, Events, ionicDatePicker, Rqgt, $ionicPopup, $interval, $ionicActionSheet, Rqgt) {
 
         var vm = this;
 
@@ -109,6 +109,10 @@
 
         vm.testGoLogin = function () {
             $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.LOGIN_SIGNIN].sref);
+        };
+
+        vm.testGoLogout = function () {
+            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.PERSONAL_DATA].sref);
         };
 
         /* Show Action sheet for camion or good selection */

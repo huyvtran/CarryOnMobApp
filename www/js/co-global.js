@@ -143,14 +143,34 @@ coGlobal.getUserData = function getUserData() {
     };
 };
  
-/* setter */
-coGlobal.setUserData = function setUserData(userData, $state) {
-    if (userData) { 
+coGlobal.setLocalStorageUserInfo = function setLocalStorageUserInfo(userData) {
+    if (userData) {
         window.localStorage.setItem("coUserName", userData.uten);
         window.localStorage.setItem("coPass", userData.pass);
         window.localStorage.setItem("coToken", userData.token);
         window.localStorage.setItem("coNome", userData.nome);
+    };
+};
+
+coGlobal.cleanLocalStorageUserInfo = function cleanLocalStorageUserInfo() {
+    if (userData) {
+        window.localStorage.window.localStorage.removeItem("coUserName");
+        window.localStorage.window.localStorage.removeItem("coPass");
+        window.localStorage.window.localStorage.removeItem("coToken");
+        window.localStorage.window.localStorage.removeItem("coNome");
+    };
+};
+
+/* setter */
+coGlobal.setUserData = function setUserData(userData, $state, isUserLoggedIn) {
+    coGlobal.setLocalStorageUserInfo(userData);
     coGlobal.user.data = userData;
+
+    if (isUserLoggedIn === true) {
+        coGlobal.isUserLogged = true;
+    } else if (isUserLoggedIn === false) {
+        coGlobal.cleanLocalStorageUserInfo();
+        coGlobal.isUserLogged = false;
     };
 };
 

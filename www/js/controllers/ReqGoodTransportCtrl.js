@@ -111,6 +111,10 @@
             $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.LOGIN_SIGNIN].sref);
         };
 
+        vm.testGoLogout = function () {
+            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.PERSONAL_DATA].sref);
+        };
+
         /* Show Action sheet for camion or good selection */
         vm.showActionSheet_CG = function () {
             vm.hideSheet = $ionicActionSheet.show({

@@ -9,6 +9,8 @@
 
         /* Link to pax global object to allow binding to the view */
         vm.coGlobal = coGlobal;
+        /* Inform coGlobal about the current controller instance */
+        coGlobal.currentVm = vm;
         /* Get user info from service */
         vm.userInfo = Principal.userInfo;
 

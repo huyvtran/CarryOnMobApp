@@ -24,6 +24,7 @@
             _deferred_state = stateName;
         }
         self.coGlobal = coGlobal;
+        Principal.userInfo = {};
 
         self.isIdentityResolved = function () {
             return angular.isDefined(_identity);
@@ -95,15 +96,10 @@
                     self.authenticate(response.data);
                     /* Fill local storage data */
                     //localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName });
-                    coGlobal.setUserData(response.data.resultData, $state);
-                    /* Then fill all companies with associated JSON file properties (name of each file is 'companyId'.json) */
+                    coGlobal.setUserData(response.data.resultData, $state, true);
                     if (!callbackGoState) {
                         callbackGoState = self.goStateDeferred;
-                    }
-                    coGlobal.user.isLogin = true;
-                    $timeout(function () {
-                        coGlobal.user.isLogin = false;
-                    }, 10000);
+                    };
                 }
                 else {
                     _authenticated = false;
@@ -124,17 +120,17 @@
             return $http(req).then(function (response) {
                 self.identity(false);
                 _authenticated = false;
-                if (avoidRedirect !== true) {
-                    $state.go('user.login');
-                };
-                coGlobal.setUserData(undefined, undefined);
+                //if (avoidRedirect !== true) {
+                //    $state.go('user.login');
+                //};
+                coGlobal.setUserData(undefined, undefined, false);
             }, function (response) {
                 _authenticated = false;
                 /* clean user information */
-                coGlobal.setUserData(undefined, undefined);
-                if (avoidRedirect !== true) {
-                    $state.go('user.login');
-                };
+                coGlobal.setUserData(undefined, undefined, false);
+                //if (avoidRedirect !== true) {
+                //    $state.go('user.login');
+                //};
             });
 
             //
@@ -234,7 +230,7 @@
                     password: account.password
                 }, function () {
                     var user = coGlobal.getUserData();
-                    coGlobal.setUserData(user, state);
+                    coGlobal.setUserData(user, state, true);
                     coGlobal.goToDefaultDocumentState(state);
                     state.reload();
                 });
