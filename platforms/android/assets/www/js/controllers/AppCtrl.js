@@ -33,7 +33,7 @@
             /* First set filter search with my user name */
             // -- TO BE DEVELOPED
             /* Then go to  */
-            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_RQGT].sref);
+            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.MY_RQGT_PUBLISHED].sref);
         };
 
         /* goTo My Transport availabilities published */
@@ -41,7 +41,7 @@
             /* First set filter search with my user name */
             // -- TO BE DEVELOPED
             /* Then go to  */
-            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_TRANSPORT].sref);
+            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.MY_TRANSP_AV_PUBLISHED].sref);
         };
 
         /* Return true if the current view status is the one passed as parameter */

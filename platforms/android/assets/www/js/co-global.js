@@ -3,11 +3,11 @@
 /* ---- App url ---- */
 //coGlobal.appUrl = '';
 // Debug
-coGlobal.appUrl = 'http://localhost:57493/';
+//coGlobal.appUrl = 'http://localhost:57493/';
 // IIS
 //coGlobal.appUrl = 'http://localhost:8083/';
 // Azure
-//coGlobal.appUrl = 'http://carryonwebapi.azurewebsites.net/';
+coGlobal.appUrl = 'http://carryonwebapi.azurewebsites.net/';
 
 coGlobal.getPaxUrl = function getAppUrl() {
     return 'http://paxwebapi.azurewebsites.net/';
@@ -47,6 +47,8 @@ coGlobal.CoStatusEnum = {
     REGISTER_USER: 8,
     RESET_PSWD: 9,
     PERSONAL_DATA: 10,
+    MY_RQGT_PUBLISHED: 11,
+    MY_TRANSP_AV_PUBLISHED: 12,
     properties: {
         0: {
             translate_id: 'view.filters.REQ_GOOD_TRANSPORT', value: '', translate_main_title_id: 'menu.pageTitles.REQ_GOOD_TRANSPORT',
@@ -113,6 +115,18 @@ coGlobal.CoStatusEnum = {
             sref: 'app.personal-data',
             url: '/personalData',
             templateUrl: 'templates/personal-data.html'
+        },
+        11: {
+            translate_id: 'view.filters.MY_RQGT_PUBLISHED', value: '', translate_main_title_id: 'menu.pageTitles.MY_RQGT_PUBLISHED',
+            sref: 'app.my-rqgt-published',
+            url: '/myRqgtPublished',
+            templateUrl: 'templates/my-rqgt-published.html'
+        },
+        12: {
+            translate_id: 'view.filters.MY_TRANSP_AV_PUBLISHED', value: '', translate_main_title_id: 'menu.pageTitles.MY_TRANSP_AV_PUBLISHED',
+            sref: 'app.my-transp-av-published',
+            url: '/myTranspAvPublished',
+            templateUrl: 'templates/my-transp-av-published.html'
         }
     }
 };

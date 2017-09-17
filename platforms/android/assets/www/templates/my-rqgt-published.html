@@ -1,4 +1,4 @@
-<ion-view view-title="Trasporti richiesti" ng-controller="SearchRqgtCtrl as vm" class="search-rqgt-view">
+<ion-view view-title="Le mie richieste invio merci" ng-controller="SearchRqgtCtrl as vm" class="search-rqgt-view">
     <ion-content ng-class="{expanded:$scope.isExpanded}">
 
         <!-- Loader -->
@@ -13,6 +13,7 @@
         </div>
 
         <div class="item card-item card-rqgt" ng-repeat="rqgt in vm.rqgtServ.currentRqgtResults"
+             on-hold="vm.showActionSheet_ED(rqgt)"
              ng-if="vm.rqgtServ.loadedRqgtResults">
             <div ng-click="vm.goToRqgtDetails(rqgt)" class="card stable-bg ink ink-dark">
                 <div class="item-card-container">
@@ -21,8 +22,6 @@
                             <div class="av-img-container">
                                 <div class="desc-container-v-flex">
                                     <div class="desc-img">
-                                        <!--<img src="https://dummyimage.com/200x200/3f3e73/fff.jpg&text=LR" />
-                                        <img src="img/m3.png" />-->
                                         <div class="img-div">
                                             <div class="v-flex">
                                                 <div class="vol-av-value">
@@ -38,7 +37,7 @@
                                         Volume
                                     </div>
                                     <div class="desc-vol">
-                                       Stimato
+                                        Stimato
                                     </div>
                                 </div>
                             </div>
@@ -86,20 +85,12 @@
         </div>
     </ion-content>
 
-    <div class="pub-rqgt-search-list footer">
-        <div class="title-and-filter double-padding-x v-flex">
-            <div>
-                <h4 class="content title-announcements">
-                    Non trovi la richiesta per te?
-                </h4>
-            </div>
-            <div>
-                <div class="btn-announcement-container">
-                    <button id="btn-publish-transport-av" class="button button-small button-energized ink btn-small-padding">
-                        Pubblica la tua disponibilita&grave;
-                    </button>
-                </div>
+    <!--<div class="pub-rqgt-search-list footer">
+        <div class="title-and-filter double-padding-x">
+            <div class="btn-announcement-container h-flex flex-center">
+                <button class="button button-fab button-balanced icon ion-edit"></button>
+                <button class="button button-fab button-balanced icon ion-trash-a"></button>
             </div>
         </div>
-    </div>
+    </div>-->
 </ion-view>

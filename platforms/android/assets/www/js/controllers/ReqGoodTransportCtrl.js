@@ -1,9 +1,9 @@
 ﻿(function () {
 
     app.controller('ReqGoodTransportCtrl', ReqGoodTransportCtrl);
-    ReqGoodTransportCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', '$controller', 'Books', '$state', 'ErrorMng', '$sce', 'Events', 'ionicDatePicker', 'Rqgt', '$ionicPopup', '$interval', '$ionicActionSheet', 'Rqgt'];
+    ReqGoodTransportCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', '$controller', 'Books', '$state', 'ErrorMng', '$sce', 'Events', 'ionicDatePicker', 'Rqgt', '$ionicPopup', '$interval', '$ionicActionSheet', 'Transport'];
 
-    function ReqGoodTransportCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, $controller, Books, $state, ErrorMng, $sce, Events, ionicDatePicker, Rqgt, $ionicPopup, $interval, $ionicActionSheet, Rqgt) {
+    function ReqGoodTransportCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, $controller, Books, $state, ErrorMng, $sce, Events, ionicDatePicker, Rqgt, $ionicPopup, $interval, $ionicActionSheet, Transport) {
 
         var vm = this;
 
@@ -119,9 +119,9 @@
         vm.showActionSheet_CG = function () {
             vm.hideSheet = $ionicActionSheet.show({
                 buttons: [{
-                    text: 'Hai un camion'
+                    text: 'Ho un camion'
                 }, {
-                    text: 'Hai della merce'
+                    text: 'Ho della merce'
                 }],
                 //destructiveText: 'Delete',
                 //titleText: 'Seleziona la tua necessita\'',
@@ -159,7 +159,7 @@
 
         /* Go to rqgt search camion view or publish request */
         vm.goToRqgtSearchList = function () {
-            Rqgt.currentTransport = {
+            Transport.currentTransport = {
                 from: vm.autocompleteFrom,
                 fromShown: vm.newFrom,
                 to: vm.autocompleteTo,

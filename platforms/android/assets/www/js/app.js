@@ -264,6 +264,14 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
     var PERSONAL_DATA_sref = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.PERSONAL_DATA].sref;
     var PERSONAL_DATA_url = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.PERSONAL_DATA].url;
     var PERSONAL_DATA_templateUrl = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.PERSONAL_DATA].templateUrl;
+    /* MY_RQGT_PUBLISHED */
+    var MY_RQGT_PUBLISHED_sref = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.MY_RQGT_PUBLISHED].sref;
+    var MY_RQGT_PUBLISHED_url = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.MY_RQGT_PUBLISHED].url;
+    var MY_RQGT_PUBLISHED_templateUrl = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.MY_RQGT_PUBLISHED].templateUrl;
+    /* MY_TRANSP_AV_PUBLISHED */
+    var MY_TRANSP_AV_PUBLISHED_sref = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.MY_TRANSP_AV_PUBLISHED].sref;
+    var MY_TRANSP_AV_PUBLISHED_url = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.MY_TRANSP_AV_PUBLISHED].url;
+    var MY_TRANSP_AV_PUBLISHED_templateUrl = coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.MY_TRANSP_AV_PUBLISHED].templateUrl;
 
      $stateProvider.state('app', {
         url: '/app',
@@ -467,6 +475,28 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
              views: {
                  'menuContent': {
                      templateUrl: PERSONAL_DATA_templateUrl
+                 },
+                 'fabContent': {
+                     template: ''
+                 }
+             }
+         })
+         .state(MY_RQGT_PUBLISHED_sref, {
+             url: MY_RQGT_PUBLISHED_url,
+             views: {
+                 'menuContent': {
+                     templateUrl: MY_RQGT_PUBLISHED_templateUrl
+                 },
+                 'fabContent': {
+                     template: ''
+                 }
+             }
+         })
+         .state(MY_TRANSP_AV_PUBLISHED_sref, {
+             url: MY_TRANSP_AV_PUBLISHED_url,
+             views: {
+                 'menuContent': {
+                     templateUrl: MY_TRANSP_AV_PUBLISHED_templateUrl
                  },
                  'fabContent': {
                      template: ''

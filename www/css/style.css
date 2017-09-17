@@ -156,6 +156,14 @@ label.item.item-input.item-floating-label input {
     margin-bottom: -5px;
 }
 
+
+/*.bar .button {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}*/
+
+
+
 /* MENU USER SECTION ACCORDION
 ======================================================================================================*/
 
@@ -417,9 +425,10 @@ div.first-choice-separator {
 .card-rqgt .desc-img {
     background-position: center;
     background-size: cover;
-    height: 40px;
-    width: 40px;
+    height: 47px;
+    width: 47px;
     margin: 6px auto 4px auto;
+    font-size: 12px;
 }
 
     .card-rqgt .desc-img img {
@@ -439,6 +448,15 @@ div.first-choice-separator {
         text-align: center;
     }
 
+    .card-rqgt .desc-img .img-div .vol-av-value{
+        line-height: 20px;
+        margin-top: 7px;
+    }
+
+    .card-rqgt .desc-img .img-div .vol-av-unit-measure{
+        line-height: 12px;
+    }
+
 .search-rqgt-view .card-rqgt .desc-img {
     height: 50px;
     width: 50px;
@@ -456,6 +474,7 @@ div.first-choice-separator {
 .desc-vol {
     text-align: center;
     line-height: 17px;
+    font-size: 11px;
 }
 
 div.h-flex {

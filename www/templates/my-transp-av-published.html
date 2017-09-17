@@ -1,9 +1,9 @@
-<ion-view view-title="Trasporti richiesti" ng-controller="SearchRqgtCtrl as vm" class="search-rqgt-view">
+<ion-view view-title="I miei annunci pubblicati" ng-controller="SearchTransportCtrl as vm">
     <ion-content ng-class="{expanded:$scope.isExpanded}">
 
         <!-- Loader -->
-        <div class="loader-css-material" ng-if="!vm.rqgtServ.loadedRqgtResults">
-            <div class="showbox" ng-if="!vm.rqgtServ.loadedRqgtResults">
+        <div class="loader-css-material" ng-if="!vm.transportServ.loadedTransportResults">
+            <div class="showbox">
                 <div class="loader">
                     <svg class="circular" viewBox="25 25 50 50">
                         <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
@@ -12,21 +12,21 @@
             </div>
         </div>
 
-        <div class="item card-item card-rqgt" ng-repeat="rqgt in vm.rqgtServ.currentRqgtResults"
-             ng-if="vm.rqgtServ.loadedRqgtResults">
-            <div ng-click="vm.goToRqgtDetails(rqgt)" class="card stable-bg ink ink-dark">
+        <div class="item card-item card-rqgt" ng-repeat="transp in vm.transportServ.currentTransportResults"
+             on-hold="vm.showActionSheet_ED(transp)"
+             ng-if="vm.transportServ.loadedTransportResults">
+            <div ng-click="vm.goToTransportDetails(transp)" class="card stable-bg ink ink-dark">
                 <div class="item-card-container">
                     <div class="av-and-desc-container">
                         <div class="av-container">
                             <div class="av-img-container">
                                 <div class="desc-container-v-flex">
                                     <div class="desc-img">
-                                        <!--<img src="https://dummyimage.com/200x200/3f3e73/fff.jpg&text=LR" />
-                                        <img src="img/m3.png" />-->
-                                        <div class="img-div">
+                                        <!--<div class="img-div">{{transp.volAvailable}} <br /> m&sup3;</div>-->
+                                        <div class="img-div">                                           
                                             <div class="v-flex">
                                                 <div class="vol-av-value">
-                                                    {{rqgt.volRequired}}
+                                                    {{transp.volAvailable}}
                                                 </div>
                                                 <div class="vol-av-unit-measure">
                                                     m&sup3;
@@ -38,7 +38,7 @@
                                         Volume
                                     </div>
                                     <div class="desc-vol">
-                                       Stimato
+                                        Disponibile
                                     </div>
                                 </div>
                             </div>
@@ -51,7 +51,7 @@
                                         Da:
                                     </div>
                                     <div class="desc-adr-content">
-                                        {{rqgt.addressFromShortFormattedStr}}
+                                        {{transp.addressFromShortFormattedStr}}
                                     </div>
                                 </div>
                                 <div class="desc-adr">
@@ -59,7 +59,7 @@
                                         A:
                                     </div>
                                     <div class="desc-adr-content">
-                                        {{rqgt.addressDestShortFormattedStr}}
+                                        {{transp.addressDestShortFormattedStr}}
                                     </div>
                                 </div>
                                 <div class="desc-adr">
@@ -83,23 +83,23 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </ion-content>
-
-    <div class="pub-rqgt-search-list footer">
+    <!--<div class="pub-rqgt-search-list footer">
         <div class="title-and-filter double-padding-x v-flex">
             <div>
                 <h4 class="content title-announcements">
-                    Non trovi la richiesta per te?
+                    Non trovi il trasporto?
                 </h4>
             </div>
             <div>
                 <div class="btn-announcement-container">
-                    <button id="btn-publish-transport-av" class="button button-small button-energized ink btn-small-padding">
-                        Pubblica la tua disponibilita&grave;
+                    <button id="btn-publish-rqgt" class="button button-small button-energized ink">
+                        Pubblica l'annuncio
                     </button>
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 </ion-view>
