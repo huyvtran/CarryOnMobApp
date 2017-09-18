@@ -5,43 +5,56 @@
         <div class="list rqgt-publish-content">
             <label class="item item-input item-floating-label">
                 <span class="input-label">Indirizzo Partenza</span>
-                <input type="text" placeholder="Indirizzo Partenza" ng-model="vm.currentRqgt.fromShown">
+                <input type="text" placeholder="Indirizzo Partenza"
+                       google-autocomplete-suggestion location="vm.newFrom"
+                       country-code="{{vm.coGlobal.countryCode}}"
+                       on-selection="vm.onFromAddressSelection(location)"
+                       ng-model="vm.currentRqgt.fromAddress.formatted_address" required>
+                <!--<input type="text" placeholder="Indirizzo Partenza" ng-model="vm.currentRqgt.fromAddress.formatted_address">-->
             </label>
 
             <label class="item item-input item-floating-label">
                 <span class="input-label">Indirizzo Destinazione</span>
-                <input type="text" placeholder="Indirizzo Destinazione" ng-model="vm.currentRqgt.toShown">
+                <input type="text" placeholder="Indirizzo Destinazione"
+                       google-autocomplete-suggestion location="vm.newFrom"
+                       country-code="{{vm.coGlobal.countryCode}}"
+                       on-selection="vm.onFromAddressSelection(location)"
+                       ng-model="vm.currentRqgt.destAddress.formatted_address" required>
+                <!--<input type="text" placeholder="Indirizzo Destinazione" ng-model="vm.currentRqgt.destAddress.formatted_address">-->
             </label>
 
             <label class="item item-input item-floating-label">
                 <span class="input-label">Data</span>
-                <input type="text" placeholder="Data" ng-model="vm.currentRqgt.dateShown">
+                <input type="text" placeholder="Data"
+                       ng-model="vm.currentRqgt.newRqgtDateShown"
+                       ng-mousedown="vm.openDatePicker()" readonly>
+                <!--<input type="text" placeholder="Data" ng-model="vm.currentRqgt.newRqgtDate">-->
             </label>
             
             <label class="item item-input item-floating-label">
                 <span class="input-label">Kg stimati</span>
-                <input type="text" placeholder="Kg stimati" ng-model="vm.currentRqgt.estimatedKg">
+                <input type="text" placeholder="Kg stimati" ng-model="vm.currentRqgt.reqGoodTransportOpt['estimated_m3']">
             </label>
             <label class="item item-input item-floating-label">
                 <span class="input-label">Volume stimato (Lt)</span>
-                <input type="text" placeholder="Volume stimato (Lt)" ng-model="vm.currentRqgt.estimatedLt">
+                <input type="text" placeholder="Volume stimato (Lt)" ng-model="vm.currentRqgt.reqGoodTransportOpt['estimated_lt']">
             </label>
             <br />
             <div class="item item-checkbox">
                 <label class="checkbox">
-                    <input type="checkbox" ng-model="vm.currentRqgt.frigoCell">
+                    <input type="checkbox" ng-model="vm.currentRqgt.reqGoodTransportOpt['frigoCell']">
                 </label>
                 Cella frigo necessaria
             </div>
             <div class="item item-checkbox">
                 <label class="checkbox">
-                    <input type="checkbox" ng-model="vm.currentRqgt.fragile">
+                    <input type="checkbox" ng-model="vm.currentRqgt.reqGoodTransportOpt['fragile']">
                 </label>
                 Fragile
             </div>
             <div class="item item-description">
                 <label class="label-details-item">Descrizione merce:</label>
-                <textarea placeholder="Inserisci qui una breve descrizione...">                   
+                <textarea placeholder="Inserisci qui una breve descrizione..." ng-model="vm.currentRqgt.reqGoodTransportOpt['longDesc']">                   
                 </textarea>
             </div>
             <br />

@@ -10,6 +10,7 @@
 
         /* jshint validthis:true */
         self.getTransportFiltered = _getTransportFiltered;
+        self.currentTransport = {};
         self.currentTransportResults = [];
         self.loadedTransportResults = false;
 

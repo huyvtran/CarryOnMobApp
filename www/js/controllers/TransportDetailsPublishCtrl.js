@@ -2,10 +2,10 @@
 
     app.controller('TransportDetailsPublishCtrl', TransportDetailsPublishCtrl);
     TransportDetailsPublishCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion',
-        'Books', '$ionicLoading', 'ErrorMng', 'Rqgt', '$state', '$ionicPopup', 'Principal'];
+        'Books', '$ionicLoading', 'ErrorMng', 'Rqgt', '$state', '$ionicPopup', 'Principal', 'Transport'];
 
     function TransportDetailsPublishCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, Books,
-        $ionicLoading, ErrorMng, Rqgt, $state, $ionicPopup, Principal) {
+        $ionicLoading, ErrorMng, Rqgt, $state, $ionicPopup, Principal, Transport) {
 
         var vm = this;
 
@@ -63,7 +63,7 @@
         /* Load current Rqgt details */
         vm.loadCurrentTransportDetails = function () {
             /* Take current Rqgt details from service */
-            vm.currentTransport = Rqgt.currentTransport;
+            vm.currentTransport = Transport.currentTransport;
         };
 
         vm.showLoading = function () {

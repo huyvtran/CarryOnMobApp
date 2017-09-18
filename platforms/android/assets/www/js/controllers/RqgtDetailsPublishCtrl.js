@@ -29,9 +29,26 @@
                 ionicMaterialInk.displayEffect();
             }, 300);
         };
+        
+        /*  ----------------------------------------------------*/
+        /*  --------------------  DATEPICKER  ------------------*/
+        /*  ----------------------------------------------------*/
 
-        /* Set width dynamically */
-        //$('.header-pub-btn').css('width', '150px !important');  
+
+        /* Add callback to datepicker */
+        vm.datepickerDate = coGlobal.datepickerDate;
+        vm.datepickerDate.callback = function (val) {  //Mandatory
+            vm.currentRqgt.newRqgtDate = new Date(val);
+            vm.currentRqgt.newRqgtDateShown = vm.newRqgtDate.toLocaleDateString('it-IT');
+        };
+        /* Init datepicker */
+        vm.openDatePicker = function () {
+            ionicDatePicker.openDatePicker(vm.datepickerDate);
+        };
+
+        /*  ----------------------------------------------------*/
+        /*  -----------------  END - DATEPICKER  ---------------*/
+        /*  ----------------------------------------------------*/
 
         /* Publish rqgt details finalization */
         vm.manageHeaderRightClick = function () {

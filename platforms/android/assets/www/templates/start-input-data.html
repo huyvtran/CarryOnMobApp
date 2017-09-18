@@ -13,9 +13,9 @@
                     <label class="item-input-wrapper">
                         <input type="text" placeholder="Partenza..."
                                google-autocomplete-suggestion location="vm.newFrom"
-                               country-code="{{vm.countryCode}}"
+                               country-code="{{vm.coGlobal.countryCode}}"
                                on-selection="vm.onFromAddressSelection(location)"
-                               ng-model="vm.newFrom" required>
+                               ng-model="vm.fromAddress.formatted_address" required>
                     </label>
                 </div>
 
@@ -23,29 +23,16 @@
                     <label class="item-input-wrapper">
                         <input type="text" placeholder="Destinazione..."
                                google-autocomplete-suggestion location="vm.newTo"
-                               country-code="{{vm.countryCode}}"
+                               country-code="{{vm.coGlobal.countryCode}}"
                                on-selection="vm.onDestAddressSelection(location)"
-                               ng-model="vm.newTo" required>
+                               ng-model="vm.destAddress.formatted_address" required>
                     </label>
                 </div>
-
-                <!--<div class="item search-bar item-input-inset item-button-right">
-                    <label class="item-input-wrapper">
-                        <input type="text" id="req-filter-from" placeholder="Partenza..." ng-model="vm.newRqgtFrom">
-                        <input type="text" id="req-filter-from" placeholder="Partenza..." ng-focus="vm.focusedFrom()">
-                        <input type="text" id="req-filter-from" placeholder="Partenza..." ng-model="vm.autocompleteFrom">
-                        <input type="text" id="req-filter-from" placeholder="Partenza...">
-                    </label>
-                </div>
+                
                 <div class="item search-bar item-input-inset item-button-right">
                     <label class="item-input-wrapper">
-                        <input type="text" id="req-filter-to" placeholder="Destinazione..." ng-model="vm.newRqgtTo">
-                    </label>
-                </div>-->
-
-                <div class="item search-bar item-input-inset item-button-right">
-                    <label class="item-input-wrapper">
-                        <input type="text" id="req-filter-date" placeholder="Data..." ng-model="vm.newRqgtDateShown"
+                        <input type="text" placeholder="Data..." 
+                               ng-model="vm.newRqgtDateShown"
                                ng-mousedown="vm.openDatePicker()" readonly>
                     </label>
                 </div>

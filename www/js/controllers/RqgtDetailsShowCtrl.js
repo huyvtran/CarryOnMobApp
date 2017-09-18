@@ -1,50 +1,55 @@
 ﻿(function () {
 
     app.controller('RqgtDetailsShowCtrl', RqgtDetailsShowCtrl);
-    RqgtDetailsShowCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', '$controller', 'Books', '$state', 'ErrorMng', '$sce', '$ionicPopup', 'Events', 'ionicDatePicker', 'Rqgt', '$ionicPopup', '$interval', '$ionicActionSheet'];
+    RqgtDetailsShowCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', '$controller', 'Books', '$state', 'ErrorMng', '$sce', '$ionicPopup', 'Events', 'ionicDatePicker', 'Rqgt', '$ionicPopup', '$interval', '$ionicActionSheet', '$filter'];
 
-    function RqgtDetailsShowCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, $controller, Books, $state, ErrorMng, $sce, $ionicPopup, Events, ionicDatePicker, Rqgt, $ionicPopup, $interval, $ionicActionSheet) {
+    function RqgtDetailsShowCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, $controller, Books, $state, ErrorMng, $sce, $ionicPopup, Events, ionicDatePicker, Rqgt, $ionicPopup, $interval, $ionicActionSheet, $filter) {
 
         var vm = this;
-               
+
         /* Link to pax global object to allow binding to the view */
         vm.coGlobal = coGlobal;
         vm.rqgtServ = Rqgt;
         vm.currentRqgt = vm.rqgtServ.currentRqgtDetails;
-
-        vm.setMotion = function () {
-
-            $timeout(function () {
+        
+        /* Load current Rqgt Options */
+        vm.LoadOptions = function () {
+            Rqgt.getOptionsList().then(function () {
+                /* Options loading ended */
                 ionicMaterialMotion.blinds({
                     startVelocity: 3000
                 });
-            }, 100);
+                vm.setMotion();
+            }); 
         };
-        
 
+        vm.obtainBoolOptionValue = function (_arr, _key, _filterName) {
+            var val = vm.coGlobal.getOptionValue(_arr, _key);
+            return vm.coGlobal.BooleanStrToYN(val);
+        };
 
 
         /*  --------------------------------------------------------------------------------------------------------------------------------------------*/
         /*  ------------------------------------------------------     INIT FUNCTIONS     ------------------------------------------------------*/
         /*  --------------------------------------------------------------------------------------------------------------------------------------------*/
 
-        // Set Header
         // Set Motion
-        $timeout(function () {
-            ionicMaterialMotion.slideUp({
-                selector: '.slide-up'
-            });
-        }, 300);
+        vm.setMotion = function () {
+            $timeout(function () {
+                ionicMaterialMotion.slideUp({
+                    selector: '.slide-up'
+                });
+            }, 300);
 
-        $timeout(function () {
-            ionicMaterialMotion.fadeSlideInRight({
-                startVelocity: 3000
-            });
-        }, 700);
+            $timeout(function () {
+                ionicMaterialMotion.fadeSlideInRight({
+                    startVelocity: 3000
+                });
+            }, 700);
 
-        // Set Ink
-        ionicMaterialInk.displayEffect();
-
+            // Set Ink
+            ionicMaterialInk.displayEffect();
+        };
 
         /* Init controller function */
         vm.initController = function () {
@@ -53,6 +58,7 @@
             if (coGlobal.NotificationOccurred === true) {
                 coGlobal.NotificationOccurred = false;
             };
+            vm.LoadOptions();
         };
 
         /* Call phone number */
@@ -64,7 +70,7 @@
             cordova.plugins.Whatsapp.send(numberToChat);
             //window.plugins.CallNumber.callNumber(null, null, numberToChat, false);
         };
-        
+
 
         /* Call init controller */
         vm.initController();
@@ -81,7 +87,7 @@
         $scope.$parent.setHeaderFab(false);
 
         // Set Ink
-        ionicMaterialInk.displayEffect();
+        //ionicMaterialInk.displayEffect();
 
         /*  --------------------------------------------------------------------------------------------------------------------------------------------*/
         /*  ------------------------------------------------------  STYLE - Animations - Headers  ------------------------------------------------------*/

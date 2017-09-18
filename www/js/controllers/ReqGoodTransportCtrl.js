@@ -25,9 +25,7 @@
                     startVelocity: 3000
                 });
             }, 100);
-        };
-
-        vm.countryCode = 'IT';
+        };        
 
         /* ATTENZIONE ALLE PERFORMANCES qui !! */
         $("body").on("click", ".ionic_datepicker_popup .popup-buttons button", function () {
@@ -38,58 +36,14 @@
 
         /* From Address */
         vm.onFromAddressSelection = function (location) {
-            vm.autocompleteFrom = location;
-            vm.newFrom = location.formatted_address;
+            vm.fromAddress = location;
         };
 
         /* Destination Address */
         vm.onDestAddressSelection = function (location) {
-            vm.autocompleteTo = location;
-            vm.newTo = location.formatted_address;
+            vm.destAddress = location;
         };
-
-
-        /* Address Autocomplete callback initialization */
-        vm.initAutocomplete = function () {
-            //            stopTime = $interval(
-            //                function () {
-            //                    try {
-            //                        if (google != undefined) {
-            //                            // Search filter FROM - Create the autocomplete object
-            //                            vm.autocompleteFrom = new google.maps.places.Autocomplete(
-            //                                /** @type {!HTMLInputElement} */(document.getElementById('req-filter-from')),
-            //                                { types: ['geocode'] });
-            //                            /* bind the event place_changed which it's trigger when you needed */
-            //                            google.maps.event.addListener(vm.autocompleteFrom, 'place_changed', function () {
-            //                                $("#req-filter-from").val(this.getPlace().formatted_address);
-            //                                //var data = $("#req-filter-from").serialize();
-            //                                //console.log('data');
-            //                                //show_submit_data(data);
-            //                            });
-            //
-            //                            // Search filter TO - Create the autocomplete object
-            //                            vm.autocompleteTo = new google.maps.places.Autocomplete(
-            //                                /** @type {!HTMLInputElement} */(document.getElementById('req-filter-to')),
-            //                                { types: ['geocode'] });
-            //                            $interval.cancel(stopTime);
-            //                        }
-            //                    }
-            //                    catch (err) {
-            //                        console.log('google is not defined yet');
-            //                    }
-            //                }, 1000);
-        };
-        //
-        //        vm.focusedFrom = function () {
-        //            container = document.getElementById('req-filter-from');
-        //            // disable ionic data tab
-        //            angular.element(container).attr('data-tap-disabled', 'true');
-        //            // leave input field if google-address-entry is selected
-        //            angular.element(container).on("click", function () {
-        //                document.getElementById('type-selector').blur();
-        //            });
-        //        };
-
+        
         /* go to next page where rqgt details are inserted */
         vm.selectHasCamionOrHasGood = function () {
             /* Check if all fields have been correctly filled */
@@ -145,25 +99,20 @@
         /* Go to transport search good view or publish availability*/
         vm.goToTransportSearchList = function () {
             Rqgt.currentRqgt = {
-                from: vm.autocompleteFrom,
-                fromShown: vm.newFrom,
-                to: vm.autocompleteTo,
-                toShown: vm.newTo,
+                fromAddress: vm.fromAddress,
+                destAddress: vm.destAddress,
                 date: vm.newRqgtDate,
                 dateShown: vm.newRqgtDateShown
             };
             /* First set service loaded results to false, in order to load new results */
-            //$state.go('app.rqgt-details-publish');
             $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_TRANSPORT].sref);
         };
 
         /* Go to rqgt search camion view or publish request */
         vm.goToRqgtSearchList = function () {
             Transport.currentTransport = {
-                from: vm.autocompleteFrom,
-                fromShown: vm.newFrom,
-                to: vm.autocompleteTo,
-                toShown: vm.newTo,
+                fromAddress: vm.fromAddress,
+                destAddress: vm.destAddress,
                 date: vm.newRqgtDate,
                 dateShown: vm.newRqgtDateShown
             };
@@ -172,52 +121,13 @@
             /* Go to SEARCH_RQGT view */
             $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_RQGT].sref);
         };
-
-        /* Init datepicker */
-        //vm.datepickerDate = {
-        //    callback: function (val) {  //Mandatory
-        //        vm.newRqgtDate = new Date(val);
-        //        vm.newRqgtDateShown = vm.newRqgtDate.toLocaleDateString('it-IT');
-        //    },
-        //    inputDate: new Date(),
-        //    titleLabel: 'Seleziona la data',
-        //    setLabel: 'Vai',
-        //    //todayLabel: 'Today',
-        //    showTodayButton: false,
-        //    closeLabel: 'Prima Possibile',
-        //    mondayFirst: false,
-        //    weeksList: ["S", "M", "T", "W", "T", "F", "S"],
-        //    monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
-        //    templateType: 'popup',
-        //    from: new Date(2012, 8, 1),
-        //    to: new Date(2018, 8, 1),
-        //    dateFormat: 'dd MMMM yyyy',
-        //    closeOnSelect: true,
-        //    disableWeekdays: []
-        //};
-
-        vm.datepickerDate = {
-            callback: function (val) {  //Mandatory
-                vm.newRqgtDate = new Date(val);
-                vm.newRqgtDateShown = vm.newRqgtDate.toLocaleDateString('it-IT');
-            },
-            inputDate: new Date(),
-            titleLabel: 'Seleziona la data',
-            //setLabel: 'Prima Possibile',
-            //todayLabel: 'Today',
-            closeLabel: 'Prima Possibile',
-            mondayFirst: true,
-            weeksList: ["D", "L", "M", "W", "G", "V", "S"],
-            monthsList: ["Gen", "Feb", "Marzo", "Aprile", "Magg", "Giugno", "Lugl", "Agos", "Sett", "Ott", "Nov", "Dic"],
-            templateType: 'popup',
-            from: new Date(2012, 8, 1),
-            to: new Date(2018, 8, 1),
-            showTodayButton: false,
-            dateFormat: 'dd MMMM yyyy',
-            closeOnSelect: true,
-            disableWeekdays: []
+        
+        /* Add callback to datepicker */
+        vm.datepickerDate = coGlobal.datepickerDate;
+        vm.datepickerDate.callback = function (val) {  //Mandatory
+            vm.newRqgtDate = new Date(val);
+            vm.newRqgtDateShown = vm.newRqgtDate.toLocaleDateString('it-IT');
         };
-
 
         /* Init datepicker */
         vm.openDatePicker = function () {
@@ -392,9 +302,7 @@
                 vm.initAllIsLoadedFlags();
                 coGlobal.NotificationOccurred = false;
             };
-
-            vm.initAutocomplete();
-
+            
             vm.loadHeartBooks();
             vm.loadDetailsForHeartBooks();
             vm.loadBestSellers();

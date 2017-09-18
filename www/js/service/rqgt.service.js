@@ -9,7 +9,8 @@
         var self = this;
 
         /* jshint validthis:true */
-        self.getRqgtFiltered = _getRqgtFiltered;
+        self.getRqgtFiltered = _getRqgtFiltered; 
+        self.getOptionsList = _getOptionsList;
         self.currentRqgtResults = [];
         self.loadedRqgtResults = false;
 
@@ -33,7 +34,7 @@
         };
 
         ////////////////
-
+        
         /* Get the list of searched books */
         function _getRqgtFiltered(searchFilters) {
             var deferred = $q.defer();
@@ -52,7 +53,7 @@
             };
             return $http(req).then(function (response) {
 
-                var respData = response.data; 
+                var respData = response.data;
                 if (respData) {
                     if (respData.operationResult === true) {
                         self.loadedRqgtResults = true;
@@ -81,6 +82,38 @@
             });
 
             return deferred.promise;
-        };        
+        };
+
+        /* Get the options list */
+        function _getOptionsList() {
+            var deferred = $q.defer();
+            self.loadedOptions = false;
+            var _id = self.currentRqgtDetails.id;
+
+            var req = {
+                method: 'GET',
+                url: coGlobal.getAppUrl() + 'api/ReqGoodTransfer/GetOptionsList?id=' + _id
+            };
+            return $http(req).then(function (response) {
+
+                var respData = response.data;
+                if (respData) {
+                    if (respData.operationResult === true) {
+                        self.loadedOptions = true;
+                        self.currentRqgtDetails.reqGoodTransportOpt = respData.resultData;
+                        deferred.resolve(respData);
+                    } else {
+                        deferred.reject(respData);
+                    };
+                } else {
+                    ErrorMng.showSystemError(respData.resultMessage);
+                    deferred.reject(respData);
+                };
+            }, function (response) {
+                ErrorMng.showSystemError();
+            });
+
+            return deferred.promise;
+        };
     }
 })();

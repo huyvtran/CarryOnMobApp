@@ -3,11 +3,11 @@
 /* ---- App url ---- */
 //coGlobal.appUrl = '';
 // Debug
-//coGlobal.appUrl = 'http://localhost:57493/';
+coGlobal.appUrl = 'http://localhost:57493/';
 // IIS
 //coGlobal.appUrl = 'http://localhost:8083/';
 // Azure
-coGlobal.appUrl = 'http://carryonwebapi.azurewebsites.net/';
+//coGlobal.appUrl = 'http://carryonwebapi.azurewebsites.net/';
 
 coGlobal.getPaxUrl = function getAppUrl() {
     return 'http://paxwebapi.azurewebsites.net/';
@@ -171,7 +171,7 @@ coGlobal.cleanLocalStorageUserInfo = function cleanLocalStorageUserInfo(localSto
     localStorage.removeItem("coPass");
     localStorage.removeItem("coToken");
     localStorage.removeItem("coNome");
-}; 
+};
 
 /* setter */
 coGlobal.setUserData = function setUserData(userData, $state, isUserLoggedIn, localStorage) {
@@ -227,6 +227,27 @@ coGlobal.LoadMapsApi = function () {
     };
 };
 
+coGlobal.countryCode = 'IT';
+
+/* DatePicker */
+coGlobal.datepickerDate = {
+    callback: function () {
+    },
+    inputDate: new Date(),
+    titleLabel: 'Seleziona la data',
+    closeLabel: 'Prima Possibile',
+    mondayFirst: true,
+    weeksList: ["D", "L", "M", "W", "G", "V", "S"],
+    monthsList: ["Gen", "Feb", "Marzo", "Aprile", "Magg", "Giugno", "Lugl", "Agos", "Sett", "Ott", "Nov", "Dic"],
+    templateType: 'popup',
+    from: new Date(2012, 8, 1),
+    to: new Date(2018, 8, 1),
+    showTodayButton: false,
+    dateFormat: 'dd MMMM yyyy',
+    closeOnSelect: true,
+    disableWeekdays: []
+};
+
 coGlobal.runDigest = function refreshScope($scope) {
     if (!$scope.$$phase) {
         $scope.$digest();
@@ -234,3 +255,26 @@ coGlobal.runDigest = function refreshScope($scope) {
 };
 
 coGlobal.noope = function noope() { };
+
+/* get the option value from the key, passing the array of objrct (optKey, optValue) */
+coGlobal.getOptionValue = function (_arr, _key) {
+    if (!_arr) {
+        return undefined;
+    };
+    var objFound = _arr.find(o => o.optKey === _key);
+    if (objFound) {
+        return objFound.optValue;
+    };
+};
+
+coGlobal.obtainBoolOptionValue = function (_arr, _key, _filterName) {
+    var val = coGlobal.getOptionValue(_arr, _key);
+    return coGlobal.BooleanStrToYN(val);
+};
+
+coGlobal.BooleanStrToYN = function (input) {
+    return (input === true || input === 'true') ? 'Si\'' : 'No';
+};
+
+
+

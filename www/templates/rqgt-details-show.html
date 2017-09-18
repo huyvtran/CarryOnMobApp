@@ -14,7 +14,7 @@
                                     </div>
                                 </div>
                                 <div class="desc-vol v-flex flex-center">
-                                    Luca R.
+                                    {{vm.currentRqgt.userName}}
                                 </div>
                             </div>
                             <!--<div class="desc-adr">
@@ -30,7 +30,7 @@
                                     Da&nbsp;:
                                 </div>
                                 <div class="desc-adr-content">
-                                    {{vm.currentRqgt.addressFromFormattedStr}}
+                                    {{vm.currentRqgt.fromAddress.formatted_address}}
                                 </div>
                             </div>
                             <div class="desc-adr">
@@ -38,7 +38,7 @@
                                     A&nbsp;:
                                 </div>
                                 <div class="desc-adr-content">
-                                    {{vm.currentRqgt.addressDestFormattedStr}}
+                                    {{vm.currentRqgt.destAddress.formatted_address}}
                                 </div>
                             </div>
                             <div class="desc-adr">
@@ -46,7 +46,8 @@
                                     <strong><i class="icon ion-clock"></i>&nbsp;:</strong>
                                 </div>
                                 <div class="desc-adr-content">
-                                    Prima possibile
+                                    {{vm.currentRqgt.newRqgtDate | DateToAsap}}
+                                    <!--{{vm.currentRqgt.newRqgtDateShown}}-->
                                 </div>
                             </div>
                             <!--<div class="desc-adr">
@@ -73,7 +74,7 @@
                         Volume stimato:
                     </div>
                     <div class="more-info-item-value value-inline">
-                        {{vm.currentRqgt.volRequired}} &nbsp; m&sup3;
+                        {{vm.currentTrAv.volRequired}} &nbsp; m&sup3;
                     </div>
                 </div>
                 <!-- Cella frigo necessaria -->
@@ -82,7 +83,7 @@
                         Cella frigo necessaria:
                     </div>
                     <div class="more-info-item-value value-inline">
-                        No
+                        {{coGlobal.obtainBoolOptionValue(vm.currentRqgt.reqGoodTransportOpt, 'frigoCell')}}
                     </div>
                 </div>
                 <!-- Fragile -->
@@ -91,7 +92,7 @@
                         Fragile:
                     </div>
                     <div class="more-info-item-value value-inline">
-                        Si'
+                        {{coGlobal.obtainBoolOptionValue(vm.currentRqgt.reqGoodTransportOpt, 'fragile')}}
                     </div>
                 </div>
                 <!-- Descrizione merce -->
@@ -100,7 +101,7 @@
                         Descrizione merce:
                     </div>
                     <div class="more-info-item-value">
-                        Lorem Ipsum un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e per preparare un testo campione. Lorem Ipsum un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum considerato il testo segnaposto standard sin dal sedicesimo secolo.
+                        {{vm.coGlobal.getOptionValue(vm.currentRqgt.reqGoodTransportOpt, 'longDesc')}}
                     </div>
                 </div>
             </div>
