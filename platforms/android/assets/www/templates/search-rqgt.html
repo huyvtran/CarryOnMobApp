@@ -1,4 +1,7 @@
 <ion-view view-title="Trasporti richiesti" ng-controller="SearchRqgtCtrl as vm" class="search-rqgt-view">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
     <ion-content ng-class="{expanded:$scope.isExpanded}">
 
         <!-- Loader -->
@@ -38,7 +41,7 @@
                                         Volume
                                     </div>
                                     <div class="desc-vol">
-                                       Stimato
+                                        Stimato
                                     </div>
                                 </div>
                             </div>
@@ -102,4 +105,3 @@
         </div>
     </div>
 </ion-view>
-                                        

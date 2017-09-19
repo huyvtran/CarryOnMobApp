@@ -1,7 +1,10 @@
-<ion-view view-title="Completa i dettagli" ng-controller="TransportDetailsPublishCtrl as vm"> 
-        
+<ion-view view-title="Completa i dettagli" ng-controller="TransportDetailsPublishCtrl as vm">
+
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
     <ion-content ng-class="{expanded:$scope.isExpanded}" class="about-pax-content">
-        
+
         <div class="list rqgt-publish-content">
             <label class="item item-input item-floating-label">
                 <span class="input-label">Indirizzo Partenza</span>
@@ -42,12 +45,11 @@
             </div>
             <div class="item item-description">
                 <label class="label-details-item">Descrizione mezzo e disponibilita&grave;:</label>
-                <textarea placeholder="Inserisci qui una breve descrizione della tuà disponibilità...">                   
-                </textarea>
+                <textarea placeholder="Inserisci qui una breve descrizione della tuà disponibilità..."></textarea>
             </div>
             <br />
             <!--<div class="pub-btn">
-                <button class="button button-block button-assertive ink" data-ink-color="#9DEAFF" 
+                <button class="button button-block button-assertive ink" data-ink-color="#9DEAFF"
                         ng-click="vm.publishItem()" data-ink-opacity="1">
                     Pubblica
                 </button>

@@ -1,20 +1,29 @@
 ﻿(function () {
 
     app.controller('RqgtDetailsShowCtrl', RqgtDetailsShowCtrl);
-    RqgtDetailsShowCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', '$controller', 'Books', '$state', 'ErrorMng', '$sce', '$ionicPopup', 'Events', 'ionicDatePicker', 'Rqgt', '$ionicPopup', '$interval', '$ionicActionSheet', '$filter'];
+    RqgtDetailsShowCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', '$controller', 'Books', '$state', 'ErrorMng', '$sce', '$ionicPopup', 'Events', 'ionicDatePicker', 'Rqgt', '$ionicPopup', '$interval', '$ionicActionSheet', '$filter', 'CommonService'];
 
-    function RqgtDetailsShowCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, $controller, Books, $state, ErrorMng, $sce, $ionicPopup, Events, ionicDatePicker, Rqgt, $ionicPopup, $interval, $ionicActionSheet, $filter) {
+    function RqgtDetailsShowCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, $controller, Books, $state, ErrorMng, $sce, $ionicPopup, Events, ionicDatePicker, Rqgt, $ionicPopup, $interval, $ionicActionSheet, $filter, CommonService) {
 
         var vm = this;
 
         /* Link to pax global object to allow binding to the view */
         vm.coGlobal = coGlobal;
         vm.rqgtServ = Rqgt;
+        vm.commonService = CommonService;
         vm.currentRqgt = vm.rqgtServ.currentRqgtDetails;
         
         /* Load current Rqgt Options */
         vm.LoadOptions = function () {
-            Rqgt.getOptionsList().then(function () {                
+            /* Set current rqgt id */
+            CommonService.currentId = vm.currentRqgt.id;
+            /* Then call the service */
+            CommonService.getOptionsList().then(function (respData) {
+                if (respData.operationResult === true) {
+                    vm.currentRqgt.reqGoodTransportOpt = respData.resultData;
+                };
+                /* Refresh variables scope */
+                coGlobal.runDigest($scope);
             }); 
         };
 

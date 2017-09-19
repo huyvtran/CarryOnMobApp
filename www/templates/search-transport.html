@@ -1,4 +1,7 @@
 <ion-view view-title="Trasporti disponibili" ng-controller="SearchTransportCtrl as vm">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
     <ion-content ng-class="{expanded:$scope.isExpanded}">
 
         <!-- Loader -->
@@ -82,7 +85,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </ion-content>
     <div class="pub-rqgt-search-list footer">

@@ -1,4 +1,7 @@
 <ion-view view-title="I miei annunci pubblicati" ng-controller="SearchTransportCtrl as vm">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
     <ion-content ng-class="{expanded:$scope.isExpanded}">
 
         <!-- Loader -->
@@ -23,7 +26,9 @@
                                 <div class="desc-container-v-flex">
                                     <div class="desc-img">
                                         <!--<div class="img-div">{{transp.volAvailable}} <br /> m&sup3;</div>-->
-                                        <div class="img-div">                                           
+                                        <div class="img-div">
+                                            
+
                                             <div class="v-flex">
                                                 <div class="vol-av-value">
                                                     {{transp.volAvailable}}

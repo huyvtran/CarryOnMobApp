@@ -1,4 +1,7 @@
 <ion-view view-title="Dettagli trasporto" ng-controller="TransportAvDetailsShowCtrl as vm" class="desc-show-container-view">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
     <ion-content ng-class="{expanded:$scope.isExpanded}" class="desc-show-container">
         <div class="hero slide-up" style="background-image: url('img/material5.jpg');">
             <div class="content">
@@ -55,7 +58,7 @@
         <h4 class="content title-more-info">Informazioni aggiuntive:</h4>
         <div class="list animate-fade-slide-in-right">
             <!-- Loader -->
-            <div class="loader-css-material" ng-if="!vm.transportServ.loadedOptions">
+            <div class="loader-css-material" ng-if="!vm.commonService.loadedOptions">
                 <div class="showbox">
                     <div class="loader">
                         <svg class="circular" viewBox="25 25 50 50">
@@ -65,9 +68,9 @@
                 </div>
             </div>
             <!-- Additional Info -->
-            <div class="more-info-main-container">
+            <div class="more-info-main-container" ng-if="vm.commonService.loadedOptions">
                 <!-- Volume stimato -->
-                <div class="more-info-item-container" ng-if="vm.transportServ.loadedOptions">
+                <div class="more-info-item-container">
                     <div class="more-info-item-label">
                         Volume stimato:
                     </div>

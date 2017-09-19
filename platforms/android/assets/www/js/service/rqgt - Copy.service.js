@@ -1,19 +1,18 @@
-﻿(function () { 
+﻿(function () {
     'use strict';
 
-    app.service('Transport', Transport);
+    app.service('Rqgt', Rqgt);
 
-    Transport.$inject = ['$q', '$http', '$timeout', 'ErrorMng'];
+    Rqgt.$inject = ['$q', '$http', '$timeout', 'ErrorMng'];
 
-    function Transport($q, $http, $timeout, ErrorMng) {
+    function Rqgt($q, $http, $timeout, ErrorMng) {
         var self = this;
 
         /* jshint validthis:true */
-        self.getTransportFiltered = _getTransportFiltered;
+        self.getRqgtFiltered = _getRqgtFiltered; 
         self.getOptionsList = _getOptionsList;
-        self.currentTransport = {};
-        self.currentTransportResults = [];
-        self.loadedTransportResults = false;
+        self.currentRqgtResults = [];
+        self.loadedRqgtResults = false;
 
         /* callbacks to be called on documents status changes */
         self.observerCallbacks = [];
@@ -34,29 +33,37 @@
             });
         };
 
-        //////////////// 
-
+        ////////////////
+        
         /* Get the list of searched books */
-        function _getTransportFiltered(searchFilters) {
+        function _getRqgtFiltered(searchFilters) {
             var deferred = $q.defer();
-            self.loadedTransportResults = false;
+            self.loadedRqgtResults = false;
+
             var req = {
-                method: 'GET',
-                url: coGlobal.getAppUrl() + 'api/TransportAv/get?id=null&userId=null'
+                method: 'POST',
+                url: coGlobal.getAppUrl() + 'api/ReqGoodTransfer/FilteredRqgt',
+                data: {
+                    filterparams: {
+                        RqgtFilter: undefined,
+                        TransportAvModel: undefined,
+                        FilterParams: undefined
+                    }
+                }
             };
             return $http(req).then(function (response) {
 
-                var respData = response.data; 
+                var respData = response.data;
                 if (respData) {
                     if (respData.operationResult === true) {
-                        self.loadedTransportResults = true;
-                        self.currentTransportResults = respData.resultData;
+                        self.loadedRqgtResults = true;
+                        self.currentRqgtResults = respData.resultData;
                         /* MOCK ONLY  - multuply results */
-                        if (self.currentTransportResults && self.currentTransportResults.length > 0) {
+                        if (self.currentRqgtResults && self.currentRqgtResults.length > 0) {
                             for (var i = 0; i < 25; i++) {
                                 var copiedObj = {};
-                                angular.copy(self.currentTransportResults[0], copiedObj);
-                                self.currentTransportResults.push(copiedObj);
+                                angular.copy(self.currentRqgtResults[0], copiedObj);
+                                self.currentRqgtResults.push(copiedObj);
                             }
                         };
 
@@ -81,7 +88,7 @@
         function _getOptionsList() {
             var deferred = $q.defer();
             self.loadedOptions = false;
-            var _id = self.currentTrAvDetails.id;
+            var _id = self.currentRqgtDetails.id;
 
             var req = {
                 method: 'GET',
@@ -93,7 +100,7 @@
                 if (respData) {
                     if (respData.operationResult === true) {
                         self.loadedOptions = true;
-                        self.currentTrAvDetails.reqGoodTransportOpt = respData.resultData;
+                        self.currentRqgtDetails.reqGoodTransportOpt = respData.resultData;
                         deferred.resolve(respData);
                     } else {
                         deferred.reject(respData);

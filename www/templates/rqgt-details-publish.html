@@ -1,7 +1,10 @@
-<ion-view view-title="Completa i dettagli" ng-controller="RqgtDetailsPublishCtrl as vm"> 
-        
+<ion-view view-title="Completa i dettagli" ng-controller="RqgtDetailsPublishCtrl as vm">
+
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
     <ion-content ng-class="{expanded:$scope.isExpanded}" class="about-pax-content">
-        
+
         <div class="list rqgt-publish-content">
             <label class="item item-input item-floating-label">
                 <span class="input-label">Indirizzo Partenza</span>
@@ -30,7 +33,7 @@
                        ng-mousedown="vm.openDatePicker()" readonly>
                 <!--<input type="text" placeholder="Data" ng-model="vm.currentRqgt.newRqgtDate">-->
             </label>
-            
+
             <label class="item item-input item-floating-label">
                 <span class="input-label">Kg stimati</span>
                 <input type="text" placeholder="Kg stimati" ng-model="vm.currentRqgt.reqGoodTransportOpt['estimated_m3']">
@@ -54,12 +57,11 @@
             </div>
             <div class="item item-description">
                 <label class="label-details-item">Descrizione merce:</label>
-                <textarea placeholder="Inserisci qui una breve descrizione..." ng-model="vm.currentRqgt.reqGoodTransportOpt['longDesc']">                   
-                </textarea>
+                <textarea placeholder="Inserisci qui una breve descrizione..." ng-model="vm.currentRqgt.reqGoodTransportOpt['longDesc']"></textarea>
             </div>
             <br />
             <!--<div class="pub-btn">
-                <button class="button button-block button-assertive ink" data-ink-color="#9DEAFF" 
+                <button class="button button-block button-assertive ink" data-ink-color="#9DEAFF"
                         ng-click="vm.publishItem()" data-ink-opacity="1">
                     Pubblica
                 </button>

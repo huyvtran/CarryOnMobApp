@@ -3,22 +3,29 @@
     app.controller('TransportAvDetailsShowCtrl', TransportAvDetailsShowCtrl);
     TransportAvDetailsShowCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion',
         '$controller', 'Books', '$state', 'ErrorMng', '$sce', '$ionicPopup', 'Events', 'ionicDatePicker', 'Transport',
-        '$ionicPopup', '$interval', '$ionicActionSheet'];
+        '$ionicPopup', '$interval', '$ionicActionSheet', 'CommonService'];
 
     function TransportAvDetailsShowCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion,
         $controller, Books, $state, ErrorMng, $sce, $ionicPopup, Events, ionicDatePicker, Transport, $ionicPopup,
-        $interval, $ionicActionSheet) { 
+        $interval, $ionicActionSheet, CommonService) {
 
         var vm = this;
                
         /* Link to pax global object to allow binding to the view */
         vm.coGlobal = coGlobal;
         vm.transportServ = Transport;
+        vm.commonService = CommonService;
         vm.currentTrAv = vm.transportServ.currentTrAvDetails;
                
         /* Load current Transport Options */
         vm.LoadOptions = function () {
-            Transport.getOptionsList().then(function () {
+            /* Set current rqgt id */
+            CommonService.currentId = vm.currentTrAv.id;
+            /* Then call the service */
+            CommonService.getOptionsList().then(function (respData) {
+                if (respData.operationResult === true) {
+                    vm.currentTrAv.reqGoodTransportOpt = respData.resultData;
+                }
             });
         };
 
