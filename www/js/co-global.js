@@ -3,11 +3,11 @@
 /* ---- App url ---- */
 //coGlobal.appUrl = '';
 // Debug
-coGlobal.appUrl = 'http://localhost:57493/';
+//coGlobal.appUrl = 'http://localhost:57493/';
 // IIS
 //coGlobal.appUrl = 'http://localhost:8083/';
 // Azure
-//coGlobal.appUrl = 'http://carryonwebapi.azurewebsites.net/';
+coGlobal.appUrl = 'http://carryonwebapi.azurewebsites.net/';
 
 coGlobal.getPaxUrl = function getAppUrl() {
     return 'http://paxwebapi.azurewebsites.net/';

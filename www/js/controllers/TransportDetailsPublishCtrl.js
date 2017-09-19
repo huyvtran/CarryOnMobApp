@@ -2,10 +2,10 @@
 
     app.controller('TransportDetailsPublishCtrl', TransportDetailsPublishCtrl);
     TransportDetailsPublishCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion',
-        'Books', '$ionicLoading', 'ErrorMng', 'Rqgt', '$state', '$ionicPopup', 'Principal', 'Transport'];
+        'Books', '$ionicLoading', 'ErrorMng', 'Rqgt', '$state', '$ionicPopup', 'Principal', 'Transport', 'ionicDatePicker'];
 
     function TransportDetailsPublishCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, Books,
-        $ionicLoading, ErrorMng, Rqgt, $state, $ionicPopup, Principal, Transport) {
+        $ionicLoading, ErrorMng, Rqgt, $state, $ionicPopup, Principal, Transport, ionicDatePicker) {
 
         var vm = this;
 
@@ -98,6 +98,26 @@
 
         /* Call init controller */
         vm.initController();
+
+        /*  ----------------------------------------------------*/
+        /*  --------------------  DATEPICKER  ------------------*/
+        /*  ----------------------------------------------------*/
+
+
+        /* Add callback to datepicker */ 
+        vm.datepickerDate = coGlobal.datepickerDate;
+        vm.datepickerDate.callback = function (val) {  //Mandatory
+            vm.currentTransport.date = new Date(val);
+            vm.currentTransport.dateShown = vm.currentTransport.date.toLocaleDateString('it-IT');
+        };
+        /* Init datepicker */
+        vm.openDatePicker = function () {
+            ionicDatePicker.openDatePicker(vm.datepickerDate); 
+        };
+
+        /*  ----------------------------------------------------*/
+        /*  -----------------  END - DATEPICKER  ---------------*/
+        /*  ----------------------------------------------------*/
 
         /*  --------------------------------------------------------------------------------------------------------------------------------------------*/
         /*  ------------------------------------------------------  STYLE - Animations - Headers  ------------------------------------------------------*/

@@ -71,6 +71,8 @@
         $scope.goToState = function (statusEnum) {
             if (statusEnum) {
                 $state.go(coGlobal.CoStatusEnum.properties[statusEnum].sref);
+            } else {
+                $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REQ_GOOD_TRANSPORT].sref);
             };
         };
 

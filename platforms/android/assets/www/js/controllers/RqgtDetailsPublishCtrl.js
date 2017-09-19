@@ -2,10 +2,10 @@
 
     app.controller('RqgtDetailsPublishCtrl', RqgtDetailsPublishCtrl);
     RqgtDetailsPublishCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion',
-        'Books', '$ionicLoading', 'ErrorMng', 'Rqgt', '$state', '$ionicPopup', 'Principal'];
+        'Books', '$ionicLoading', 'ErrorMng', 'Rqgt', '$state', '$ionicPopup', 'Principal', 'ionicDatePicker'];
 
     function RqgtDetailsPublishCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, Books,
-        $ionicLoading, ErrorMng, Rqgt, $state, $ionicPopup, Principal) {
+        $ionicLoading, ErrorMng, Rqgt, $state, $ionicPopup, Principal, ionicDatePicker) {
 
         var vm = this;
 
@@ -35,15 +35,15 @@
         /*  ----------------------------------------------------*/
 
 
-        /* Add callback to datepicker */
+        /* Add callback to datepicker */ 
         vm.datepickerDate = coGlobal.datepickerDate;
         vm.datepickerDate.callback = function (val) {  //Mandatory
-            vm.currentRqgt.newRqgtDate = new Date(val);
-            vm.currentRqgt.newRqgtDateShown = vm.newRqgtDate.toLocaleDateString('it-IT');
+            vm.currentRqgt.date = new Date(val);
+            vm.currentRqgt.dateShown = vm.currentRqgt.date.toLocaleDateString('it-IT');
         };
         /* Init datepicker */
         vm.openDatePicker = function () {
-            ionicDatePicker.openDatePicker(vm.datepickerDate);
+            ionicDatePicker.openDatePicker(vm.datepickerDate); 
         };
 
         /*  ----------------------------------------------------*/
