@@ -12,6 +12,8 @@
         vm.rqgtServ = Rqgt;
         vm.commonService = CommonService;
         vm.currentRqgt = vm.rqgtServ.currentRqgtDetails;
+        /* Date Mapping */
+        coGlobal.dateMapping(vm.currentRqgt);
         
         /* Load current Rqgt Options */
         vm.LoadOptions = function () {

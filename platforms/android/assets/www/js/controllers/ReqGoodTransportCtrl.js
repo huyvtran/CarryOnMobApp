@@ -30,7 +30,7 @@
         /* ATTENZIONE ALLE PERFORMANCES qui !! */
         $("body").on("click", ".ionic_datepicker_popup .popup-buttons button", function () {
             /* Date 'prima possibile' clicked, then set model value */
-            vm.date = undefined;
+            vm.dateTransportFixed = undefined;
             vm.dateShown = 'Prima Possibile';
         });
 
@@ -101,8 +101,9 @@
             Rqgt.currentRqgt = {
                 fromAddress: vm.fromAddress,
                 destAddress: vm.destAddress,
-                date: vm.date,
-                dateShown: vm.dateShown
+                dateTransportFixed: vm.dateTransportFixed,
+                dateShown: vm.dateShown,
+                reqGoodTransportOpt: {}
             };
             /* First set service loaded results to false, in order to load new results */
             $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_TRANSPORT].sref);
@@ -113,8 +114,9 @@
             Transport.currentTransport = {
                 fromAddress: vm.fromAddress,
                 destAddress: vm.destAddress,
-                date: vm.date,
-                dateShown: vm.dateShown
+                dateTransportFixed: vm.dateTransportFixed,
+                dateShown: vm.dateShown,
+                reqGoodTransportOpt: {}
             };
             /* First set service loaded results to false, in order to load new results */
             Rqgt.loadedRqgtResults = false;
@@ -125,8 +127,8 @@
         /* Add callback to datepicker */
         vm.datepickerDate = coGlobal.datepickerDate;
         vm.datepickerDate.callback = function (val) {  //Mandatory
-            vm.date = new Date(val);
-            vm.dateShown = vm.date.toLocaleDateString('it-IT');
+            vm.dateTransportFixed = new Date(val);
+            vm.dateShown = vm.dateTransportFixed.toLocaleDateString('it-IT');
         };
 
         /* Init datepicker */

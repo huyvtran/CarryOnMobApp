@@ -30,34 +30,32 @@
                 <input type="text" placeholder="Data"
                        ng-model="vm.currentTransport.dateShown"
                        ng-mousedown="vm.openDatePicker()" readonly
-                       class="cloned-text-input">
+                       class="no-gray-back">
             </label>
-
-
+            
             <label class="item item-input item-floating-label">
-                <span class="input-label">Kg disponibili</span>
-                <input type="text" placeholder="Kg disponibili" ng-model="vm.currentTransport.availableKg">
-            </label>
-            <label class="item item-input item-floating-label">
-                <span class="input-label">Volume Disponibile</span>
-                <input type="text" placeholder="Volume stimato (Lt)" ng-model="vm.currentTransport.estimatedLt">
+                <span class="input-label">Volume Disponibile stimato (&nbsp; m&sup3;)</span>
+                <input type="text" placeholder="Volume disponibile stimato (m3)" ng-model="vm.currentTransport.volAvailable">
             </label>
             <br />
             <div class="item item-checkbox">
                 <label class="checkbox">
-                    <input type="checkbox" ng-model="vm.currentTransport.frigoCell">
+                    <input type="checkbox" ng-model="vm.currentTransport.reqGoodTransportOpt['frigoCell']"
+                           data-ng-true-value="'true'">
                 </label>
                 Cella frigo presente
             </div>
             <div class="item item-checkbox">
                 <label class="checkbox">
-                    <input type="checkbox" ng-model="vm.currentTransport.fragile">
+                    <input type="checkbox" ng-model="vm.currentTransport.reqGoodTransportOpt['fragile']"
+                           data-ng-true-value="'true'">
                 </label>
                 Transporto fragile possibile
             </div>
             <div class="item item-description">
                 <label class="label-details-item">Descrizione mezzo e disponibilita&grave;:</label>
-                <textarea placeholder="Inserisci qui una breve descrizione della tuà disponibilità..."></textarea>
+                <textarea placeholder="Inserisci qui una breve descrizione della tua disponibilita''..."
+                ng-model="vm.currentTransport.reqGoodTransportOpt['longDesc']"></textarea>
             </div>
             <br />
             <!--<div class="pub-btn">

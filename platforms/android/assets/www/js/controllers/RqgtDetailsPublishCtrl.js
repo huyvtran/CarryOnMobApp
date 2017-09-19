@@ -2,10 +2,11 @@
 
     app.controller('RqgtDetailsPublishCtrl', RqgtDetailsPublishCtrl);
     RqgtDetailsPublishCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion',
-        'Books', '$ionicLoading', 'ErrorMng', 'Rqgt', '$state', '$ionicPopup', 'Principal', 'ionicDatePicker'];
+        'Books', '$ionicLoading', 'ErrorMng', 'Rqgt', '$state', '$ionicPopup', 'Principal', 'ionicDatePicker',
+    'CommonService'];
 
     function RqgtDetailsPublishCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, Books,
-        $ionicLoading, ErrorMng, Rqgt, $state, $ionicPopup, Principal, ionicDatePicker) {
+        $ionicLoading, ErrorMng, Rqgt, $state, $ionicPopup, Principal, ionicDatePicker, CommonService) {
 
         var vm = this;
 
@@ -38,8 +39,8 @@
         /* Add callback to datepicker */ 
         vm.datepickerDate = coGlobal.datepickerDate;
         vm.datepickerDate.callback = function (val) {  //Mandatory
-            vm.currentRqgt.date = new Date(val);
-            vm.currentRqgt.dateShown = vm.currentRqgt.date.toLocaleDateString('it-IT');
+            vm.currentRqgt.dateTransportFixed = new Date(val);
+            vm.currentRqgt.dateShown = vm.currentRqgt.dateTransportFixed.toLocaleDateString('it-IT');
         };
         /* Init datepicker */
         vm.openDatePicker = function () {
@@ -81,8 +82,41 @@
         vm.loadCurrentRqgtDetails = function () {
             /* Take current Rqgt details from service */
             vm.currentRqgt = Rqgt.currentRqgt;
+            /* Date Mapping */
+            coGlobal.dateMapping(vm.currentRqgt);
+            //if (vm.currentRqgt.dateTransportFixed) {
+            //    vm.currentRqgt.dateTransportFixed = moment(vm.currentRqgt.dateTransportFixed).toDate();
+            //    vm.currentRqgt.dateShown = vm.currentRqgt.dateTransportFixed.toLocaleDateString('it-IT');
+            //} else {
+            //    vm.currentRqgt.dateShown = 'Prima possibile';
+            //};
+            /* If it is an update case, then load current options */
+            if (vm.currentRqgt.id) {
+                vm.LoadOptions();
+            };
         };
 
+        /* Load current Transport Options */
+        vm.LoadOptions = function () {
+            vm.showLoading(); 
+            /* Set current rqgt id */
+            CommonService.currentId = vm.currentRqgt.id;
+            /* Then call the service */
+            CommonService.getOptionsList().then(function (respData) {
+                if (respData.operationResult === true) {
+                    vm.currentRqgt.reqGoodTransportOpt = respData.resultData;
+                    /* Then map all options properties */
+                    //coGlobal.mapOptionsToObject(vm.currentRqgt, vm.currentRqgt.reqGoodTransportOpt);
+                };
+                /* hide loading */
+                $ionicLoading.hide();
+            }, function (respData) {
+                /* hide loading */
+                $ionicLoading.hide();
+            });
+        };
+
+        /* Show loading spinner */
         vm.showLoading = function () {
             $ionicLoading.show({
                 template: '<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'

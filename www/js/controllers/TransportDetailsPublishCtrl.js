@@ -2,10 +2,11 @@
 
     app.controller('TransportDetailsPublishCtrl', TransportDetailsPublishCtrl);
     TransportDetailsPublishCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion',
-        'Books', '$ionicLoading', 'ErrorMng', 'Rqgt', '$state', '$ionicPopup', 'Principal', 'Transport', 'ionicDatePicker'];
+        'Books', '$ionicLoading', 'ErrorMng', 'Rqgt', '$state', '$ionicPopup', 'Principal', 'Transport', 'ionicDatePicker',
+    'CommonService'];
 
     function TransportDetailsPublishCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, Books,
-        $ionicLoading, ErrorMng, Rqgt, $state, $ionicPopup, Principal, Transport, ionicDatePicker) {
+        $ionicLoading, ErrorMng, Rqgt, $state, $ionicPopup, Principal, Transport, ionicDatePicker, CommonService) {
 
         var vm = this;
 
@@ -64,8 +65,41 @@
         vm.loadCurrentTransportDetails = function () {
             /* Take current Rqgt details from service */
             vm.currentTransport = Transport.currentTransport;
+            /* Date Mapping */
+            coGlobal.dateMapping(vm.currentTransport);
+            //if (vm.currentTransport.dateTransportFixed) {
+            //    vm.currentTransport.dateTransportFixed = moment(vm.currentTransport.dateTransportFixed).toDate();
+            //    vm.currentTransport.dateShown = vm.currentTransport.dateTransportFixed.toLocaleDateString('it-IT');
+            //} else {
+            //    vm.currentTransport.dateShown = 'Prima possibile';
+            //};
+            /* If it is an update case, then load current options */
+            if (vm.currentTransport.id) {
+                vm.LoadOptions();
+            };
         };
 
+        /* Load current Transport Options */
+        vm.LoadOptions = function () {
+            vm.showLoading();
+            /* Set current rqgt id */
+            CommonService.currentId = vm.currentTransport.id;
+            /* Then call the service */
+            CommonService.getOptionsList().then(function (respData) {
+                if (respData.operationResult === true) {
+                    vm.currentTransport.reqGoodTransportOpt = respData.resultData;
+                    /* Then map all options properties */
+                    //coGlobal.mapOptionsToObject(vm.currentTransport, vm.currentTransport.reqGoodTransportOpt);
+                };
+                /* hide loading */
+                $ionicLoading.hide();
+            }, function (respData) {
+                /* hide loading */
+                $ionicLoading.hide();
+            });
+        };
+
+        /* Show loading spinner */
         vm.showLoading = function () {
             $ionicLoading.show({
                 template: '<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'
@@ -107,8 +141,8 @@
         /* Add callback to datepicker */ 
         vm.datepickerDate = coGlobal.datepickerDate;
         vm.datepickerDate.callback = function (val) {  //Mandatory
-            vm.currentTransport.date = new Date(val);
-            vm.currentTransport.dateShown = vm.currentTransport.date.toLocaleDateString('it-IT');
+            vm.currentTransport.dateTransportFixed = new Date(val);
+            vm.currentTransport.dateShown = vm.currentTransport.dateTransportFixed.toLocaleDateString('it-IT');
         };
         /* Init datepicker */
         vm.openDatePicker = function () {

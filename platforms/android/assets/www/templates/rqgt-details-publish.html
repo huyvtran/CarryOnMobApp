@@ -31,34 +31,33 @@
                 <input type="text" placeholder="Data"
                        ng-model="vm.currentRqgt.dateShown"
                        ng-mousedown="vm.openDatePicker()" readonly
-                       class="cloned-text-input">
-                <!--<input type="text" placeholder="Data" ng-model="vm.currentRqgt.date">-->
+                       class="no-gray-back">
+                <!--<input type="text" placeholder="Data" ng-model="vm.currentRqgt.dateTransportFixed">-->
             </label>
 
             <label class="item item-input item-floating-label">
-                <span class="input-label">Kg stimati</span>
-                <input type="text" placeholder="Kg stimati" ng-model="vm.currentRqgt.reqGoodTransportOpt['estimated_m3']">
-            </label>
-            <label class="item item-input item-floating-label">
-                <span class="input-label">Volume stimato (Lt)</span>
-                <input type="text" placeholder="Volume stimato (Lt)" ng-model="vm.currentRqgt.reqGoodTransportOpt['estimated_lt']">
+                <span class="input-label">Volume necessario stimato (m3)</span>
+                <input type="text" placeholder="Volume necessario stimato (m3)" ng-model="vm.currentRqgt.volRequired">
             </label>
             <br />
             <div class="item item-checkbox">
                 <label class="checkbox">
-                    <input type="checkbox" ng-model="vm.currentRqgt.reqGoodTransportOpt['frigoCell']">
+                    <input type="checkbox" ng-model="vm.currentRqgt.reqGoodTransportOpt['frigoCell']"
+                           data-ng-true-value="'true'">
                 </label>
                 Cella frigo necessaria
             </div>
             <div class="item item-checkbox">
                 <label class="checkbox">
-                    <input type="checkbox" ng-model="vm.currentRqgt.reqGoodTransportOpt['fragile']">
+                    <input type="checkbox" ng-model="vm.currentRqgt.reqGoodTransportOpt['fragile']"
+                           data-ng-true-value="'true'">
                 </label>
                 Fragile
             </div>
             <div class="item item-description">
                 <label class="label-details-item">Descrizione merce:</label>
-                <textarea placeholder="Inserisci qui una breve descrizione..." ng-model="vm.currentRqgt.reqGoodTransportOpt['longDesc']"></textarea>
+                <textarea placeholder="Inserisci qui una breve descrizione..." 
+                          ng-model="vm.currentRqgt.reqGoodTransportOpt['longDesc']"></textarea>
             </div>
             <br />
             <!--<div class="pub-btn">

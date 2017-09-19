@@ -272,6 +272,29 @@ coGlobal.obtainBoolOptionValue = function (_arr, _key, _filterName) {
     return coGlobal.BooleanStrToYN(val);
 };
 
+/* Take each option and add a property to the passed object in this way: 
+ * propertyName = optKey,propertyValue = optValue 
+ * */
+coGlobal.mapOptionsToObject = function (obj, options) {
+    if (options && options.length > 0 && obj) {
+        var optLength = options.length;
+        var i;
+        for (var i = 0; i < optLength; i++) {
+            var currentOpt = options[i];
+            obj[currentOpt.optKey] = currentOpt.optValue;
+        };
+    };
+};
+
+/* Date mapping */
+coGlobal.dateMapping = function (obj) {
+    if (obj.dateTransportFixed) {
+        obj.dateTransportFixed = moment(obj.dateTransportFixed).toDate();
+        obj.dateShown = obj.dateTransportFixed.toLocaleDateString('it-IT');
+    } else {
+        obj.dateShown = 'Prima possibile';
+    };
+};
 coGlobal.BooleanStrToYN = function (input) {
     return (input === true || input === 'true') ? 'Si\'' : 'No';
 };

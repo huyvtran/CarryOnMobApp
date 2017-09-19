@@ -46,7 +46,7 @@
                                     <strong><i class="icon ion-clock"></i>&nbsp;:</strong>
                                 </div>
                                 <div class="desc-adr-content">
-                                    {{vm.currentRqgt.date | DateToAsap}}
+                                    {{vm.currentRqgt.dateShown}}
                                 </div>
                             </div>
                         </div>
@@ -73,7 +73,7 @@
                 <!-- Volume stimato -->
                 <div class="more-info-item-container">
                     <div class="more-info-item-label">
-                        Volume stimato:
+                        Volume stimato (&nbsp; m&sup3;):
                     </div>
                     <div class="more-info-item-value value-inline">
                         {{vm.currentRqgt.volRequired}} &nbsp; m&sup3;
@@ -85,7 +85,7 @@
                         Cella frigo necessaria:
                     </div>
                     <div class="more-info-item-value value-inline">
-                        {{coGlobal.obtainBoolOptionValue(vm.currentRqgt.reqGoodTransportOpt, 'frigoCell')}}
+                        {{vm.currentRqgt.reqGoodTransportOpt['frigoCell'] | BooleanStrToYN}}
                     </div>
                 </div>
                 <!-- Fragile -->
@@ -94,7 +94,7 @@
                         Fragile:
                     </div>
                     <div class="more-info-item-value value-inline">
-                        {{coGlobal.obtainBoolOptionValue(vm.currentRqgt.reqGoodTransportOpt, 'fragile')}}
+                        {{vm.currentRqgt.reqGoodTransportOpt['fragile'] | BooleanStrToYN}}
                     </div>
                 </div>
                 <!-- Descrizione merce -->
@@ -103,7 +103,7 @@
                         Descrizione merce:
                     </div>
                     <div class="more-info-item-value">
-                        {{vm.coGlobal.getOptionValue(vm.currentRqgt.reqGoodTransportOpt, 'longDesc')}}
+                        {{vm.currentRqgt.reqGoodTransportOpt['longDesc']}}
                     </div>
                 </div>
             </div>

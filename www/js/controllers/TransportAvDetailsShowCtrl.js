@@ -16,6 +16,8 @@
         vm.transportServ = Transport;
         vm.commonService = CommonService;
         vm.currentTrAv = vm.transportServ.currentTrAvDetails;
+        /* Date Mapping */
+        coGlobal.dateMapping(vm.currentTrAv);
                
         /* Load current Transport Options */
         vm.LoadOptions = function () {

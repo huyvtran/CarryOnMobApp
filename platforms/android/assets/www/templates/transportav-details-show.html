@@ -45,7 +45,7 @@
                                     <strong><i class="icon ion-clock"></i>&nbsp;:</strong>
                                 </div>
                                 <div class="desc-adr-content">
-                                    {{vm.currentTrAv.date | DateToAsap}}
+                                    {{vm.currentTrAv.dateShown}}
                                 </div>
                             </div>
                         </div>
@@ -72,7 +72,7 @@
                 <!-- Volume stimato -->
                 <div class="more-info-item-container">
                     <div class="more-info-item-label">
-                        Volume stimato:
+                        Volume stimato (&nbsp; m&sup3;):
                     </div>
                     <div class="more-info-item-value value-inline">
                         {{vm.currentTrAv.volAvailable}} &nbsp; m&sup3;
@@ -84,7 +84,7 @@
                         Cella frigo disponibile:
                     </div>
                     <div class="more-info-item-value value-inline">
-                        {{coGlobal.obtainBoolOptionValue(vm.currentTrAv.reqGoodTransportOpt, 'frigoCell')}}
+                        {{vm.currentTrAv.reqGoodTransportOpt['frigoCell'] | BooleanStrToYN}}
                     </div>
                 </div>
                 <!-- Fragile -->
@@ -93,7 +93,7 @@
                         Trasporto fragile possibile:
                     </div>
                     <div class="more-info-item-value value-inline">
-                        {{coGlobal.obtainBoolOptionValue(vm.currentTrAv.reqGoodTransportOpt, 'fragile')}}
+                        {{vm.currentTrAv.reqGoodTransportOpt['fragile'] | BooleanStrToYN}}
                     </div>
                 </div>
                 <!-- Descrizione merce -->
@@ -102,7 +102,7 @@
                         Descrizione disponibilita':
                     </div>
                     <div class="more-info-item-value">
-                        {{vm.coGlobal.getOptionValue(vm.currentTrAv.reqGoodTransportOpt, 'longDesc')}}
+                        {{vm.currentTrAv.reqGoodTransportOpt['longDesc']}}
                     </div>
                 </div>
             </div>

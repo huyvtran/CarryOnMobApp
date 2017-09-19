@@ -66,6 +66,11 @@
     /*font-weight: bold;*/
 }
 
+
+input[readonly].no-gray-back {
+    background-color: transparent !important;
+}
+
 /* HEADER BUTTON OVERLAY
 ======================================================================================================*/
 div.header-overlay-btn-ctn {
@@ -817,7 +822,7 @@ div.item-description {
 
     div.item-description textarea {
         width: 100%;
-        height: 110px;
+        height: 160px;
         border: 1px solid #ccc;
         border-radius: 3px;
         resize: none;
