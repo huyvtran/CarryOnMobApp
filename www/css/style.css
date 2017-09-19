@@ -545,7 +545,7 @@ div.v-flex {
     background-size: cover;
     height: 55px;
     width: 55px;
-    margin: 6px auto 4px auto;
+    margin: 0 auto 0 auto;
 }
 
     .desc-show-container .desc-img img {

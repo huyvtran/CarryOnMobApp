@@ -1,9 +1,13 @@
 ﻿(function () {
 
     app.controller('TransportAvDetailsShowCtrl', TransportAvDetailsShowCtrl);
-    TransportAvDetailsShowCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion', '$controller', 'Books', '$state', 'ErrorMng', '$sce', '$ionicPopup', 'Events', 'ionicDatePicker', 'Transport', '$ionicPopup', '$interval', '$ionicActionSheet'];
+    TransportAvDetailsShowCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion',
+        '$controller', 'Books', '$state', 'ErrorMng', '$sce', '$ionicPopup', 'Events', 'ionicDatePicker', 'Transport',
+        '$ionicPopup', '$interval', '$ionicActionSheet'];
 
-    function TransportAvDetailsShowCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion, $controller, Books, $state, ErrorMng, $sce, $ionicPopup, Events, ionicDatePicker, Transport, $ionicPopup, $interval, $ionicActionSheet) {
+    function TransportAvDetailsShowCtrl($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion,
+        $controller, Books, $state, ErrorMng, $sce, $ionicPopup, Events, ionicDatePicker, Transport, $ionicPopup,
+        $interval, $ionicActionSheet) { 
 
         var vm = this;
                
@@ -11,16 +15,12 @@
         vm.coGlobal = coGlobal;
         vm.transportServ = Transport;
         vm.currentTrAv = vm.transportServ.currentTrAvDetails;
-
-        vm.setMotion = function () {
-
-            $timeout(function () {
-                ionicMaterialMotion.blinds({
-                    startVelocity: 3000
-                });
-            }, 100);
+               
+        /* Load current Transport Options */
+        vm.LoadOptions = function () {
+            Transport.getOptionsList().then(function () {
+            });
         };
-        
 
 
 
@@ -28,22 +28,28 @@
         /*  ------------------------------------------------------     INIT FUNCTIONS     ------------------------------------------------------*/
         /*  --------------------------------------------------------------------------------------------------------------------------------------------*/
 
-        // Set Header
         // Set Motion
-        $timeout(function () {
-            ionicMaterialMotion.slideUp({
-                selector: '.slide-up'
-            });
-        }, 300);
+        vm.setMotion = function () {
+            $timeout(function () {
+                ionicMaterialMotion.slideUp({
+                    selector: '.slide-up'
+                });
+            }, 30);
 
-        $timeout(function () {
-            ionicMaterialMotion.fadeSlideInRight({
+            $timeout(function () {
+                ionicMaterialMotion.fadeSlideInRight({
+                    startVelocity: 3000
+                });
+            }, 700);
+
+            /* Options loading ended */
+            ionicMaterialMotion.blinds({
                 startVelocity: 3000
             });
-        }, 700);
 
-        // Set Ink
-        ionicMaterialInk.displayEffect();
+            // Set Ink
+            ionicMaterialInk.displayEffect();
+        };
 
 
         /* Init controller function */
@@ -53,6 +59,8 @@
             if (coGlobal.NotificationOccurred === true) {
                 coGlobal.NotificationOccurred = false;
             };
+            vm.setMotion();
+            vm.LoadOptions();
         };
 
         /* Call phone number */
@@ -63,8 +71,7 @@
         vm.sendWhatsapp = function (numberToChat) {
             cordova.plugins.Whatsapp.send(numberToChat);
             //window.plugins.CallNumber.callNumber(null, null, numberToChat, false);
-        };
-        
+        };        
 
         /* Call init controller */
         vm.initController();

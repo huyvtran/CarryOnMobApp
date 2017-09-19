@@ -14,18 +14,8 @@
         
         /* Load current Rqgt Options */
         vm.LoadOptions = function () {
-            Rqgt.getOptionsList().then(function () {
-                /* Options loading ended */
-                ionicMaterialMotion.blinds({
-                    startVelocity: 3000
-                });
-                vm.setMotion();
+            Rqgt.getOptionsList().then(function () {                
             }); 
-        };
-
-        vm.obtainBoolOptionValue = function (_arr, _key, _filterName) {
-            var val = vm.coGlobal.getOptionValue(_arr, _key);
-            return vm.coGlobal.BooleanStrToYN(val);
         };
 
 
@@ -39,13 +29,18 @@
                 ionicMaterialMotion.slideUp({
                     selector: '.slide-up'
                 });
-            }, 300);
+            }, 30);
 
             $timeout(function () {
                 ionicMaterialMotion.fadeSlideInRight({
                     startVelocity: 3000
                 });
             }, 700);
+
+            /* Options loading ended */
+            ionicMaterialMotion.blinds({
+                startVelocity: 3000
+            });
 
             // Set Ink
             ionicMaterialInk.displayEffect();
@@ -58,6 +53,7 @@
             if (coGlobal.NotificationOccurred === true) {
                 coGlobal.NotificationOccurred = false;
             };
+            vm.setMotion();
             vm.LoadOptions();
         };
 

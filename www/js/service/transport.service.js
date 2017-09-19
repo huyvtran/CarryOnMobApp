@@ -10,6 +10,7 @@
 
         /* jshint validthis:true */
         self.getTransportFiltered = _getTransportFiltered;
+        self.getOptionsList = _getOptionsList;
         self.currentTransport = {};
         self.currentTransportResults = [];
         self.loadedTransportResults = false;
@@ -61,6 +62,38 @@
 
                         /* END MOCK ONLY  - multuply results */
 
+                        deferred.resolve(respData);
+                    } else {
+                        deferred.reject(respData);
+                    };
+                } else {
+                    ErrorMng.showSystemError(respData.resultMessage);
+                    deferred.reject(respData);
+                };
+            }, function (response) {
+                ErrorMng.showSystemError();
+            });
+
+            return deferred.promise;
+        };
+
+        /* Get the options list */
+        function _getOptionsList() {
+            var deferred = $q.defer();
+            self.loadedOptions = false;
+            var _id = self.currentTrAvDetails.id;
+
+            var req = {
+                method: 'GET',
+                url: coGlobal.getAppUrl() + 'api/ReqGoodTransfer/GetOptionsList?id=' + _id
+            };
+            return $http(req).then(function (response) {
+
+                var respData = response.data;
+                if (respData) {
+                    if (respData.operationResult === true) {
+                        self.loadedOptions = true;
+                        self.currentTrAvDetails.reqGoodTransportOpt = respData.resultData;
                         deferred.resolve(respData);
                     } else {
                         deferred.reject(respData);
