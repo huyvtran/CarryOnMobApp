@@ -38,22 +38,24 @@
         };
 
         /* manageHeaderRightClick - Logout click */
-        vm.manageHeaderRightClick = function () {
-
-            var logoutPopup = $ionicPopup.alert({
+        vm.manageHeaderRightClick = function () {            
+            var logoutPopup = $ionicPopup.confirm({
                 title: 'Confermi logout?',
-                template: '.'
+                cancelText: 'No',
+                okText: 'Si\''
             });
             logoutPopup.then(function (res) {
-                vm.showLoading();
-                // LOGOUT
-                Principal.logout().then(function () {
-                    $ionicLoading.hide();
-                    $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REQ_GOOD_TRANSPORT].sref);
-                }, function () {
-                    $ionicLoading.hide();
-                    ErrorMng.showSystemError();
-                });
+                if (res) {
+                    vm.showLoading();
+                    // LOGOUT
+                    Principal.logout().then(function () {
+                        $ionicLoading.hide();
+                        $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REQ_GOOD_TRANSPORT].sref);
+                    }, function () {
+                        $ionicLoading.hide();
+                        ErrorMng.showSystemError();
+                    });
+                };
             });
         };
 

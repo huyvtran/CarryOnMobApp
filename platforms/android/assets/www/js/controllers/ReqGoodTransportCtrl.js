@@ -87,17 +87,23 @@
                     vm.hideSheet();
                     if (index == 0) {
                         /* User has a camion */
-                        vm.goToRqgtSearchList();
+                        vm.fillModels();
+                        $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_RQGT].sref);
+                        //vm.goToRqgtSearchList();
                     } else if (index == 1) {
                         /* User has good to transport */
                         vm.goToTransportSearchList();
+                        vm.fillModels();
+                        //$state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_TRANSPORT].sref);
                     };
                 }
             });
         };
 
-        /* Go to transport search good view or publish availability*/
-        vm.goToTransportSearchList = function () {
+        vm.fillModels = function fillModels() {
+            /* -------------------------------------------------- */
+            /* ------------------ Rqgt service ------------------ */
+            /* -------------------------------------------------- */
             Rqgt.currentRqgt = {
                 fromAddress: vm.fromAddress,
                 destAddress: vm.destAddress,
@@ -105,12 +111,11 @@
                 dateShown: vm.dateShown,
                 reqGoodTransportOpt: {}
             };
-            /* First set service loaded results to false, in order to load new results */
-            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_TRANSPORT].sref);
-        };
-
-        /* Go to rqgt search camion view or publish request */
-        vm.goToRqgtSearchList = function () {
+            /* Set service loaded results to false, in order to load new results */
+            Rqgt.loadedRqgtResults = false;
+            /* -------------------------------------------------- */
+            /* --------------- Transport service ---------------- */
+            /* -------------------------------------------------- */
             Transport.currentTransport = {
                 fromAddress: vm.fromAddress,
                 destAddress: vm.destAddress,
@@ -118,11 +123,23 @@
                 dateShown: vm.dateShown,
                 reqGoodTransportOpt: {}
             };
-            /* First set service loaded results to false, in order to load new results */
-            Rqgt.loadedRqgtResults = false;
-            /* Go to SEARCH_RQGT view */
-            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_RQGT].sref);
+            /* Set service loaded results to false, in order to load new results */
+            Transport.loadedTransportResults = false;
         };
+
+        ///* Go to transport search good view or publish availability*/
+        //vm.goToTransportSearchList = function () {
+        //    vm.fillModels();
+        //    /* First set service loaded results to false, in order to load new results */
+        //    $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_TRANSPORT].sref);
+        //};
+        //
+        ///* Go to rqgt search camion view or publish request */
+        //vm.goToRqgtSearchList = function () {
+        //    vm.fillModels();            
+        //    /* Go to SEARCH_RQGT view */
+        //    $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_RQGT].sref);
+        //};
         
         /* Add callback to datepicker */
         vm.datepickerDate = coGlobal.datepickerDate;
@@ -139,9 +156,7 @@
         /*  --------------------------------------------------------------------------------------------------------------------------------------------*/
         /*  ------------------------------------------------------  END CARRY ON METHOD  ------------------------------------------------------*/
         /*  --------------------------------------------------------------------------------------------------------------------------------------------*/
-
-
-
+        
         /* Load all heart books */
         vm.loadHeartBooks = function () {
             // If data has not been loaded yet, then load it from server
