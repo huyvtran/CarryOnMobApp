@@ -585,6 +585,10 @@ div.v-flex {
     padding-right: 12px;
 }
 
+.desc-show-container .show-top-section {
+    margin-top: 6px;
+}
+
 .more-info-item-container {
     display: flex;
     margin-bottom: 10px;
@@ -819,7 +823,6 @@ div.item-description {
     padding: 8px;
 }
 
-
     div.item-description textarea {
         width: 100%;
         height: 160px;
@@ -830,6 +833,11 @@ div.item-description {
 
 label.label-details-item + textarea {
     margin-top: 5px;
+    padding: 5px 8px;
+}
+
+label.label-details-item {
+    font-weight: bold;
 }
 
 div.pub-btn {
