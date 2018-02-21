@@ -36,32 +36,28 @@
 
         //////////////// 
 
-        /* Get the list of searched books */
+        /* Get the list of searched transport */
         function _getTransportFiltered(searchFilters) {
             var deferred = $q.defer();
             self.loadedTransportResults = false;
             var req = {
-                method: 'GET',
-                url: coGlobal.getAppUrl() + 'api/TransportAv/get?id=null&userId=null'
+                method: 'POST',
+                url: coGlobal.getAppUrl() + 'api/TransportAv/FilteredTrAv',
+                data: {
+                    filterparams: {
+                        rqgtFilter: undefined,
+                        transpAvFilter: undefined,
+                        filterParams: undefined
+                    }
+                }
             };
-            return $http(req).then(function (response) {
+            $http(req).then(function (response) {
 
                 var respData = response.data; 
                 if (respData) {
                     if (respData.operationResult === true) {
                         self.loadedTransportResults = true;
                         self.currentTransportResults = respData.resultData;
-                        /* MOCK ONLY  - multuply results */
-                        if (self.currentTransportResults && self.currentTransportResults.length > 0) {
-                            for (var i = 0; i < 25; i++) {
-                                var copiedObj = {};
-                                angular.copy(self.currentTransportResults[0], copiedObj);
-                                self.currentTransportResults.push(copiedObj);
-                            }
-                        };
-
-                        /* END MOCK ONLY  - multuply results */
-
                         deferred.resolve(respData);
                     } else {
                         deferred.reject(respData);

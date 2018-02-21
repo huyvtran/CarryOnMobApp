@@ -29,26 +29,53 @@
                 //// Set Ink
                 ionicMaterialInk.displayEffect();
             }, 300);
+        }; 
+
+        /* From Address */
+        vm.onFromAddressSelection = function (location) {
+            vm.currentTransport.fromAddress = location;
         };
 
-        /* Set width dynamically */
-        //$('.header-pub-btn').css('width', '150px !important'); 
+        /* Destination Address */
+        vm.onDestAddressSelection = function (location) {
+            vm.currentTransport.destAddress = location;
+        };
 
         /* Publish rqgt details finalization */
         vm.manageHeaderRightClick = function () {
-            if (!coGlobal.isUserLogged) {
+            if (!coGlobal.isUserLogged) { 
                 $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.LOGIN_SIGNIN].sref);
             } else {
                 vm.callbackAfterLogin();
             };
         };
 
-        /* Callback to be called once user has logged in to publish the request */
-        vm.callbackAfterLogin = function () {
+        /* publish transport item */
+        vm.publishItem = function publishItem() {
+            /* Go to transport publish state */
+            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.TRANSPORT_DETAILS_PUBLISH].sref);
+            /* Add user Data */
+            var userData = coGlobal.getUserData(); 
+            $.extend(vm.currentTransport, userData);
+            /* Start publishing */
             vm.showLoading();
-            $timeout(function () {
-                /* Simulate calling service and backend */
-                /* TO BE DEVELOPED */
+            /* Then call the service */
+            CommonService.publishItem(vm.currentTransport).then(function (respData) {
+                /* hide loading */
+                $ionicLoading.hide();
+                /* If operation was succesfull, then inform user and go back to home */
+                if (respData && respData.operationResult === true) {
+                    vm.ItemPublished_CB();
+                } else {
+                    ErrorMng.showSystemError(respData ? respData.resultMessage : '');
+                };
+            }, function (respData) {
+                /* hide loading */
+                ErrorMng.showSystemError(respData.resultMessage);
+                $ionicLoading.hide();
+            });
+
+            vm.ItemPublished_CB = function ItemPublished_CB() {
                 $ionicLoading.hide();
                 var alertPopup = $ionicPopup.alert({
                     title: 'Operazione riuscita',
@@ -58,7 +85,16 @@
                 alertPopup.then(function (res) {
                     $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REQ_GOOD_TRANSPORT].sref);
                 });
-            }, 2000);
+            };
+
+            /* Simulate calling service and backend */
+            /* TO BE DEVELOPED */
+            //$timeout(vm.ItemPublished_CB, 2000);
+        };
+
+        /* Callback to be called once user has logged in to publish the request */
+        vm.callbackAfterLogin = function () {
+            vm.publishItem();
         };
 
         /* Load current Rqgt details */
@@ -106,23 +142,38 @@
             });
         };
 
-        /* publish rqgt item */
-        vm.publishItem = function () {
-            vm.showLoading();
-            /* Simulate calling service and backend */
-            /* TO BE DEVELOPED */
-            $timeout(function () {
-                $ionicLoading.hide();
-                var alertPopup = $ionicPopup.alert({
-                    title: 'Operazione riuscita',
-                    template: 'La tua richiesta è stata pubblicata. Sarai ora reindirizzato alla pagina iniziale.'
-                });
+        /* transport rqgt item */
+        //vm.publishItem = function () {
+        //    vm.showLoading();
+        //    /* Then call the service */
+        //    CommonService.publishItem(itemToPublish).then(function (respData) {
+        //        /* hide loading */
+        //        $ionicLoading.hide();
+        //        /* If operation was succesfull, then inform user and go back to home */
+        //        if (respData.operationResult === true) {
+        //            vm.ItemPublished_CB();
+        //        };
+        //    }, function (respData) {
+        //        /* hide loading */
+        //        $ionicLoading.hide();
+        //    });
 
-                alertPopup.then(function (res) {
-                    $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REQ_GOOD_TRANSPORT].sref);
-                });
-            }, 2000);
-        };
+        //    vm.ItemPublished_CB = function ItemPublished_CB() {
+        //        $ionicLoading.hide();
+        //        var alertPopup = $ionicPopup.alert({
+        //            title: 'Operazione riuscita',
+        //            template: 'La tua richiesta è stata pubblicata. Sarai ora reindirizzato alla pagina iniziale.'
+        //        });
+
+        //        alertPopup.then(function (res) {
+        //            $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.REQ_GOOD_TRANSPORT].sref);
+        //        });
+        //    };
+
+        //    /* Simulate calling service and backend */
+        //    /* TO BE DEVELOPED */
+        //    //$timeout(vm.ItemPublished_CB, 2000);
+        //};
 
         /* Init controller function */
         vm.initController = function () {

@@ -21,7 +21,7 @@
                 <input type="text" placeholder="Indirizzo Destinazione"
                        google-autocomplete-suggestion location="vm.newFrom"
                        country-code="{{vm.coGlobal.countryCode}}"
-                       on-selection="vm.onFromAddressSelection(location)"
+                       on-selection="vm.onDestAddressSelection(location)"
                        ng-model="vm.currentRqgt.destAddress.formatted_address" required>
                 <!--<input type="text" placeholder="Indirizzo Destinazione" ng-model="vm.currentRqgt.destAddress.formatted_address">-->
             </label>

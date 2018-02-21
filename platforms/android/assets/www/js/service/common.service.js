@@ -10,6 +10,7 @@
 
         /* jshint validthis:true */
         self.getOptionsList = _getOptionsList;
+        self.publishItem = _publishItem;
         self.currentId = undefined;
         self.loadedOptions = false;
 
@@ -64,5 +65,37 @@
 
             return deferred.promise;
         };
+
+        /* Publish Rqgt or transport Item */
+        function _publishItem(itemToPublish) {
+            var deferred = $q.defer();
+            self.publishingItem = true;
+            
+            var req = {
+                method: 'POST',
+                url: coGlobal.getAppUrl() + 'api/TransportAv/PublishItem',
+                data: itemToPublish
+            };
+            $http(req).then(function (response) {
+
+                var respData = response.data;
+                self.publishingItem = false;
+                if (respData) {
+                    if (respData.operationResult === true) {
+                        deferred.resolve(respData);
+                    } else {
+                        deferred.reject(respData);
+                    };
+                } else {
+                    ErrorMng.showSystemError(respData.resultMessage);
+                    deferred.reject(respData);
+                };
+            }, function (response) {
+                ErrorMng.showSystemError();
+            });
+
+            return deferred.promise;
+        };
+
     }
 })();

@@ -101,6 +101,7 @@
                     coGlobal.setUserData(response.data.resultData, $state, true, window.localStorage);
                     if (callbackGoState) {
                         callbackGoState = self.goStateDeferred;
+                        self.cb_afterLogin();
                     } else {
                         self.cb_afterLogin();
                     };

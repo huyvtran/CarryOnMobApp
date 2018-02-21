@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <widget id="io.cordova.PaxDeCoeur2785d518e9f4578943055878dd7a401" version="0.2.8" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" android-versionCode="6">
   <!-- A wildcard can be used to whitelist the entire network,
      over HTTP and HTTPS.
@@ -53,4 +53,9 @@
   <plugin name="call-number" version="0.0.2" src="https://github.com/Rohfosho/CordovaCallNumberPlugin.git" />
   <plugin name="cordova-plugin-firebase" version="0.1.21" src="https://github.com/arnesson/cordova-plugin-firebase" />
   <plugin name="mobi.moica.whatsapp" version="0.0.1" src="https://github.com/ranjitpandit/whatsapp-phonegap-plugin.git" />
+  <vs:toolsetVersion xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">6.3.1</vs:toolsetVersion>
+  <engine name="android" spec="5.2.1" />
+  <engine name="ios" spec="4.2.0" />
+  <engine name="windows" spec="4.4.2" />
+  <preference name="windows-target-version" value="10.0" />
 </widget>

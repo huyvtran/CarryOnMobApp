@@ -187,9 +187,10 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
                 config.headers = config.headers || {}; 
                 /* Fill authorization data */
                 config.headers['Content-Type'] = 'application/json';
-                config.headers['auth-scheme'] = 'token';
+                //config.headers['auth-scheme'] = 'token';
+                config.headers['userInfo'] = JSON.stringify(userData);
                 // token here
-                config.headers['token'] = userData.token; 
+                //config.headers['token'] = userData.token; 
             };
 
             return config;
@@ -503,17 +504,17 @@ app.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, i
                  }
              }
          })
-        .state('app.rqgt-search-list', {
-            url: '/SearchTransportCtrl',
-            views: {
-                'menuContent': {
-                    templateUrl: 'templates/req-good-search-list.html'
-                },
-                'fabContent': {
-                    template: ''
-                }
-            }
-        })
+        //.state('app.rqgt-search-list', {
+        //    url: '/SearchTransportCtrl',
+        //    views: {
+        //        'menuContent': {
+        //            templateUrl: 'templates/req-good-search-list.html'
+        //        },
+        //        'fabContent': {
+        //            template: ''
+        //        }
+        //    }
+        //})
 
         //.state('app.search-transport', {
         //    url: '/search-transport',

@@ -1,5 +1,5 @@
 ﻿(function () {
-
+     
     app.controller('TransportAvDetailsShowCtrl', TransportAvDetailsShowCtrl);
     TransportAvDetailsShowCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'ionicMaterialInk', 'ionicMaterialMotion',
         '$controller', 'Books', '$state', 'ErrorMng', '$sce', '$ionicPopup', 'Events', 'ionicDatePicker', 'Transport',

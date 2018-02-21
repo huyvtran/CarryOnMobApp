@@ -10,20 +10,20 @@
 
         /* jshint validthis:true */
         self.parseResults = _parseResults;
-        self.getMockData = _getMockData;
+        //self.getMockData = _getMockData;
         self.PAX_WEBSITE = "http://www.librairiepax.be/";
         self.mockData;
 
-        function _getMockData() {
-            /* Mock input filefile */
-            $http.get('js/service/test_search.html').success(function (data) {
-                self.mockData = data;
-            },
-            function (err) {
-                self.mockData = err;
-            });
-        };
-        _getMockData();
+        //function _getMockData() {
+        //    /* Mock input filefile */
+        //    $http.get('js/service/test_search.html').success(function (data) {
+        //        self.mockData = data;
+        //    },
+        //    function (err) {
+        //        self.mockData = err;
+        //    });
+        //};
+        //_getMockData();
 
         /* Main function */
         function _parseResults(data) {

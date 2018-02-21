@@ -31,6 +31,16 @@
             }, 300);
         };
         
+        /* From Address */
+        vm.onFromAddressSelection = function (location) {
+            vm.currentRqgt.fromAddress = location;
+        };
+
+        /* Destination Address */
+        vm.onDestAddressSelection = function (location) {
+            vm.currentRqgt.destAddress = location;
+        };
+
         /*  ----------------------------------------------------*/
         /*  --------------------  DATEPICKER  ------------------*/
         /*  ----------------------------------------------------*/

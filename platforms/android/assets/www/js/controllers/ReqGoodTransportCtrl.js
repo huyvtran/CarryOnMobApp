@@ -58,9 +58,9 @@
             }
 
             /* Select camion or Good */
-            vm.showActionSheet_CG();
+            vm.showActionSheet_CG(); 
         }
-
+         
         vm.testGoLogin = function () {
             $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.LOGIN_SIGNIN].sref);
         };
@@ -92,9 +92,9 @@
                         //vm.goToRqgtSearchList();
                     } else if (index == 1) {
                         /* User has good to transport */
-                        vm.goToTransportSearchList();
+                        //vm.goToTransportSearchList();
                         vm.fillModels();
-                        //$state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_TRANSPORT].sref);
+                        $state.go(coGlobal.CoStatusEnum.properties[coGlobal.CoStatusEnum.SEARCH_TRANSPORT].sref);
                     };
                 }
             });
